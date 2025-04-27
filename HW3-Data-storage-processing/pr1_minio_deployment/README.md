@@ -41,7 +41,7 @@ Docker (встановіть у WSL: sudo apt install docker.io)
 docker pull minio/minio
 ```
 
-
+ 
 
 Запустіть контейнер:
 ```
