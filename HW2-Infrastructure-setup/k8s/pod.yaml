@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fastapi-pod
+  labels:
+    app: fastapi
+spec:
+  containers:
+  - name: fastapi-container
+    image: msasmsasmsas/fastapi-server:latest
+    ports:
+    - containerPort: 8000
