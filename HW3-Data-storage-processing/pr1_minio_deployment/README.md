@@ -34,7 +34,7 @@ http://localhost:9001
 
 Docker (встановіть у WSL: sudo apt install docker.io)
 
-Кроки
+Кроки 
 
 Завантажте образ MinIO:
 ```
