@@ -21,4 +21,4 @@ jobs:
         context: ./HW2-Infrastructure-setup
         file: ./HW2-Infrastructure-setup/Dockerfile
         push: true
-        tags: msasmsasmsas/fastapi-server:latest
+        tags: msasmsas/fastapi-server:latest
