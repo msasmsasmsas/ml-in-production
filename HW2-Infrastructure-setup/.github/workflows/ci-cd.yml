@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+    - name: Test workflow
+      run: echo "Workflow is running!"
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
       with:
