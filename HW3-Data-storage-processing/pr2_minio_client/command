@@ -1,2 +1,11 @@
+E:\ml-in-production\HW2-Infrastructure-setup\venv\Scripts\Activate.ps1
+minikube start
+Apply the provided minio-deployment.yaml:
+bash
+kubectl apply -f HW3-Data-storage-processing/pr2_minio_client/minio-deployment.yaml
+Get the service URL:
+bash
+minikube service minio-service --url
+
 docker build -t msasmsasmsas/fastapi-server:latest .
 docker run -p 8000:8000 msasmsasmsas/fastapi-server:latest
