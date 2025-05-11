@@ -24,12 +24,14 @@ def single_process_inference(model, data, iterations):
     return time.time() - start_time
 
 
+def worker(model, data, iters, queue):
+    # Робоча функція для багатопроцесного інференсу
+    time_taken = single_process_inference(model, data, iters)
+    queue.put(time_taken)
+
+
 def multi_process_inference(model, data, iterations, num_processes):
     # Інференс у кількох процесах
-    def worker(model, data, iters, queue):
-        time_taken = single_process_inference(model, data, iters)
-        queue.put(time_taken)
-
     start_time = time.time()
     queue = mp.Queue()
     processes = []
