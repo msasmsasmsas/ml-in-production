@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: fastapi-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: fastapi-container
+        image: msasmsasmsas/fastapi-server:latest
+        command: ["echo", "Running a one-time job"]
+      restartPolicy: Never
+  backoffLimit: 4
