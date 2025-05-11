@@ -1,9 +1,0 @@
-git add HW2-Infrastructure-setup/app HW2-Infrastructure-setup/Dockerfile
-git commit -m "PR1: Add FastAPI server and Dockerfile"
-git push origin main
-
-
-cd E:\ml-in-production\HW2-Infrastructure-setup
-git add .github/workflows/ci-cd.yml
-git commit -m "PR2: Fix CI/CD pipeline Dockerfile path"
-git push origin new-pr2-cicd
