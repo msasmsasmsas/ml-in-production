@@ -3,7 +3,7 @@ from minio import Minio
 from minio.error import S3Error
 
 class MinioClient:
-    def __init__(self, endpoint, access_key, secret_key, secure=False):
+    def __init__(self, endpoint="localhost:9000", access_key="minioadmin", secret_key="minioadmin", secure=False):
         # Ініціалізація клієнта MinIO
         self.client = Minio(
             endpoint,
