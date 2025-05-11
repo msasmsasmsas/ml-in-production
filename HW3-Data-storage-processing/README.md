@@ -1,17 +1,13 @@
-# Розгортання MinIO
-
-Цей документ містить інструкції для розгортання MinIO у трьох конфігураціях: локально, через Docker та на Kubernetes.
-
-## 1. Локальне розгортання
-
-### Вимоги
-- ОС: Linux, macOS або Windows
-- Доступ до терміналу
-
-### Кроки
-1. Завантажте бінарний файл MinIO:
-   ```bash
-   wget https://dl.min.io/server/minio/release/linux-amd64/minio
-   chmod +x minio
 
 
+## Data Storage and Processing
+
+The project leverages the following tools and approaches for efficient data management:
+
+- **MinIO**: S3-compatible object storage for large-scale data. Deployed locally, via Docker, or on Kubernetes for scalability.
+- **Pandas**: Used for data processing in various formats (CSV, Parquet, HDF5). Benchmarking performed to select the optimal format based on save/load times.
+- **StreamingDataset**: Dataset converted to streaming format for efficient access during model training.
+- **ChromaDB**: Vector database for storing and querying vectorized data representations.
+- **Parallel Processing**: Multiprocessing applied to accelerate model inference, significantly reducing execution time.
+
+These tools ensure high performance and scalability for data storage, processing, and access.
