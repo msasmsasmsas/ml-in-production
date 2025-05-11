@@ -9,8 +9,8 @@ def minio_client():
     # Налаштування тестового клієнта
     return MinioClient(
         endpoint="localhost:9000",
-        access_key="admin",
-        secret_key="password",
+        access_key="minioadmin",
+        secret_key="minioadmin",
         secure=False
     )
 
