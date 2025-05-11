@@ -1,0 +1,12 @@
+minio==7.2.0
+pandas==2.2.2
+numpy==1.26.4
+pyarrow==14.0.2
+h5py==3.10.0
+tables==3.10.1
+pytest==7.4.4
+torch==2.3.0
+datasets==2.18.0
+chromadb==0.4.24
+fastapi==0.115.2
+uvicorn==0.32.0
