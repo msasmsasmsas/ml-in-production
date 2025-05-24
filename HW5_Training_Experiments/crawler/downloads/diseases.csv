@@ -1,0 +1,157 @@
+id,name,name_en,scientific_name,is_active
+d17b401f-692b-4f56-8238-7e0b6b50a7c9,Альтернариоз зерна,Alternaria grain disease,,True
+d0e249de-c958-4886-a290-d8e919ffaabc,Бурая ржавчина,Brown rust,двудомный гриб,True
+4c928a8b-0ab6-466b-8f1a-2047c02a9f60,Гельминтоспориозная корневая гниль,Helminthosporium root rot,,True
+1833a39f-3f9b-474c-99de-cdbf22f20fd9,Гибеллиноз пшеницы,Gibellina disease of wheat,,True
+b704c1dd-8c1d-441d-8983-62eeab6a5ad0,Желтая ржавчина,Yellow rust,,True
+7fb447b6-4556-4301-bbe6-9954bff7334a,Мучнистая роса,Powdery mildew,,True
+8696a0c3-9b5f-4e38-9ab9-7715a00598f5,Оливковая плесень,Olive mold,,True
+54ab4656-2e13-46d7-8436-9769654af935,Офиоболезная корневая гниль,Ophiobolus root rot,,True
+559e35d4-a03d-4edb-aa98-218a0ac8e908,Пиренофороз,Pyrenophorosis,,True
+5f02d5c1-5eaf-4f02-9e85-ede06bbb5e1d,Плесневение семян,Mold formation on seeds,,True
+180513d6-872c-4bcd-b36f-b3f2e5be163e,Полосатая пятнистость ячменя,Barley stripe rust,,True
+38b5fa28-c95c-4463-b298-f7574005a708,Пыльная головня,Smut,,True
+4dde5f23-06d0-4ee4-8364-ae39d9f2ef9d,Ржавчина карликовая ячменя,Barley dwarf rust,,True
+e7f50f14-f47c-4ab8-a8a1-c6d3d6fdf9eb,Ржавчина корончатая,Crown rust,,True
+397c96c1-eb26-4f67-8334-6bb366810a50,Ринхоспориоз,Rhynchosporiosis,,True
+fb26b90e-d0f9-4351-8340-2846f3813a87,Септориоз,Septoria leaf spot,,True
+14eae00d-c131-4d88-b9f8-6869976042b6,Септориоз колоса,Septoria head blight,,True
+50e7b833-a145-4131-8d68-99813f850cfb,Сетчатая пятнистость ячменя,Net blotch of barley,,True
+a54ad746-052f-450a-ae2e-0c70b4759f4d,Склеротиния зерновых культур,Sclerotinia of cereal crops,,True
+c809b88a-b6a2-4028-8dd8-123e21c1f17c,Снежная плесень,Snow mold,,True
+c177ac2f-c5d4-4524-ae50-7c9497a663c7,Альтернариоз зерна,Alternaria grain disease,,True
+b1915325-d0d7-4221-8e3a-adf4d224580e,Бурая ржавчина,Brown rust,двудомный гриб,True
+17088cc8-daf0-427d-875c-f0096d6d0ba2,Гельминтоспориозная корневая гниль,Helminthosporium root rot,,True
+95c7e897-fc02-4458-8206-b4c21f97631f,Гибеллиноз пшеницы,Gibellina disease of wheat,,True
+c2c313a1-2d1f-4c0b-ad83-5f069966e796,Желтая ржавчина,Yellow rust,,True
+afedf928-28dd-4b7d-bd74-4afba3b6a929,Мучнистая роса,Powdery mildew,,True
+1fb4539f-b330-432c-9561-ba718631b5a6,Оливковая плесень,Olive mold,,True
+ab5e2f81-951b-4fd8-970f-8b02e695acc9,Офиоболезная корневая гниль,Ophiobolus root rot,,True
+7201b3fa-b0e9-427a-b865-9da68c845326,Пиренофороз,Pyrenophorosis,,True
+8476c0cb-6e05-494c-b88a-4f7540d8e3b2,Плесневение семян,Mold formation on seeds,,True
+0b9c8cda-e52a-444e-a02b-4c0fbe64afab,Полосатая пятнистость ячменя,Barley stripe rust,,True
+c6add4fb-f999-4504-ae83-40d5c140ce7f,Пыльная головня,Dust smut,,True
+84c630b5-4baa-4b0b-a604-8275f63b6699,Ржавчина карликовая ячменя,Barley dwarf rust,,True
+5ed01148-3e42-4800-b3f8-69e4de985716,Ржавчина корончатая,Crown rust,,True
+43dbec75-c1c3-4ecd-be6f-971b7eb8c089,Ринхоспориоз,Rhynchosporium,,True
+c1dd04a4-4863-492f-9cb0-80885867be93,Септориоз,Septoria leaf blotch,,True
+f5f1d911-2338-4bf2-ba86-30ed56adb8e0,Септориоз колоса,Septoria head blight,,True
+a7853d6c-cd1b-4485-99e0-463f1cb84593,Сетчатая пятнистость ячменя,Net blotch of barley,,True
+e1993f4a-6688-4f65-86ad-20742764b93e,Склеротиния зерновых культур,Sclerotinia of cereal crops,,True
+17ce5e25-6e2e-4116-a632-09e494f9b664,Снежная плесень,Snow mold,,True
+aa7d0f38-6f70-413b-883f-286c2cafbcef,Альтернариоз зерна,Alternaria grain disease,,True
+bb1d6276-74ac-45ac-957f-2fec18399205,Бурая ржавчина,Brown rust,двудомный гриб,True
+b8e963bc-dc9d-4102-8239-76354b589aa4,Гельминтоспориозная корневая гниль,Helminthosporium root rot,,True
+50ff8424-fa0c-46cf-9feb-ff2b24d1f44c,Гибеллиноз пшеницы,Gibellina disease of wheat,,True
+bffd5d3a-ec9e-4de6-ad06-4e8d90d57a69,Желтая ржавчина,Yellow rust,,True
+204f3da5-2955-4246-abad-2f2ec6986f18,Мучнистая роса,Powdery mildew,,True
+9870257e-f866-419a-8680-8e68ccf0870d,Оливковая плесень,Olive mold,,True
+ef945e3b-f1e0-4ad8-a14c-ef0b6b357ebb,Офиоболезная корневая гниль,Ophiobolus root rot,,True
+0746e8f0-0bba-402a-bda5-d04107494ab5,Пиренофороз,Pyrenophorosis,,True
+f8536ce3-258c-46f5-81e7-487d4a4cdf6f,Плесневение семян,Mold formation on seeds,,True
+df7fb5da-150a-4f73-9a79-6b016acbf5e7,Полосатая пятнистость ячменя,Barley stripe rust,,True
+997e71b9-0afd-4a96-9009-44cb40bd7825,Пыльная головня,Smut,,True
+f0db4a3d-2233-4257-ab5f-aa778580b025,Ржавчина карликовая ячменя,Barley dwarf rust,,True
+aa2d882e-f133-483a-b387-cd45f38f9c63,Ржавчина корончатая,Crown rust,,True
+72cfaf55-baf4-4965-8845-a0cdc3d99c44,Ринхоспориоз,Rhynchosporiosis,,True
+076c976b-2c0d-4d23-92c8-09f01f0e9cb7,Септориоз,Septoria leaf spot,,True
+1f98e210-a990-49ca-a4cc-7b817a71178d,Септориоз колоса,Septoria head blight,,True
+20e6072c-0417-42f8-9274-3d73333b3f10,Сетчатая пятнистость ячменя,Net blotch of barley,,True
+368902c4-ffc0-4682-ab86-7d6a3fdf1182,Склеротиния зерновых культур,Sclerotinia of cereal crops,,True
+c7be313b-76bb-405c-a5ba-eec38a07978a,Снежная плесень,Snow mold,,True
+1cd0781b-ed18-43c4-8f2b-3e9c6ac6b894,Альбуго,Albugo,низший гриб,True
+f6ca4a3b-7617-45d2-a359-67747b55ac8c,Альтернариоз,Alternaria blight,,True
+9779532d-40d7-4100-8e24-7c29bcf44ec4,Белая гниль,White rot,гриб,True
+7aee2871-f854-4be0-8bcf-cc081d377713,Белая пятнистость,White leaf spot,,True
+9bdbb53f-4994-456a-9e12-80ad08ee9303,Корневые гнили рапса,Root rots of canola,,True
+446afdfa-824c-4d60-b25c-bc0097b92723,Мучнистая роса рапса,Powdery mildew of rapeseed,,True
+8c033f2d-8b0c-48d8-8504-cc2d81cba675,Пероноспороз,Downy mildew,,True
+4cb213c9-1a8a-48d4-a4ac-c5271371db4a,Серая гниль рапса,Gray mold of rapeseed,,True
+2fd9e903-390d-4f80-8935-99a903105991,Фомоз,Phoma rot,,True
+64502447-3ce0-4880-ba84-351ee0b0e5be,Цилиндроспориоз,Cylindrosporiosis,,True
+f1204d6d-7a47-4901-bf73-952c943c78bc,Плесневение початков,Mold development on cobs,,True
+71d68e31-ce0d-4b4d-978d-be20b26f1d3e,Пузырчатая головня кукурузы,Corn smut,базидиальный гриб,True
+c8120d5e-c319-49d7-bc55-18bbcf5f9a36,Пыльная головня кукурузы,Corn smut,,True
+d09e92d0-30c2-4021-a17b-6f838655d3da,Фузариоз,Fusarium wilt,,True
+8ed6d560-8498-4ff9-b3e1-f3b113dea723,Антракноз сои,Anthracnose of Soybean,гриб,True
+32cbc1ae-f8c5-4347-8809-2d0d93d528c9,Аскохитоз сои,Ascochyta blight of soybean,,True
+2c1ca477-a9ef-4296-8e77-b81a6e4904c8,Бактериальный ожог,Bacterial blight,бактерия,True
+793ebc4c-2ca5-4613-82bb-fc7809fce2e2,Вирусная мозаика сои,Soybean mosaic virus,,True
+f7b7d553-3ed0-41e7-8561-8768832d5e28,Пероноспороз или ложная мучнистая роса,Peronosporosis or downy mildew,гриб,True
+1bdee465-5985-4716-a1af-7bf462877f24,Пурпурный церкоспороз сои,Purple Cercospora of Soybean,гриб,True
+1a767a4b-34ac-4477-8dd8-3969c578f30a,Септориоз или ржавая пятнистость,Septoria leaf spot or rust spot,гриб,True
+bba68038-0c3e-4e74-9648-498bd5adde26,Склеротиниоз (белая гниль) сои,Sclerotinia stem rot (white mold) of soybean,гриб,True
+d4891c35-7df4-4f14-a44a-8c3427913efb,Фомопсис сои,Phomopsis of soybean,гриб,True
+b2f8568f-ebd5-415e-b560-794165a69155,Фузариозная корневая гниль сои,Fusarium root rot of soybean,,True
+e8e20e15-1322-4c53-8f29-3f27fddff7f6,Бурая гниль,Brown rot,,True
+a40619a5-d06f-4e38-9de5-8139583a106e,Кагатная гниль,Clamp rot,,True
+1de915fa-9193-4988-b365-cc104f271e83,Корнеед свеклы,Beet root rot,,True
+ccb92340-aec4-4068-8ed1-5328c08377b0,Мучнистая роса сахарной свеклы,Powdery mildew of sugar beet,,True
+44977995-3100-4526-951b-c6af677c3de5,Пероноспороз свеклы,Downy mildew of beet,гриб,True
+c97de52f-a3f9-4549-8bd8-d5e5b74f3212,Рамуляриоз,Ramularia leaf spot,,True
+cc095bb7-1380-405d-80b1-0779031dbeeb,Ржавчина свеклы,Beet rust,гриб,True
+d32471d2-2520-47ae-9c4e-32af1d93d4bf,Фомоз свеклы,Phoma rot of beet,,True
+7fea5175-2954-458d-afe2-0ec1c28fec3e,Фузариоз свеклы,Fusarium wilt of beet,,True
+f71ee670-2bdc-4baf-8479-7c794669cc26,Церкоспороз,Cercospora Leaf Spot,,True
+ed1c3bb9-fdbb-40f2-9e0c-aaa37bcb2eb6,Альтернариоз подсолнечника,Alternaria blight of sunflower,,True
+6ecdd199-1b32-4e88-891c-0b5d7f1d3175,Белая гниль подсолнечника,White rot of sunflower,сумчатый гриб,True
+ed5ce1aa-358b-4b69-a4da-2bbc02144483,Вертициллезное увядание,Verticillium wilt,гриб,True
+93a11964-4caa-4293-b10e-4a1083b74059,Ложная мучнистая роса,Downy mildew,,True
+8cf7cce3-c474-4862-9b87-f0947e72e49c,Ржавчина подсолнечника,Sunflower rust,однодомный гриб,True
+e32b9cad-8364-43b1-9452-e822eb28c433,Септориоз подсолнечника,Septoria of sunflower,,True
+f6b44488-9c98-46d2-84c7-748fe00ba757,Серая гниль подсолнечника,Gray mold of sunflower,,True
+caeeff7a-6bae-4913-80c4-27ae9353ebbd,Сухая (ризопусная) гниль корзинок,Dry (Rhizopus) rot of heads,,True
+ecea1d03-6725-456b-b921-8dbbf093f42d,Фомоз подсолнечника,Phomopsis of sunflower,,True
+2fb53f95-032d-453b-9ebb-44d07383cdf2,Фомопсис,Phomopsis,,True
+2f425d53-eeea-4ecc-b7fd-0507155209c5,Антракноз гороха,Anthracnose of Pea,,True
+949006e7-89bc-4b8e-b47b-b0ab09d67bba,Аскохитоз гороха,Ascochyta blight of peas,,True
+e53fa1ca-2519-47c5-814d-a7f99ef2512f,Афаномицетная корневая гниль,Aphanomyces root rot,,True
+a7495830-1cf8-4700-919f-2077ba6d5f5e,Бактериальный ожог гороха,Bacterial blight of pea,бактерия,True
+35c09c9c-81f5-42d1-b06d-7668202d4978,Белая гниль гороха,White mold of pea,гриб,True
+2a9bb5ee-ff76-442f-9f16-8076694da320,Вирус деформирующей мозаики,Deforming Mosaic Virus,,True
+84381020-7db0-4ce6-9f19-04d99c23d5c8,Ложная мучнистая роса или пероноспороз,Downy mildew or Peronospora,,True
+c8cfed9b-adb8-4621-a99e-95f8ffbe38fc,Мучнистая роса гороха,Powdery mildew of peas,,True
+ca0734e1-b0ae-4642-9498-520e3d78e65a,Питиозная корневая гниль,Pythium root rot,,True
+8417909d-7eeb-4561-92ee-07927ccf3469,Ржавчина гороха,Pea rust,,True
+d2101a57-ea32-4627-8795-1ca11c74f80f,Ризоктониозная корневая гниль,Rhizoctonia root rot,гриб,True
+7706a172-22a1-49dd-b89e-432b1df89f2c,Серая гниль гороха,Gray mold of peas,гриб,True
+b6dd34e9-3ebc-4299-b958-601a621f46ed,Фузариозная корневая гниль,Fusarium root rot,,True
+e88fca5a-2833-4faa-9ddb-bcbe72c014a0,Антракноз гороха,Anthracnose of peas,,True
+e0d6699c-f4d4-493b-a7a8-3c8dcd689d44,Аскохитоз гороха,Ascochyta blight of peas,,True
+ed12153e-3b62-4489-a3f2-f32dd19c4d0c,Афаномицетная корневая гниль,Aphanomyces root rot,,True
+c9bbf932-e136-49ca-9ea8-261852dc7fef,Бактериальный ожог гороха,Bacterial blight of peas,бактерия,True
+2db449e6-c919-4fac-83d2-78373c7aa809,Белая гниль гороха,White mold of peas,гриб,True
+06ce2ab8-4247-40ad-b0e9-90b4abdac783,Вирус деформирующей мозаики,Deforming Mosaic Virus,,True
+47b4df19-e33d-47b5-81ab-067a1a6ba8d1,Ложная мучнистая роса или пероноспороз,Downy mildew or Peronospora,,True
+0da29dea-9cce-49ad-8a64-b17f10092d03,Мучнистая роса гороха,Powdery mildew of peas,,True
+ff0a15a6-8733-457d-bbad-2ec9292ea03a,Питиозная корневая гниль,Pythium root rot,,True
+83ec7339-a28b-4cb6-8a21-768f54d72c24,Ржавчина гороха,Pea rust,,True
+55cc7b8c-7c82-4c60-bdda-283ef784c80f,Ризоктониозная корневая гниль,Rhizoctonia root rot,гриб,True
+1750c58d-5d72-42f5-b17f-ac782e4cdf8f,Серая гниль гороха,Gray mold of peas,гриб,True
+0eb9ffb6-9c61-4bcc-bf17-bd581a723673,Фузариозная корневая гниль,Fusarium root rot,,True
+a8c8299c-6813-4527-a8e3-e07b12133e07,Антракноз льна,Anthracnose of flax,несовершенный гриб,True
+f00237fc-2a87-4eb8-ad17-f97dc01c94c4,Аскохитоз льна,Ascochyta blight of flax,несовершенный гриб,True
+e883610f-5971-4527-9188-640b9b53d171,Крапчатость семядолей льна,Mottling of flax cotyledons,,True
+dd33f491-90ef-43ea-908d-0f2e9fb5cc2c,Мучнистая роса льна,Powdery mildew of flax,,True
+bf21e81e-413f-4325-802e-e070cab8b92e,Пасмо льна,Flax wilt,несовершенный гриб,True
+27e5cfe6-81ae-4e41-bb38-06790c7a9cd1,Полиспороз льна,Polyspora of flax,,True
+f388cb23-bbfd-4f1a-a6cd-051054db2a2e,Ржавчина льна,Flax rust,однодомный базидиальный гриб,True
+2b1a3042-a371-4d49-93b9-f8a47f7d5ef5,Фузариоз льна,Fusarium Wilt of Flax,,True
+274c8482-fa8f-44df-aafe-a77296871eb4,Альтернариоз картофеля,Alternaria solani of potatoes,,True
+819df1bc-5c48-48f3-bfba-9a9774bb6d7d,Антракноз картофеля,Anthracnose of potato,,True
+385c1408-6299-4ee1-8e03-b02951caa99f,Бурая гниль картофеля,Brown rot of potatoes,,True
+061aea5d-0acf-4682-b75f-107eca7fa082,Кольцевая гниль,Ring rot,бактерии,True
+a10f859e-3c0c-494b-ba08-16ffcc45a0ef,Обыкновенная парша,Common scab,,True
+3e5ae24a-b5ca-4f00-a7be-1a5d5b8f809d,Парша бугорчатая (ооспороз),Pitted scab (oosporosis),,True
+2eb57142-6350-4c43-971b-29a383edec65,Порошистая парша,Powdery scab,гриб,True
+5380ee58-a94a-422a-9b9e-23e4d1d45a71,Рак картофеля,Potato wart disease,хитридиевый гриб,True
+dda491e8-7b4c-4a3a-ac31-177c03e829de,Резиновая гниль,Rubber rot,несовершенный гриб,True
+a10f34bd-c3a3-416e-91bb-b4bae4f6192e,Ризоктониоз картофеля,Rhizoctonia disease of potatoes,гриб-базидиомицет,True
+f2d6daf0-bb9a-4ca3-997c-1c4d57e70049,Серебристая парша,Silver scurf,несовершенный гриб,True
+feafcfdf-7c75-4d7c-b17d-b898b33260d5,Сухая фузариозная гниль клубней,Dry Fusarium rot of tubers,грибы рода,True
+c582814a-abd4-40b6-ba1d-464dae3808f7,Увядание,Wilting,несовершенный гриб Fusarium oxysporum,True
+caf99cd0-c403-49c2-abc6-13d26c145489,Фитофтороз,Phytophthora blight,оомицет,True
+fdbd224b-02be-442b-ba22-b9f7c6b718f3,Фомоз картофеля,Phoma rot of potatoes,Phoma exiqua,True
+f50a2613-79ac-425c-aaad-4f7f6942d71c,Черная ножка,Blackleg,,True
+49879783-b126-4b02-b59f-d73f5d9dba63,Страница не найдена,Page not found,,True
+f7a6534a-c67e-4078-9741-db895d90d0ba,Страница не найдена,Page not found,,True
