@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="Python 3.12 (HSA13_hw23_ci_cd)" jdkType="Python SDK" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/HW2-Infrastructure-setup/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/HW4_Data_Labeling_Validation/PR1_DVC_Data_Commit/.dvc/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/HW4_Data_Labeling_Validation/PR1_DVC_Data_Commit/.dvc/tmp" />
+    </content>
+    <orderEntry type="jdk" jdkName="Python 3.12 virtualenv at E:\ml-in-production\HW2-Infrastructure-setup\venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
