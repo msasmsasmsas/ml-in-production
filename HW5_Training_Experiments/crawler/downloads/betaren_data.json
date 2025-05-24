@@ -1,0 +1,2157 @@
+{
+    "diseases": {
+        "cereals": [
+            {
+                "id": "d17b401f-692b-4f56-8238-7e0b6b50a7c9",
+                "name": "Альтернариоз зерна",
+                "name_en": "Alternaria grain disease",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "d0e249de-c958-4886-a290-d8e919ffaabc",
+                "name": "Бурая ржавчина",
+                "name_en": "Brown rust",
+                "scientific_name": "двудомный гриб",
+                "is_active": true
+            },
+            {
+                "id": "4c928a8b-0ab6-466b-8f1a-2047c02a9f60",
+                "name": "Гельминтоспориозная корневая гниль",
+                "name_en": "Helminthosporium root rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "1833a39f-3f9b-474c-99de-cdbf22f20fd9",
+                "name": "Гибеллиноз пшеницы",
+                "name_en": "Gibellina disease of wheat",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "b704c1dd-8c1d-441d-8983-62eeab6a5ad0",
+                "name": "Желтая ржавчина",
+                "name_en": "Yellow rust",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "7fb447b6-4556-4301-bbe6-9954bff7334a",
+                "name": "Мучнистая роса",
+                "name_en": "Powdery mildew",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "8696a0c3-9b5f-4e38-9ab9-7715a00598f5",
+                "name": "Оливковая плесень",
+                "name_en": "Olive mold",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "54ab4656-2e13-46d7-8436-9769654af935",
+                "name": "Офиоболезная корневая гниль",
+                "name_en": "Ophiobolus root rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "559e35d4-a03d-4edb-aa98-218a0ac8e908",
+                "name": "Пиренофороз",
+                "name_en": "Pyrenophorosis",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "5f02d5c1-5eaf-4f02-9e85-ede06bbb5e1d",
+                "name": "Плесневение семян",
+                "name_en": "Mold formation on seeds",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "180513d6-872c-4bcd-b36f-b3f2e5be163e",
+                "name": "Полосатая пятнистость ячменя",
+                "name_en": "Barley stripe rust",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "38b5fa28-c95c-4463-b298-f7574005a708",
+                "name": "Пыльная головня",
+                "name_en": "Smut",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "4dde5f23-06d0-4ee4-8364-ae39d9f2ef9d",
+                "name": "Ржавчина карликовая ячменя",
+                "name_en": "Barley dwarf rust",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "e7f50f14-f47c-4ab8-a8a1-c6d3d6fdf9eb",
+                "name": "Ржавчина корончатая",
+                "name_en": "Crown rust",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "397c96c1-eb26-4f67-8334-6bb366810a50",
+                "name": "Ринхоспориоз",
+                "name_en": "Rhynchosporiosis",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "fb26b90e-d0f9-4351-8340-2846f3813a87",
+                "name": "Септориоз",
+                "name_en": "Septoria leaf spot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "14eae00d-c131-4d88-b9f8-6869976042b6",
+                "name": "Септориоз колоса",
+                "name_en": "Septoria head blight",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "50e7b833-a145-4131-8d68-99813f850cfb",
+                "name": "Сетчатая пятнистость ячменя",
+                "name_en": "Net blotch of barley",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "a54ad746-052f-450a-ae2e-0c70b4759f4d",
+                "name": "Склеротиния зерновых культур",
+                "name_en": "Sclerotinia of cereal crops",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "c809b88a-b6a2-4028-8dd8-123e21c1f17c",
+                "name": "Снежная плесень",
+                "name_en": "Snow mold",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "c177ac2f-c5d4-4524-ae50-7c9497a663c7",
+                "name": "Альтернариоз зерна",
+                "name_en": "Alternaria grain disease",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "b1915325-d0d7-4221-8e3a-adf4d224580e",
+                "name": "Бурая ржавчина",
+                "name_en": "Brown rust",
+                "scientific_name": "двудомный гриб",
+                "is_active": true
+            },
+            {
+                "id": "17088cc8-daf0-427d-875c-f0096d6d0ba2",
+                "name": "Гельминтоспориозная корневая гниль",
+                "name_en": "Helminthosporium root rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "95c7e897-fc02-4458-8206-b4c21f97631f",
+                "name": "Гибеллиноз пшеницы",
+                "name_en": "Gibellina disease of wheat",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "c2c313a1-2d1f-4c0b-ad83-5f069966e796",
+                "name": "Желтая ржавчина",
+                "name_en": "Yellow rust",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "afedf928-28dd-4b7d-bd74-4afba3b6a929",
+                "name": "Мучнистая роса",
+                "name_en": "Powdery mildew",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "1fb4539f-b330-432c-9561-ba718631b5a6",
+                "name": "Оливковая плесень",
+                "name_en": "Olive mold",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "ab5e2f81-951b-4fd8-970f-8b02e695acc9",
+                "name": "Офиоболезная корневая гниль",
+                "name_en": "Ophiobolus root rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "7201b3fa-b0e9-427a-b865-9da68c845326",
+                "name": "Пиренофороз",
+                "name_en": "Pyrenophorosis",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "8476c0cb-6e05-494c-b88a-4f7540d8e3b2",
+                "name": "Плесневение семян",
+                "name_en": "Mold formation on seeds",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "0b9c8cda-e52a-444e-a02b-4c0fbe64afab",
+                "name": "Полосатая пятнистость ячменя",
+                "name_en": "Barley stripe rust",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "c6add4fb-f999-4504-ae83-40d5c140ce7f",
+                "name": "Пыльная головня",
+                "name_en": "Dust smut",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "84c630b5-4baa-4b0b-a604-8275f63b6699",
+                "name": "Ржавчина карликовая ячменя",
+                "name_en": "Barley dwarf rust",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "5ed01148-3e42-4800-b3f8-69e4de985716",
+                "name": "Ржавчина корончатая",
+                "name_en": "Crown rust",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "43dbec75-c1c3-4ecd-be6f-971b7eb8c089",
+                "name": "Ринхоспориоз",
+                "name_en": "Rhynchosporium",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "c1dd04a4-4863-492f-9cb0-80885867be93",
+                "name": "Септориоз",
+                "name_en": "Septoria leaf blotch",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f5f1d911-2338-4bf2-ba86-30ed56adb8e0",
+                "name": "Септориоз колоса",
+                "name_en": "Septoria head blight",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "a7853d6c-cd1b-4485-99e0-463f1cb84593",
+                "name": "Сетчатая пятнистость ячменя",
+                "name_en": "Net blotch of barley",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "e1993f4a-6688-4f65-86ad-20742764b93e",
+                "name": "Склеротиния зерновых культур",
+                "name_en": "Sclerotinia of cereal crops",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "17ce5e25-6e2e-4116-a632-09e494f9b664",
+                "name": "Снежная плесень",
+                "name_en": "Snow mold",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "aa7d0f38-6f70-413b-883f-286c2cafbcef",
+                "name": "Альтернариоз зерна",
+                "name_en": "Alternaria grain disease",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "bb1d6276-74ac-45ac-957f-2fec18399205",
+                "name": "Бурая ржавчина",
+                "name_en": "Brown rust",
+                "scientific_name": "двудомный гриб",
+                "is_active": true
+            },
+            {
+                "id": "b8e963bc-dc9d-4102-8239-76354b589aa4",
+                "name": "Гельминтоспориозная корневая гниль",
+                "name_en": "Helminthosporium root rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "50ff8424-fa0c-46cf-9feb-ff2b24d1f44c",
+                "name": "Гибеллиноз пшеницы",
+                "name_en": "Gibellina disease of wheat",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "bffd5d3a-ec9e-4de6-ad06-4e8d90d57a69",
+                "name": "Желтая ржавчина",
+                "name_en": "Yellow rust",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "204f3da5-2955-4246-abad-2f2ec6986f18",
+                "name": "Мучнистая роса",
+                "name_en": "Powdery mildew",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "9870257e-f866-419a-8680-8e68ccf0870d",
+                "name": "Оливковая плесень",
+                "name_en": "Olive mold",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "ef945e3b-f1e0-4ad8-a14c-ef0b6b357ebb",
+                "name": "Офиоболезная корневая гниль",
+                "name_en": "Ophiobolus root rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "0746e8f0-0bba-402a-bda5-d04107494ab5",
+                "name": "Пиренофороз",
+                "name_en": "Pyrenophorosis",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f8536ce3-258c-46f5-81e7-487d4a4cdf6f",
+                "name": "Плесневение семян",
+                "name_en": "Mold formation on seeds",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "df7fb5da-150a-4f73-9a79-6b016acbf5e7",
+                "name": "Полосатая пятнистость ячменя",
+                "name_en": "Barley stripe rust",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "997e71b9-0afd-4a96-9009-44cb40bd7825",
+                "name": "Пыльная головня",
+                "name_en": "Smut",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f0db4a3d-2233-4257-ab5f-aa778580b025",
+                "name": "Ржавчина карликовая ячменя",
+                "name_en": "Barley dwarf rust",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "aa2d882e-f133-483a-b387-cd45f38f9c63",
+                "name": "Ржавчина корончатая",
+                "name_en": "Crown rust",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "72cfaf55-baf4-4965-8845-a0cdc3d99c44",
+                "name": "Ринхоспориоз",
+                "name_en": "Rhynchosporiosis",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "076c976b-2c0d-4d23-92c8-09f01f0e9cb7",
+                "name": "Септориоз",
+                "name_en": "Septoria leaf spot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "1f98e210-a990-49ca-a4cc-7b817a71178d",
+                "name": "Септориоз колоса",
+                "name_en": "Septoria head blight",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "20e6072c-0417-42f8-9274-3d73333b3f10",
+                "name": "Сетчатая пятнистость ячменя",
+                "name_en": "Net blotch of barley",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "368902c4-ffc0-4682-ab86-7d6a3fdf1182",
+                "name": "Склеротиния зерновых культур",
+                "name_en": "Sclerotinia of cereal crops",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "c7be313b-76bb-405c-a5ba-eec38a07978a",
+                "name": "Снежная плесень",
+                "name_en": "Snow mold",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "rapeseed": [
+            {
+                "id": "1cd0781b-ed18-43c4-8f2b-3e9c6ac6b894",
+                "name": "Альбуго",
+                "name_en": "Albugo",
+                "scientific_name": "низший гриб",
+                "is_active": true
+            },
+            {
+                "id": "f6ca4a3b-7617-45d2-a359-67747b55ac8c",
+                "name": "Альтернариоз",
+                "name_en": "Alternaria blight",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "9779532d-40d7-4100-8e24-7c29bcf44ec4",
+                "name": "Белая гниль",
+                "name_en": "White rot",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "7aee2871-f854-4be0-8bcf-cc081d377713",
+                "name": "Белая пятнистость",
+                "name_en": "White leaf spot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "9bdbb53f-4994-456a-9e12-80ad08ee9303",
+                "name": "Корневые гнили рапса",
+                "name_en": "Root rots of canola",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "446afdfa-824c-4d60-b25c-bc0097b92723",
+                "name": "Мучнистая роса рапса",
+                "name_en": "Powdery mildew of rapeseed",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "8c033f2d-8b0c-48d8-8504-cc2d81cba675",
+                "name": "Пероноспороз",
+                "name_en": "Downy mildew",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "4cb213c9-1a8a-48d4-a4ac-c5271371db4a",
+                "name": "Серая гниль рапса",
+                "name_en": "Gray mold of rapeseed",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "2fd9e903-390d-4f80-8935-99a903105991",
+                "name": "Фомоз",
+                "name_en": "Phoma rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "64502447-3ce0-4880-ba84-351ee0b0e5be",
+                "name": "Цилиндроспориоз",
+                "name_en": "Cylindrosporiosis",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "corn": [
+            {
+                "id": "f1204d6d-7a47-4901-bf73-952c943c78bc",
+                "name": "Плесневение початков",
+                "name_en": "Mold development on cobs",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "71d68e31-ce0d-4b4d-978d-be20b26f1d3e",
+                "name": "Пузырчатая головня кукурузы",
+                "name_en": "Corn smut",
+                "scientific_name": "базидиальный гриб",
+                "is_active": true
+            },
+            {
+                "id": "c8120d5e-c319-49d7-bc55-18bbcf5f9a36",
+                "name": "Пыльная головня кукурузы",
+                "name_en": "Corn smut",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "d09e92d0-30c2-4021-a17b-6f838655d3da",
+                "name": "Фузариоз",
+                "name_en": "Fusarium wilt",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "soy": [
+            {
+                "id": "8ed6d560-8498-4ff9-b3e1-f3b113dea723",
+                "name": "Антракноз сои",
+                "name_en": "Anthracnose of Soybean",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "32cbc1ae-f8c5-4347-8809-2d0d93d528c9",
+                "name": "Аскохитоз сои",
+                "name_en": "Ascochyta blight of soybean",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "2c1ca477-a9ef-4296-8e77-b81a6e4904c8",
+                "name": "Бактериальный ожог",
+                "name_en": "Bacterial blight",
+                "scientific_name": "бактерия",
+                "is_active": true
+            },
+            {
+                "id": "793ebc4c-2ca5-4613-82bb-fc7809fce2e2",
+                "name": "Вирусная мозаика сои",
+                "name_en": "Soybean mosaic virus",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f7b7d553-3ed0-41e7-8561-8768832d5e28",
+                "name": "Пероноспороз или ложная мучнистая роса",
+                "name_en": "Peronosporosis or downy mildew",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "1bdee465-5985-4716-a1af-7bf462877f24",
+                "name": "Пурпурный церкоспороз сои",
+                "name_en": "Purple Cercospora of Soybean",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "1a767a4b-34ac-4477-8dd8-3969c578f30a",
+                "name": "Септориоз или ржавая пятнистость",
+                "name_en": "Septoria leaf spot or rust spot",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "bba68038-0c3e-4e74-9648-498bd5adde26",
+                "name": "Склеротиниоз (белая гниль) сои",
+                "name_en": "Sclerotinia stem rot (white mold) of soybean",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "d4891c35-7df4-4f14-a44a-8c3427913efb",
+                "name": "Фомопсис сои",
+                "name_en": "Phomopsis of soybean",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "b2f8568f-ebd5-415e-b560-794165a69155",
+                "name": "Фузариозная корневая гниль сои",
+                "name_en": "Fusarium root rot of soybean",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "sugar_beet": [
+            {
+                "id": "e8e20e15-1322-4c53-8f29-3f27fddff7f6",
+                "name": "Бурая гниль",
+                "name_en": "Brown rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "a40619a5-d06f-4e38-9de5-8139583a106e",
+                "name": "Кагатная гниль",
+                "name_en": "Clamp rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "1de915fa-9193-4988-b365-cc104f271e83",
+                "name": "Корнеед свеклы",
+                "name_en": "Beet root rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "ccb92340-aec4-4068-8ed1-5328c08377b0",
+                "name": "Мучнистая роса сахарной свеклы",
+                "name_en": "Powdery mildew of sugar beet",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "44977995-3100-4526-951b-c6af677c3de5",
+                "name": "Пероноспороз свеклы",
+                "name_en": "Downy mildew of beet",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "c97de52f-a3f9-4549-8bd8-d5e5b74f3212",
+                "name": "Рамуляриоз",
+                "name_en": "Ramularia leaf spot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "cc095bb7-1380-405d-80b1-0779031dbeeb",
+                "name": "Ржавчина свеклы",
+                "name_en": "Beet rust",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "d32471d2-2520-47ae-9c4e-32af1d93d4bf",
+                "name": "Фомоз свеклы",
+                "name_en": "Phoma rot of beet",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "7fea5175-2954-458d-afe2-0ec1c28fec3e",
+                "name": "Фузариоз свеклы",
+                "name_en": "Fusarium wilt of beet",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f71ee670-2bdc-4baf-8479-7c794669cc26",
+                "name": "Церкоспороз",
+                "name_en": "Cercospora Leaf Spot",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "sunflower": [
+            {
+                "id": "ed1c3bb9-fdbb-40f2-9e0c-aaa37bcb2eb6",
+                "name": "Альтернариоз подсолнечника",
+                "name_en": "Alternaria blight of sunflower",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "6ecdd199-1b32-4e88-891c-0b5d7f1d3175",
+                "name": "Белая гниль подсолнечника",
+                "name_en": "White rot of sunflower",
+                "scientific_name": "сумчатый гриб",
+                "is_active": true
+            },
+            {
+                "id": "ed5ce1aa-358b-4b69-a4da-2bbc02144483",
+                "name": "Вертициллезное увядание",
+                "name_en": "Verticillium wilt",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "93a11964-4caa-4293-b10e-4a1083b74059",
+                "name": "Ложная мучнистая роса",
+                "name_en": "Downy mildew",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "8cf7cce3-c474-4862-9b87-f0947e72e49c",
+                "name": "Ржавчина подсолнечника",
+                "name_en": "Sunflower rust",
+                "scientific_name": "однодомный гриб",
+                "is_active": true
+            },
+            {
+                "id": "e32b9cad-8364-43b1-9452-e822eb28c433",
+                "name": "Септориоз подсолнечника",
+                "name_en": "Septoria of sunflower",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f6b44488-9c98-46d2-84c7-748fe00ba757",
+                "name": "Серая гниль подсолнечника",
+                "name_en": "Gray mold of sunflower",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "caeeff7a-6bae-4913-80c4-27ae9353ebbd",
+                "name": "Сухая (ризопусная) гниль корзинок",
+                "name_en": "Dry (Rhizopus) rot of heads",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "ecea1d03-6725-456b-b921-8dbbf093f42d",
+                "name": "Фомоз подсолнечника",
+                "name_en": "Phomopsis of sunflower",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "2fb53f95-032d-453b-9ebb-44d07383cdf2",
+                "name": "Фомопсис",
+                "name_en": "Phomopsis",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "pea_nut": [
+            {
+                "id": "2f425d53-eeea-4ecc-b7fd-0507155209c5",
+                "name": "Антракноз гороха",
+                "name_en": "Anthracnose of Pea",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "949006e7-89bc-4b8e-b47b-b0ab09d67bba",
+                "name": "Аскохитоз гороха",
+                "name_en": "Ascochyta blight of peas",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "e53fa1ca-2519-47c5-814d-a7f99ef2512f",
+                "name": "Афаномицетная корневая гниль",
+                "name_en": "Aphanomyces root rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "a7495830-1cf8-4700-919f-2077ba6d5f5e",
+                "name": "Бактериальный ожог гороха",
+                "name_en": "Bacterial blight of pea",
+                "scientific_name": "бактерия",
+                "is_active": true
+            },
+            {
+                "id": "35c09c9c-81f5-42d1-b06d-7668202d4978",
+                "name": "Белая гниль гороха",
+                "name_en": "White mold of pea",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "2a9bb5ee-ff76-442f-9f16-8076694da320",
+                "name": "Вирус деформирующей мозаики",
+                "name_en": "Deforming Mosaic Virus",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "84381020-7db0-4ce6-9f19-04d99c23d5c8",
+                "name": "Ложная мучнистая роса или пероноспороз",
+                "name_en": "Downy mildew or Peronospora",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "c8cfed9b-adb8-4621-a99e-95f8ffbe38fc",
+                "name": "Мучнистая роса гороха",
+                "name_en": "Powdery mildew of peas",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "ca0734e1-b0ae-4642-9498-520e3d78e65a",
+                "name": "Питиозная корневая гниль",
+                "name_en": "Pythium root rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "8417909d-7eeb-4561-92ee-07927ccf3469",
+                "name": "Ржавчина гороха",
+                "name_en": "Pea rust",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "d2101a57-ea32-4627-8795-1ca11c74f80f",
+                "name": "Ризоктониозная корневая гниль",
+                "name_en": "Rhizoctonia root rot",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "7706a172-22a1-49dd-b89e-432b1df89f2c",
+                "name": "Серая гниль гороха",
+                "name_en": "Gray mold of peas",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "b6dd34e9-3ebc-4299-b958-601a621f46ed",
+                "name": "Фузариозная корневая гниль",
+                "name_en": "Fusarium root rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "e88fca5a-2833-4faa-9ddb-bcbe72c014a0",
+                "name": "Антракноз гороха",
+                "name_en": "Anthracnose of peas",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "e0d6699c-f4d4-493b-a7a8-3c8dcd689d44",
+                "name": "Аскохитоз гороха",
+                "name_en": "Ascochyta blight of peas",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "ed12153e-3b62-4489-a3f2-f32dd19c4d0c",
+                "name": "Афаномицетная корневая гниль",
+                "name_en": "Aphanomyces root rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "c9bbf932-e136-49ca-9ea8-261852dc7fef",
+                "name": "Бактериальный ожог гороха",
+                "name_en": "Bacterial blight of peas",
+                "scientific_name": "бактерия",
+                "is_active": true
+            },
+            {
+                "id": "2db449e6-c919-4fac-83d2-78373c7aa809",
+                "name": "Белая гниль гороха",
+                "name_en": "White mold of peas",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "06ce2ab8-4247-40ad-b0e9-90b4abdac783",
+                "name": "Вирус деформирующей мозаики",
+                "name_en": "Deforming Mosaic Virus",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "47b4df19-e33d-47b5-81ab-067a1a6ba8d1",
+                "name": "Ложная мучнистая роса или пероноспороз",
+                "name_en": "Downy mildew or Peronospora",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "0da29dea-9cce-49ad-8a64-b17f10092d03",
+                "name": "Мучнистая роса гороха",
+                "name_en": "Powdery mildew of peas",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "ff0a15a6-8733-457d-bbad-2ec9292ea03a",
+                "name": "Питиозная корневая гниль",
+                "name_en": "Pythium root rot",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "83ec7339-a28b-4cb6-8a21-768f54d72c24",
+                "name": "Ржавчина гороха",
+                "name_en": "Pea rust",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "55cc7b8c-7c82-4c60-bdda-283ef784c80f",
+                "name": "Ризоктониозная корневая гниль",
+                "name_en": "Rhizoctonia root rot",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "1750c58d-5d72-42f5-b17f-ac782e4cdf8f",
+                "name": "Серая гниль гороха",
+                "name_en": "Gray mold of peas",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "0eb9ffb6-9c61-4bcc-bf17-bd581a723673",
+                "name": "Фузариозная корневая гниль",
+                "name_en": "Fusarium root rot",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "flax": [
+            {
+                "id": "a8c8299c-6813-4527-a8e3-e07b12133e07",
+                "name": "Антракноз льна",
+                "name_en": "Anthracnose of flax",
+                "scientific_name": "несовершенный гриб",
+                "is_active": true
+            },
+            {
+                "id": "f00237fc-2a87-4eb8-ad17-f97dc01c94c4",
+                "name": "Аскохитоз льна",
+                "name_en": "Ascochyta blight of flax",
+                "scientific_name": "несовершенный гриб",
+                "is_active": true
+            },
+            {
+                "id": "e883610f-5971-4527-9188-640b9b53d171",
+                "name": "Крапчатость семядолей льна",
+                "name_en": "Mottling of flax cotyledons",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "dd33f491-90ef-43ea-908d-0f2e9fb5cc2c",
+                "name": "Мучнистая роса льна",
+                "name_en": "Powdery mildew of flax",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "bf21e81e-413f-4325-802e-e070cab8b92e",
+                "name": "Пасмо льна",
+                "name_en": "Flax wilt",
+                "scientific_name": "несовершенный гриб",
+                "is_active": true
+            },
+            {
+                "id": "27e5cfe6-81ae-4e41-bb38-06790c7a9cd1",
+                "name": "Полиспороз льна",
+                "name_en": "Polyspora of flax",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f388cb23-bbfd-4f1a-a6cd-051054db2a2e",
+                "name": "Ржавчина льна",
+                "name_en": "Flax rust",
+                "scientific_name": "однодомный базидиальный гриб",
+                "is_active": true
+            },
+            {
+                "id": "2b1a3042-a371-4d49-93b9-f8a47f7d5ef5",
+                "name": "Фузариоз льна",
+                "name_en": "Fusarium Wilt of Flax",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "potato": [
+            {
+                "id": "274c8482-fa8f-44df-aafe-a77296871eb4",
+                "name": "Альтернариоз картофеля",
+                "name_en": "Alternaria solani of potatoes",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "819df1bc-5c48-48f3-bfba-9a9774bb6d7d",
+                "name": "Антракноз картофеля",
+                "name_en": "Anthracnose of potato",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "385c1408-6299-4ee1-8e03-b02951caa99f",
+                "name": "Бурая гниль картофеля",
+                "name_en": "Brown rot of potatoes",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "061aea5d-0acf-4682-b75f-107eca7fa082",
+                "name": "Кольцевая гниль",
+                "name_en": "Ring rot",
+                "scientific_name": "бактерии",
+                "is_active": true
+            },
+            {
+                "id": "a10f859e-3c0c-494b-ba08-16ffcc45a0ef",
+                "name": "Обыкновенная парша",
+                "name_en": "Common scab",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "3e5ae24a-b5ca-4f00-a7be-1a5d5b8f809d",
+                "name": "Парша бугорчатая (ооспороз)",
+                "name_en": "Pitted scab (oosporosis)",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "2eb57142-6350-4c43-971b-29a383edec65",
+                "name": "Порошистая парша",
+                "name_en": "Powdery scab",
+                "scientific_name": "гриб",
+                "is_active": true
+            },
+            {
+                "id": "5380ee58-a94a-422a-9b9e-23e4d1d45a71",
+                "name": "Рак картофеля",
+                "name_en": "Potato wart disease",
+                "scientific_name": "хитридиевый гриб",
+                "is_active": true
+            },
+            {
+                "id": "dda491e8-7b4c-4a3a-ac31-177c03e829de",
+                "name": "Резиновая гниль",
+                "name_en": "Rubber rot",
+                "scientific_name": "несовершенный гриб",
+                "is_active": true
+            },
+            {
+                "id": "a10f34bd-c3a3-416e-91bb-b4bae4f6192e",
+                "name": "Ризоктониоз картофеля",
+                "name_en": "Rhizoctonia disease of potatoes",
+                "scientific_name": "гриб-базидиомицет",
+                "is_active": true
+            },
+            {
+                "id": "f2d6daf0-bb9a-4ca3-997c-1c4d57e70049",
+                "name": "Серебристая парша",
+                "name_en": "Silver scurf",
+                "scientific_name": "несовершенный гриб",
+                "is_active": true
+            },
+            {
+                "id": "feafcfdf-7c75-4d7c-b17d-b898b33260d5",
+                "name": "Сухая фузариозная гниль клубней",
+                "name_en": "Dry Fusarium rot of tubers",
+                "scientific_name": "грибы рода",
+                "is_active": true
+            },
+            {
+                "id": "c582814a-abd4-40b6-ba1d-464dae3808f7",
+                "name": "Увядание",
+                "name_en": "Wilting",
+                "scientific_name": "несовершенный гриб Fusarium oxysporum",
+                "is_active": true
+            },
+            {
+                "id": "caf99cd0-c403-49c2-abc6-13d26c145489",
+                "name": "Фитофтороз",
+                "name_en": "Phytophthora blight",
+                "scientific_name": "оомицет",
+                "is_active": true
+            },
+            {
+                "id": "fdbd224b-02be-442b-ba22-b9f7c6b718f3",
+                "name": "Фомоз картофеля",
+                "name_en": "Phoma rot of potatoes",
+                "scientific_name": "Phoma exiqua",
+                "is_active": true
+            },
+            {
+                "id": "f50a2613-79ac-425c-aaad-4f7f6942d71c",
+                "name": "Черная ножка",
+                "name_en": "Blackleg",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "orchard": [
+            {
+                "id": "49879783-b126-4b02-b59f-d73f5d9dba63",
+                "name": "Страница не найдена",
+                "name_en": "Page not found",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "vineyard": [
+            {
+                "id": "f7a6534a-c67e-4078-9741-db895d90d0ba",
+                "name": "Страница не найдена",
+                "name_en": "Page not found",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ]
+    },
+    "pests": {
+        "cereals": [
+            {
+                "id": "ecc9dd00-ab31-473d-bfe8-99cb1cdf22c8",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "162ddc97-2ce6-46e6-bf16-b6fb76d8e868",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f4ebefd7-498f-4c19-9bc6-29c89d4ff05e",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "b56e48c6-d93f-4787-94bd-a0778c323242",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "8212b7ab-55e4-4b90-994b-17c251eb53cb",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "e8ef931d-1230-4346-95fe-b138f9faddb6",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "5da970b0-46a3-4e9b-aeff-a429aa75e4ae",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "923ec5de-f960-423a-b4dc-c5d3a30f43e0",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "bb3ecd27-54ed-4940-8dbb-350b0e61d425",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "ba495e95-88d1-42d2-a155-8df2bfd39111",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "1d66a499-657d-44fe-bd4d-1ffa1b2c2faf",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "294117e6-71ae-482e-9417-8f0ee83bd384",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "39040846-5092-48be-92e4-fbbb6a85db3f",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f8f129e9-2bb5-4776-b334-3cd4ad344cd5",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "c5629d0d-48da-4b06-90ba-5ec0352c70ca",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "2632f4b3-8bdd-485f-b599-865378c57b4d",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "bf731bed-845e-48bb-9939-3446c35e83a6",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "3ce31353-8a65-43ef-8036-f3fcee2e9580",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f7fe96cd-3b81-4a6c-bec7-172cfcfbfb7d",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "3562a4b6-8a3c-45ab-b0e6-f1e8f2dc9c1c",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "b4b79415-8aba-41c3-8aa4-8c2a6746af83",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "87c50575-8c78-48d3-92fc-91e8d2a9f492",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "cb871346-13e5-4352-92ce-0f99a44832a0",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "dae17162-10c9-4b47-a9b2-f9b16f97b82b",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "1623aff6-00db-4284-8687-3a2d9647c500",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "11847842-3466-4513-a7c5-5dce8407de3f",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "605468b6-8345-4fbd-a2c9-70c14faddd02",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "08f7c073-86ae-436a-b6f8-0ac2acde29f1",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "6cd89344-d33a-424c-ab32-99512f679994",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "b839e523-8e1f-4185-b923-28f6969848e3",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "5dfe0802-869e-4032-84b7-85565ee7f6e2",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "3a21bc88-cb9a-48f4-bed1-8dfc9d63de3c",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "4e4fd007-df4e-4e9f-b5ec-8a326da8cd2d",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "fdf2f674-4957-4d5d-9146-1441fd9f13a7",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f0e7432c-5ab7-48fc-8ae2-850f75a8ae29",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "0d7923fa-9a9c-4e73-9bd8-32160e5b01c2",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "4ec72b45-996d-471d-91fc-f1973a2b1b0e",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "7c28e9fa-2657-48be-91fe-8943fd15b7f9",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "a94b629a-8b24-4748-bd23-74aba5437e10",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "d9cc5d92-474f-4a5b-a4f0-49cda0da57e9",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "3255cef6-7d53-4e6e-a65e-a65a8aa874c6",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f06324f2-3556-427d-af36-85ae3ac8fa4c",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f95d998c-bc54-4f03-b7ad-cf4e149ea4de",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "64a83b6b-f8a1-492b-b994-739549a8a834",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "eca7b84c-c1f0-4675-8607-5c8ee5ec3c51",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "8d33c03d-3905-4aca-9c34-8cb55dd3c35f",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "30813dbe-18ca-4c96-85b8-f03caff045e3",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "adf299b4-2bfb-44b1-9349-abaa5c321490",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "0bb2b153-8bd0-49ee-93c2-24690a6efe6d",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "be167016-0a61-4d1d-b14e-37b37a4a9455",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "61d6f318-cca8-49f6-9eec-3e0b531d7c6f",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "5b18bf23-a667-406c-a6d5-fb62327cc882",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "c0e4f838-22ee-4604-bc70-f5e699e0fbf7",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "eedf1d56-7aab-4a37-89f0-86a4837f101b",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "8a8c9985-5520-4444-b3fc-90fde8dc209a",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "5ef6a27d-dcb0-4e4f-a3af-6c5685290a82",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "05f8183f-2764-422d-be6b-f1c19dc5345f",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "4cd9fa62-a4de-4b50-95d4-5dabcec5fdd7",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "abcfd532-8630-4fb4-9995-e8f4c97c21c9",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "108093d4-43cd-4868-a932-7a0351a353f2",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "rapeseed": [
+            {
+                "id": "5de24c2c-d59e-47a1-bf57-aec7668700d3",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "a5d647e0-0971-4c0a-95a2-71517c165745",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "dba37fc5-bacb-4a2d-a8f6-8750474952c9",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "239d4c5b-4674-4244-ae02-c4df69733048",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "b377165c-4a76-49a3-9177-74c958c6ff19",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "7997ff76-bad2-4b50-9d7d-96fabac50a3a",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "53bfc43b-b877-4d8b-ae98-566f736d08f7",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "695cc0ee-04ef-4513-9d59-220e435b74dc",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "6913b98e-b54c-43d0-b05b-cac164f2ccdc",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "36085d3c-f307-4ac9-b70f-27652f4684b4",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "7fc58a1f-7710-4dac-91a9-41a8a498251f",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "84157e98-a38f-4583-a7b8-8d04e531bd13",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "corn": [
+            {
+                "id": "eb7b5bb2-2d08-40ee-b03c-13e624016c39",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "4c074d7f-d283-48af-8abe-798346e968dc",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f980762e-63a1-4bf3-a728-7b2dcecfbb7b",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f8bd614d-60fd-49e1-8524-976667b0fba1",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "e7277844-3bec-4c0c-b1ae-b0b6d0ab004f",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "soy": [
+            {
+                "id": "64550158-b176-4c36-b262-0a35dfd2986e",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "098e28dd-620a-46c9-8ffd-9801f276193d",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "b6bbb3b0-1614-4a11-852c-92c594691caf",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "5a617333-50ea-406c-8d89-ca14daf30778",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "de2b964a-b2eb-4582-9d7f-e3459476c6f7",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "e28209a6-e881-4a60-aea4-7df2acf047c4",
+                "name": "Заказать",
+                "name_en": "Place an order",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "sugar_beet": [
+            {
+                "id": "4768474c-b70a-4b27-984c-c31f87e862d3",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "e8b0c4fd-a0df-4bf6-80e6-84577a9bcee4",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "dbca7517-a6ad-46ee-8888-76f5e82d5032",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "a557414d-ff92-4f56-a143-02e09ccfbc7b",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "9b992e99-f384-408f-98bb-ded84fc8d40e",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "3cee82d1-5611-4411-8a0d-94942001e73e",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "14e4d3e9-839c-48c4-921e-ad1bb4b37e9e",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "3328b509-7f5a-402c-802b-1be3d102647a",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "42ffc32c-99a3-48c6-83fc-8c6bc654dedc",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "be3bb47a-6a60-439f-935a-548ddd13b2ed",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "da0ab54d-c809-48b4-b210-2b0cb3a4b6fb",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "29760493-3ac5-4b56-a6b5-86a85c2cd6a3",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "884e8b41-080d-4e25-8a91-6fdaf543f6e0",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "sunflower": [
+            {
+                "id": "3ede8a07-4504-4a7c-ac12-a9e319eea9ae",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "ab6fb3b4-36e6-45cb-9146-9046d31f5c15",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "4dd92051-3488-4765-8dde-48e712f6231f",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "4b4909fc-2b6d-4110-ae66-ff2a593878cd",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "pea_nut": [
+            {
+                "id": "51b245b5-c22e-473f-b858-2ef96520d3b7",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "dd6995d4-cb40-40f6-ad7d-1849e1baa4ee",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "c7064deb-7826-47c1-898b-411780136618",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "a3709fbc-d3a1-449b-a3d6-6a5ac7a336af",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "9b2c574e-d274-4355-9323-3d6cf8816390",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "afdd120b-da38-4f20-8e72-bf1dcfe9d2d9",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "aeb29941-b513-4c09-b95c-d67eec085374",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f6870530-0bc9-4f9a-8eec-c4086c366a87",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "034b11fc-18dc-4257-977a-a02917629d7e",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "c8b03245-8993-4a6e-910e-a67f8e10a719",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "8d8f57a3-84d4-48e9-abd9-4f1600d3a94b",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "baa497ad-6f18-4e85-8a69-1778d5e018c9",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "5553bb7c-b660-403e-880a-7124cf4dda3c",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "4d857710-b874-4a93-8a13-41c66df8c141",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f2111f56-fd42-4a80-a8fa-53045e2f2617",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "4a18a752-9d37-4db9-910e-0ddd1641378c",
+                "name": "Заказать",
+                "name_en": "Place an order",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "flax": [
+            {
+                "id": "4dbe29a1-9843-4454-8c56-03c6fe4f1976",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "bc1b3e9d-0b15-4101-ba5c-aff42094976a",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "ebbd54c8-1c4e-47d7-99b3-8292797022dc",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "c40160f0-f9fb-497f-b338-225cfda27f30",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "potato": [
+            {
+                "id": "0f022402-50ac-4b9b-9ec3-7583e49f47bc",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "513bf84b-e412-4667-b222-89c334497281",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "f82600aa-5d9b-4de8-acf3-712d9eb093ab",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "d1e73896-bfc7-4459-8de7-b595b3ddcb8c",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            },
+            {
+                "id": "1d726515-c1fe-4d70-8666-a5f67135ef03",
+                "name": "Заказать",
+                "name_en": "Order",
+                "scientific_name": "",
+                "is_active": true
+            }
+        ],
+        "orchard": [],
+        "vineyard": []
+    },
+    "weeds": [
+        {
+            "id": "bc0e28df-ca62-4d75-9975-56936dfe1501",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "3f5c7c9e-3c56-48e2-8c7e-a5081587ff8e",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "198bb9db-d89f-4a13-93b3-8cb990fc1a9b",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "9470ee1f-5033-4858-bde8-f77c7d851214",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "485bd2c4-72a2-41a0-9b99-3299e8be7d69",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "f5f486a7-7a90-4e17-8105-c727dd51710b",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "70a1fde8-98e9-4e04-a6e5-8cbf242997ae",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "106abaa9-8018-4977-a797-fe2c6212e89f",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "18ac6cd7-760b-44bf-bedd-15fea56d5901",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "968a9838-f938-494e-a722-8cdfb22b6a8b",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "b520d94b-4de2-4d4d-8c91-5143ab926477",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "0d9d445d-3bef-438e-9026-7eb454398cd1",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "5f8f41c9-68d5-4619-96cc-ee553b7c9f24",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "f104a706-c221-430e-972b-5341aa6b704e",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "9cfa15ee-5421-4115-b6d0-88c0e7508727",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "20094ce0-1669-482b-8b40-207ef4bfe8ca",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "18c41208-081a-4e30-a45a-2a4d2f346c84",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "3f1fd478-18d6-43de-aeea-4b2d36b084fa",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "145c448c-b6fa-469c-8bb1-b37238fc4b60",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        },
+        {
+            "id": "c15b2867-c4f0-4378-a265-0b0831778389",
+            "name": "Заказать",
+            "name_en": "Order",
+            "scientific_name": "",
+            "is_active": true
+        }
+    ]
+}
