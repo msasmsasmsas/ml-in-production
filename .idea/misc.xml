@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.12 (HSA13_hw23_ci_cd)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (HSA13_hw23_ci_cd)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 virtualenv at E:\ml-in-production\HW2-Infrastructure-setup\venv" project-jdk-type="Python SDK" />
 </project>
