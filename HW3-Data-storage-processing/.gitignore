@@ -5,4 +5,3 @@ __pycache__/
 venv/
 minio.exe
 HW3-Data-storage-processing/pr1_minio_deployment/minio-data/
-.env
