@@ -1,0 +1,19 @@
+{
+    "data_path": "../crawler/downloads/",
+    "image_dir": "../crawler/downloads/images/",
+    "model_name": "resnet50",
+    "num_epochs": 15,
+    "batch_size": 64,
+    "learning_rate": 0.0005,
+    "weight_decay": 1e-4,
+    "seed": 42,
+    "validation_split": 0.2,
+    "risk_type": "diseases",
+    "wandb_project": "agri_risk_classification_accelerate",
+    "wandb_entity": null,
+    "checkpoint_dir": "./models",
+    "use_wandb": true,
+    "gradient_checkpointing": true,
+    "gradient_accumulation_steps": 2,
+    "mixed_precision": "fp16"
+}

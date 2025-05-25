@@ -1,0 +1,16 @@
+wandb_version: 1
+
+batch_size:
+  value: 32
+dropout:
+  value: 0.5932446166852652
+learning_rate:
+  value: 0.000988752644575166
+model_name:
+  value: resnet18
+num_epochs:
+  value: 20
+validation_split:
+  value: 0.2
+weight_decay:
+  value: 7.888957829732234e-05
