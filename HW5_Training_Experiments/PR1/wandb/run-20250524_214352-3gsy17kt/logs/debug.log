@@ -1,0 +1,23 @@
+2025-05-24 21:43:52,386 INFO    MainThread:27724 [wandb_setup.py:_flush():70] Current SDK version is 0.19.11
+2025-05-24 21:43:52,386 INFO    MainThread:27724 [wandb_setup.py:_flush():70] Configure stats pid to 27724
+2025-05-24 21:43:52,387 INFO    MainThread:27724 [wandb_setup.py:_flush():70] Loading settings from C:\Users\msts\.config\wandb\settings
+2025-05-24 21:43:52,387 INFO    MainThread:27724 [wandb_setup.py:_flush():70] Loading settings from E:\ml-in-production\HW5_Training_Experiments\PR1\wandb\settings
+2025-05-24 21:43:52,387 INFO    MainThread:27724 [wandb_setup.py:_flush():70] Loading settings from environment variables
+2025-05-24 21:43:52,387 INFO    MainThread:27724 [wandb_init.py:setup_run_log_directory():724] Logging user logs to E:\ml-in-production\HW5_Training_Experiments\PR1\wandb\run-20250524_214352-3gsy17kt\logs\debug.log
+2025-05-24 21:43:52,387 INFO    MainThread:27724 [wandb_init.py:setup_run_log_directory():725] Logging internal logs to E:\ml-in-production\HW5_Training_Experiments\PR1\wandb\run-20250524_214352-3gsy17kt\logs\debug-internal.log
+2025-05-24 21:43:52,387 INFO    MainThread:27724 [wandb_init.py:init():852] calling init triggers
+2025-05-24 21:43:52,387 INFO    MainThread:27724 [wandb_init.py:init():857] wandb.init called with sweep_config: {}
+config: {'data_path': '../crawler/downloads/', 'image_dir': '../crawler/downloads/images/', 'model_name': 'mobilenet_v2', 'num_epochs': 30, 'batch_size': 8, 'learning_rate': 0.001, 'weight_decay': 0.0001, 'dropout': 0.3, 'seed': 42, 'validation_split': 0.3, 'risk_type': 'diseases', 'patience': 8, 'label_smoothing': 0.05, 'progressive_resizing': False, 'use_mixup': False, 'use_cutmix': False, 'use_focal_loss': False, 'use_cosine_annealing': False, 'gradual_unfreezing': False, 'use_tta': False, 'image_size': 224, 'freeze_epochs': 3, '_wandb': {}}
+2025-05-24 21:43:52,387 INFO    MainThread:27724 [wandb_init.py:init():893] starting backend
+2025-05-24 21:43:52,387 INFO    MainThread:27724 [wandb_init.py:init():897] sending inform_init request
+2025-05-24 21:43:52,419 INFO    MainThread:27724 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=spawn, using: spawn
+2025-05-24 21:43:52,419 INFO    MainThread:27724 [wandb_init.py:init():907] backend started and connected
+2025-05-24 21:43:52,420 INFO    MainThread:27724 [wandb_init.py:init():1005] updated telemetry
+2025-05-24 21:43:52,458 INFO    MainThread:27724 [wandb_init.py:init():1029] communicating run to backend with 90.0 second timeout
+2025-05-24 21:43:54,215 INFO    MainThread:27724 [wandb_init.py:init():1104] starting run threads in backend
+2025-05-24 21:43:54,552 INFO    MainThread:27724 [wandb_run.py:_console_start():2573] atexit reg
+2025-05-24 21:43:54,553 INFO    MainThread:27724 [wandb_run.py:_redirect():2421] redirect: wrap_raw
+2025-05-24 21:43:54,553 INFO    MainThread:27724 [wandb_run.py:_redirect():2490] Wrapping output streams.
+2025-05-24 21:43:54,553 INFO    MainThread:27724 [wandb_run.py:_redirect():2513] Redirects installed.
+2025-05-24 21:43:54,556 INFO    MainThread:27724 [wandb_init.py:init():1150] run started, returning control to user process
+2025-05-24 21:43:56,756 INFO    MsgRouterThr:27724 [mailbox.py:close():129] [no run ID] Closing mailbox, abandoning 1 handles.

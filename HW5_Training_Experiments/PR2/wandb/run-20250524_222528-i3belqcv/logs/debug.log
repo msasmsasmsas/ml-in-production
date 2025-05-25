@@ -1,0 +1,30 @@
+2025-05-24 22:25:28,984 INFO    Thread-30 (_run_job):26128 [wandb_setup.py:_flush():70] Current SDK version is 0.19.11
+2025-05-24 22:25:28,984 INFO    Thread-30 (_run_job):26128 [wandb_setup.py:_flush():70] Configure stats pid to 26128
+2025-05-24 22:25:28,984 INFO    Thread-30 (_run_job):26128 [wandb_setup.py:_flush():70] Loading settings from C:\Users\msts\.config\wandb\settings
+2025-05-24 22:25:28,984 INFO    Thread-30 (_run_job):26128 [wandb_setup.py:_flush():70] Loading settings from E:\ml-in-production\HW5_Training_Experiments\pr2\wandb\settings
+2025-05-24 22:25:28,984 INFO    Thread-30 (_run_job):26128 [wandb_setup.py:_flush():70] Loading settings from environment variables
+2025-05-24 22:25:28,985 INFO    Thread-30 (_run_job):26128 [wandb_init.py:setup_run_log_directory():724] Logging user logs to E:\ml-in-production\HW5_Training_Experiments\pr2\wandb\run-20250524_222528-i3belqcv\logs\debug.log
+2025-05-24 22:25:28,985 INFO    Thread-30 (_run_job):26128 [wandb_init.py:setup_run_log_directory():725] Logging internal logs to E:\ml-in-production\HW5_Training_Experiments\pr2\wandb\run-20250524_222528-i3belqcv\logs\debug-internal.log
+2025-05-24 22:25:28,985 INFO    Thread-30 (_run_job):26128 [wandb_init.py:init():852] calling init triggers
+2025-05-24 22:25:28,985 INFO    Thread-30 (_run_job):26128 [wandb_init.py:init():857] wandb.init called with sweep_config: {'batch_size': 32, 'dropout': 0.5932446166852652, 'learning_rate': 0.000988752644575166, 'model_name': 'resnet18', 'num_epochs': 20, 'validation_split': 0.2, 'weight_decay': 7.888957829732234e-05}
+config: {'_wandb': {}}
+2025-05-24 22:25:28,985 INFO    Thread-30 (_run_job):26128 [wandb_init.py:init():893] starting backend
+2025-05-24 22:25:28,985 INFO    Thread-30 (_run_job):26128 [wandb_init.py:init():897] sending inform_init request
+2025-05-24 22:25:28,986 INFO    Thread-30 (_run_job):26128 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=spawn, using: spawn
+2025-05-24 22:25:28,987 INFO    Thread-30 (_run_job):26128 [wandb_init.py:init():907] backend started and connected
+2025-05-24 22:25:28,987 INFO    Thread-30 (_run_job):26128 [wandb_run.py:_config_callback():1436] config_cb None None {'batch_size': 32, 'dropout': 0.5932446166852652, 'learning_rate': 0.000988752644575166, 'model_name': 'resnet18', 'num_epochs': 20, 'validation_split': 0.2, 'weight_decay': 7.888957829732234e-05}
+2025-05-24 22:25:28,988 INFO    Thread-30 (_run_job):26128 [wandb_init.py:init():1005] updated telemetry
+2025-05-24 22:25:29,025 INFO    Thread-30 (_run_job):26128 [wandb_init.py:init():1029] communicating run to backend with 90.0 second timeout
+2025-05-24 22:25:30,364 INFO    Thread-30 (_run_job):26128 [wandb_init.py:init():1104] starting run threads in backend
+2025-05-24 22:25:30,717 INFO    Thread-30 (_run_job):26128 [wandb_run.py:_console_start():2573] atexit reg
+2025-05-24 22:25:30,717 INFO    Thread-30 (_run_job):26128 [wandb_run.py:_redirect():2421] redirect: wrap_raw
+2025-05-24 22:25:30,717 INFO    Thread-30 (_run_job):26128 [wandb_run.py:_redirect():2490] Wrapping output streams.
+2025-05-24 22:25:30,718 INFO    Thread-30 (_run_job):26128 [wandb_run.py:_redirect():2513] Redirects installed.
+2025-05-24 22:25:30,719 INFO    Thread-30 (_run_job):26128 [wandb_init.py:init():1150] run started, returning control to user process
+2025-05-24 22:26:58,940 INFO    Thread-30 (_run_job):26128 [wandb_run.py:_finish():2321] finishing run msas-agrichain/agri-risk-hyperparameter-search/i3belqcv
+2025-05-24 22:26:58,941 INFO    Thread-30 (_run_job):26128 [wandb_run.py:_atexit_cleanup():2538] got exitcode: 0
+2025-05-24 22:26:58,941 INFO    Thread-30 (_run_job):26128 [wandb_run.py:_restore():2520] restore
+2025-05-24 22:26:58,941 INFO    Thread-30 (_run_job):26128 [wandb_run.py:_restore():2526] restore done
+2025-05-24 22:27:00,415 INFO    Thread-30 (_run_job):26128 [wandb_run.py:_footer_history_summary_info():4188] rendering history
+2025-05-24 22:27:00,415 INFO    Thread-30 (_run_job):26128 [wandb_run.py:_footer_history_summary_info():4220] rendering summary
+2025-05-24 22:27:00,415 INFO    Thread-30 (_run_job):26128 [wandb_run.py:_footer_sync_info():4149] logging synced files

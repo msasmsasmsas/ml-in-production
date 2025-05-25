@@ -1,0 +1,61 @@
+Пристрій: cpu
+Створення швидких завантажувачів...
+Швидке завантаження датасету: diseases
+Ризиків: 156, Зображень: 152
+Класів: 102
+Валідних зображень: 152
+Після фільтрації: 86 зразків
+Швидке завантаження датасету: diseases
+Ризиків: 156, Зображень: 152
+Класів: 102
+Валідних зображень: 152
+Швидке завантаження датасету: diseases
+Ризиків: 156, Зображень: 152
+Класів: 102
+Валідних зображень: 152
+Фінальна статистика:
+  Тренувальна вибірка: 60 зразків
+  Валідаційна вибірка: 26 зразків
+  Кількість класів: 33
+  Батчів для навчання: 8
+  Батчів для валідації: 4
+Створення швидкої моделі: mobilenet_v2
+E:\ml-in-production\HW2-Infrastructure-setup\venv\Lib\site-packages\torchvision\models\_utils.py:208: UserWarning:
+
+The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+
+E:\ml-in-production\HW2-Infrastructure-setup\venv\Lib\site-packages\torchvision\models\_utils.py:223: UserWarning:
+
+Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=MobileNet_V2_Weights.IMAGENET1K_V1`. You can also use `weights=MobileNet_V2_Weights.DEFAULT` to get the most up-to-date weights.
+🧊 Backbone заморожено
+
+E:\ml-in-production\HW2-Infrastructure-setup\venv\Lib\site-packages\torch\optim\lr_scheduler.py:28: UserWarning:
+
+The verbose parameter is deprecated. Please use get_last_lr() to access the learning rate.
+🚀 Починаємо швидке навчання...
+
+Епоха 1/30
+
+Епоха 1:   0%|          | 0/8 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "E:\ml-in-production\HW5_Training_Experiments\PR1\advanced_train.py", line 511, in <module>
+    main()
+  File "E:\ml-in-production\HW5_Training_Experiments\PR1\advanced_train.py", line 427, in main
+    train_loss, train_acc = train_one_epoch_fast(
+                            ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\ml-in-production\HW5_Training_Experiments\PR1\advanced_train.py", line 315, in train_one_epoch_fast
+    loss = criterion(outputs, labels)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\ml-in-production\HW2-Infrastructure-setup\venv\Lib\site-packages\torch\nn\modules\module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\ml-in-production\HW2-Infrastructure-setup\venv\Lib\site-packages\torch\nn\modules\module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\ml-in-production\HW2-Infrastructure-setup\venv\Lib\site-packages\torch\nn\modules\loss.py", line 1185, in forward
+    return F.cross_entropy(input, target, weight=self.weight,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\ml-in-production\HW2-Infrastructure-setup\venv\Lib\site-packages\torch\nn\functional.py", line 3086, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+IndexError: Target 75 is out of bounds.

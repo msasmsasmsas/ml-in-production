@@ -1,0 +1,73 @@
+{
+  "model_name": "MobileNetV2 Agricultural Classifier",
+  "model_type": "classification",
+  "version": "1.0",
+  "authors": [
+    "ML-in-Production Team"
+  ],
+  "creation_date": "2025-05-25",
+  "overview": "",
+  "description": "",
+  "intended_use": {
+    "primary_use": "Класифікація хвороб сільськогосподарських рослин",
+    "primary_users": "Фермери та агрономи",
+    "out_of_scope_uses": [],
+    "limitations": "Працює тільки з фотографіями листя та плодів"
+  },
+  "limitations": [],
+  "classes": [],
+  "metrics": {},
+  "performance": {},
+  "model_parameters": {},
+  "training_data": {
+    "dataset_description": "86 зображень хвороб рослин, 33 класи",
+    "data_preprocessing": "Зміна розміру, нормалізація, аугментація",
+    "data_sources": [
+      "Внутрішня база даних"
+    ],
+    "collection_timeframe": "2024",
+    "dataset_size": {
+      "Загалом": 86,
+      "Тренувальних": 60,
+      "Валідаційних": 26
+    }
+  },
+  "training_process": {},
+  "ethical_considerations": {
+    "risks_and_harms": "Неправильна діагностика може призвести до економічних втрат",
+    "use_cases_to_avoid": "Не використовувати для критичних рішень без експерта",
+    "fairness_considerations": "",
+    "privacy_considerations": ""
+  },
+  "usage_examples": "",
+  "additional_info": {},
+  "model_details": {
+    "version": "1.0",
+    "architecture": "MobileNetV2 з 33 класами для хвороб рослин",
+    "developers": "AgriTech Team",
+    "license_info": "MIT License",
+    "citation": "",
+    "contact_info": ""
+  },
+  "evaluation_data": {
+    "dataset_description": "Валідаційна вибірка",
+    "evaluation_factors": [],
+    "evaluation_results": {
+      "F1-скор": 0.827,
+      "Accuracy": 0.846,
+      "Епох навчання": 18
+    }
+  },
+  "quantitative_analysis": {
+    "metrics": {
+      "F1-скор": 0.827,
+      "Точність": 0.846,
+      "Класів": 33
+    },
+    "performance_measures": {}
+  },
+  "caveats_recommendations": {
+    "known_caveats": "Може не працювати при поганому освітленні",
+    "recommendations": "Використовувати з консультацією агронома"
+  }
+}

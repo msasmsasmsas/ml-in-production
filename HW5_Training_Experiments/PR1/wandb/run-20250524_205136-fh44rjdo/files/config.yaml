@@ -1,0 +1,103 @@
+_wandb:
+    value:
+        cli_version: 0.19.11
+        m: []
+        python_version: 3.12.8
+        t:
+            "1":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 53
+                - 55
+                - 63
+                - 105
+            "2":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 53
+                - 55
+                - 63
+                - 105
+            "3":
+                - 16
+                - 23
+                - 55
+            "4": 3.12.8
+            "5": 0.19.11
+            "6": 4.52.3
+            "8":
+                - 3
+                - 5
+            "12": 0.19.11
+            "13": windows-amd64
+batch_size:
+    value: 12
+cutmix_alpha:
+    value: 1
+data_path:
+    value: ../crawler/downloads/
+dropout:
+    value: 0.3
+end_size:
+    value: 224
+focal_alpha:
+    value: 1
+focal_gamma:
+    value: 2
+gradual_unfreezing:
+    value: true
+image_dir:
+    value: ../crawler/downloads/images/
+label_smoothing:
+    value: 0.05
+learning_rate:
+    value: 0.0005
+min_lr:
+    value: 1e-06
+mixup_alpha:
+    value: 0.4
+model_name:
+    value: efficientnet_b0
+num_epochs:
+    value: 80
+patience:
+    value: 20
+progressive_resizing:
+    value: true
+resize_epochs:
+    value:
+        - 15
+        - 30
+risk_type:
+    value: diseases
+seed:
+    value: 42
+start_size:
+    value: 128
+tta_steps:
+    value: 5
+unfreeze_schedule:
+    value:
+        - 8
+        - 16
+        - 24
+use_cosine_annealing:
+    value: true
+use_cutmix:
+    value: true
+use_focal_loss:
+    value: true
+use_mixup:
+    value: true
+use_tta:
+    value: true
+validation_split:
+    value: 0.2
+weight_decay:
+    value: 0.0005

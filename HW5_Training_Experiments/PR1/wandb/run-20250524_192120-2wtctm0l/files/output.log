@@ -1,0 +1,19 @@
+Using device: cpu
+Traceback (most recent call last):
+  File "E:\ml-in-production\HW5_Training_Experiments\PR1\train.py", line 391, in <module>
+    main()
+  File "E:\ml-in-production\HW5_Training_Experiments\PR1\train.py", line 316, in main
+    train_loader, val_loader, num_classes, class_names = create_data_loaders(config)
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\ml-in-production\HW5_Training_Experiments\PR1\train.py", line 137, in create_data_loaders
+    train_indices, val_indices = train_test_split(
+                                 ^^^^^^^^^^^^^^^^^
+  File "E:\ml-in-production\HW2-Infrastructure-setup\venv\Lib\site-packages\sklearn\utils\_param_validation.py", line 216, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\ml-in-production\HW2-Infrastructure-setup\venv\Lib\site-packages\sklearn\model_selection\_split.py", line 2851, in train_test_split
+    n_train, n_test = _validate_shuffle_split(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\ml-in-production\HW2-Infrastructure-setup\venv\Lib\site-packages\sklearn\model_selection\_split.py", line 2481, in _validate_shuffle_split
+    raise ValueError(
+ValueError: With n_samples=0, test_size=0.2 and train_size=None, the resulting train set will be empty. Adjust any of the aforementioned parameters.

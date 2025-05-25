@@ -1,0 +1,16 @@
+wandb_version: 1
+
+batch_size:
+  value: 16
+dropout:
+  value: 0.37985244087929393
+learning_rate:
+  value: 0.0004964662820767552
+model_name:
+  value: mobilenet_v2
+num_epochs:
+  value: 15
+validation_split:
+  value: 0.2
+weight_decay:
+  value: 1.81834027352446e-05

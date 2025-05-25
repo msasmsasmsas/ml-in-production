@@ -1,0 +1,16 @@
+{"time":"2025-05-24T22:00:57.8832912+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.11","symlink path":"E:\\ml-in-production\\HW5_Training_Experiments\\PR2\\wandb\\run-20250524_220057-gikiu9wm\\logs\\debug-core.log"}
+{"time":"2025-05-24T22:00:59.2759259+03:00","level":"INFO","msg":"created new stream","id":"gikiu9wm"}
+{"time":"2025-05-24T22:00:59.2764544+03:00","level":"INFO","msg":"stream: started","id":"gikiu9wm"}
+{"time":"2025-05-24T22:00:59.2764544+03:00","level":"INFO","msg":"sender: started","stream_id":"gikiu9wm"}
+{"time":"2025-05-24T22:00:59.2764544+03:00","level":"INFO","msg":"handler: started","stream_id":"gikiu9wm"}
+{"time":"2025-05-24T22:00:59.2764544+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"gikiu9wm"}
+{"time":"2025-05-24T22:00:59.4842097+03:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-05-24T22:02:24.3892149+03:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-05-24T22:02:24.3892149+03:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-05-24T22:02:25.213142+03:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-05-24T22:02:25.4006954+03:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 7-8, summary, console lines 11-11","runtime_seconds":0.1874098}],"total_operations":1}}
+{"time":"2025-05-24T22:02:25.7843727+03:00","level":"INFO","msg":"stream: closing","id":"gikiu9wm"}
+{"time":"2025-05-24T22:02:25.7843727+03:00","level":"INFO","msg":"handler: closed","stream_id":"gikiu9wm"}
+{"time":"2025-05-24T22:02:25.7843727+03:00","level":"INFO","msg":"sender: closed","stream_id":"gikiu9wm"}
+{"time":"2025-05-24T22:02:25.7843727+03:00","level":"INFO","msg":"writer: Close: closed","stream_id":"gikiu9wm"}
+{"time":"2025-05-24T22:02:25.7920307+03:00","level":"INFO","msg":"stream: closed","id":"gikiu9wm"}

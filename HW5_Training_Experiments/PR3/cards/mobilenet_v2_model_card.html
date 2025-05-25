@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Card: mobilenet_v2</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        pre {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+        }
+        
+        strong {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Модель классификации: mobilenet_v2</h1>
+<h2>Обзор модели</h2>
+<p><strong>Название модели:</strong> mobilenet_v2<br />
+<strong>Тип модели:</strong> classification<br />
+<strong>Версия:</strong> 1.0<br />
+<strong>Дата создания:</strong> 2025-05-25<br />
+<strong>Авторы:</strong> ML-in-Production Team  </p>
+<h2>Данные</h2>
+<p>Датасет зображень сільськогосподарських ризиків, що містить 33 класів</p>
+<p><strong>Предобработка данных:</strong> Зміна розміру зображень до 224x224, нормалізація, аугментація даних (поворот, відзеркалення, зміна яскравості)</p>
+<p><strong>Источники данных:</strong>
+- Внутрішня база даних сільськогосподарських зображень</p>
+<p><strong>Период сбора данных:</strong> 2024</p>
+<p><strong>Размер набора данных:</strong>
+- Загальна кількість зображень: 86
+- Кількість класів: 33
+- Тренувальна вибірка: 60
+- Валідаційна вибірка: 26</p>
+<h2>Этические соображения</h2>
+<ul>
+<li>risks_and_harms</li>
+<li>use_cases_to_avoid</li>
+<li>fairness_considerations</li>
+<li>privacy_considerations</li>
+</ul>
+<h2>Оцінка моделі</h2>
+<p><strong>Опис оцінки:</strong>
+Валідаційна вибірка, створена шляхом стратифікованого розподілу основного датасету</p>
+<p><strong>Фактори оцінки:</strong>
+F1-скор, Точність, Повнота, Accuracy</p>
+<h3>Результати оцінки</h3>
+<ul>
+<li><strong>F1-скор (weighted):</strong> 0.8270</li>
+<li><strong>Кількість епох навчання:</strong> 18</li>
+<li><strong>Розмір батчу:</strong> 8</li>
+<li><strong>Learning rate:</strong> 0.0010</li>
+</ul>
+<h2>Кількісний аналіз</h2>
+<h3>Основні метрики</h3>
+<h3>Аналіз продуктивності</h3>
+<h2>Етичні міркування</h2>
+<p><strong>Ризики та шкода:</strong><br />
+Неправильна класифікація може призвести до неефективного лікування рослин або економічних втрат</p>
+<p><strong>Випадки використання, яких слід уникати:</strong><br />
+Не використовувати для критично важливих рішень без додаткової експертної перевірки</p>
+<p><strong>Міркування щодо справедливості:</strong><br />
+Модель може бути упереджена щодо певних сортів рослин або умов вирощування</p>
+<p><strong>Міркування щодо приватності:</strong><br />
+Зображення можуть містити геолокаційну інформацію або інші особисті дані фермерів</p>
+<h2>Застереження та рекомендації</h2>
+<p><strong>Відомі застереження:</strong><br />
+Продуктивність може знижуватися на зображеннях низької якості або з поганим освітленням</p>
+<p><strong>Рекомендації:</strong><br />
+Використовувати в поєднанні з експертною оцінкою агронома, регулярно переналаштовувати модель на нових даних</p>
+<h2>Графіки та візуалізації</h2>
+<hr />
+<p><em>Ця модель карта була згенерована автоматично 2025-05-25</em></p>
+<h2>Оцінка моделі</h2>
+<p><strong>Опис оцінки:</strong>
+Валідаційна вибірка, створена шляхом стратифікованого розподілу основного датасету</p>
+<p><strong>Фактори оцінки:</strong>
+F1-скор, Точність, Повнота, Accuracy</p>
+<h3>Результати оцінки</h3>
+<ul>
+<li><strong>F1-скор (weighted):</strong> 0.8270</li>
+<li><strong>Кількість епох навчання:</strong> 18</li>
+<li><strong>Розмір батчу:</strong> 8</li>
+<li><strong>Learning rate:</strong> 0.0010</li>
+</ul>
+<h2>Кількісний аналіз</h2>
+<h3>Основні метрики</h3>
+<h3>Аналіз продуктивності</h3>
+<h2>Етичні міркування</h2>
+<p><strong>Ризики та шкода:</strong><br />
+Неправильна класифікація може призвести до неефективного лікування рослин або економічних втрат</p>
+<p><strong>Випадки використання, яких слід уникати:</strong><br />
+Не використовувати для критично важливих рішень без додаткової експертної перевірки</p>
+<p><strong>Міркування щодо справедливості:</strong><br />
+Модель може бути упереджена щодо певних сортів рослин або умов вирощування</p>
+<p><strong>Міркування щодо приватності:</strong><br />
+Зображення можуть містити геолокаційну інформацію або інші особисті дані фермерів</p>
+<h2>Застереження та рекомендації</h2>
+<p><strong>Відомі застереження:</strong><br />
+Продуктивність може знижуватися на зображеннях низької якості або з поганим освітленням</p>
+<p><strong>Рекомендації:</strong><br />
+Використовувати в поєднанні з експертною оцінкою агронома, регулярно переналаштовувати модель на нових даних</p>
+<h2>Графіки та візуалізації</h2>
+<hr />
+<p><em>Ця модель карта була згенерована автоматично 2025-05-25</em></p>
+</body>
+</html>

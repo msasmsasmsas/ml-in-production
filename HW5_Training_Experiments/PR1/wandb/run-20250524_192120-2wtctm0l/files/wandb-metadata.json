@@ -1,0 +1,16 @@
+{
+  "os": "Windows-10-10.0.19045-SP0",
+  "python": "CPython 3.12.8",
+  "startedAt": "2025-05-24T16:21:20.090191Z",
+  "program": "E:\\ml-in-production\\HW5_Training_Experiments\\PR1\\train.py",
+  "codePath": "HW5_Training_Experiments\\PR1\\train.py",
+  "git": {
+    "remote": "https://github.com/msasmsasmsas/ml-in-production.git",
+    "commit": "39924c63d0c2abb03047c3e05875573826949a59"
+  },
+  "email": "msas@ukr.net",
+  "root": "E:\\ml-in-production\\HW5_Training_Experiments\\PR1",
+  "host": "DESKTOP-8AVS96B",
+  "executable": "E:\\ml-in-production\\HW2-Infrastructure-setup\\venv\\Scripts\\python.exe",
+  "codePathLocal": "train.py"
+}

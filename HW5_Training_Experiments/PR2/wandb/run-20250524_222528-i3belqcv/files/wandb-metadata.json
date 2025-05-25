@@ -1,0 +1,46 @@
+{
+  "os": "Windows-10-10.0.19045-SP0",
+  "python": "CPython 3.12.8",
+  "startedAt": "2025-05-24T19:25:28.987137Z",
+  "args": [
+    "--agent",
+    "m1p4k5l2"
+  ],
+  "program": "E:\\ml-in-production\\HW5_Training_Experiments\\pr2\\sweep.py",
+  "codePath": "HW5_Training_Experiments\\pr2\\sweep.py",
+  "git": {
+    "remote": "https://github.com/msasmsasmsas/ml-in-production.git",
+    "commit": "39924c63d0c2abb03047c3e05875573826949a59"
+  },
+  "email": "msas@ukr.net",
+  "root": "E:\\ml-in-production\\HW5_Training_Experiments\\pr2",
+  "host": "DESKTOP-8AVS96B",
+  "executable": "E:\\ml-in-production\\HW2-Infrastructure-setup\\venv\\Scripts\\python.exe",
+  "codePathLocal": "sweep.py",
+  "cpu_count": 6,
+  "cpu_count_logical": 12,
+  "gpu": "NVIDIA GeForce GTX 1650",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "1100994314240",
+      "used": "1048299700224"
+    }
+  },
+  "memory": {
+    "total": "42777538560"
+  },
+  "cpu": {
+    "count": 6,
+    "countLogical": 12
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce GTX 1650",
+      "memoryTotal": "4294967296",
+      "cudaCores": 896,
+      "architecture": "Turing"
+    }
+  ],
+  "cudaVersion": "11.6"
+}
