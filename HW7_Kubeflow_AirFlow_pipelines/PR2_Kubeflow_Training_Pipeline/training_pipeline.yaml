@@ -1,0 +1,322 @@
+# PIPELINE DEFINITION
+# Name: training-pipeline
+# Description: Пайплайн для обучения модели машинного обучения
+components:
+  comp-evaluate-model:
+    executorLabel: exec-evaluate-model
+    inputDefinitions:
+      artifacts:
+        model:
+          artifactType:
+            schemaTitle: system.Artifact
+            schemaVersion: 0.0.1
+        test_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+    outputDefinitions:
+      artifacts:
+        metrics_file:
+          artifactType:
+            schemaTitle: system.Artifact
+            schemaVersion: 0.0.1
+  comp-load-data:
+    executorLabel: exec-load-data
+    outputDefinitions:
+      artifacts:
+        data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+  comp-preprocess-data:
+    executorLabel: exec-preprocess-data
+    inputDefinitions:
+      artifacts:
+        data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+    outputDefinitions:
+      artifacts:
+        test_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+        train_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+  comp-train-model:
+    executorLabel: exec-train-model
+    inputDefinitions:
+      artifacts:
+        train_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+    outputDefinitions:
+      artifacts:
+        model:
+          artifactType:
+            schemaTitle: system.Artifact
+            schemaVersion: 0.0.1
+deploymentSpec:
+  executors:
+    exec-evaluate-model:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - evaluate_model
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.13.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef evaluate_model(\n        model: Input[Artifact],\n        test_data:\
+          \ Input[Dataset],\n        metrics_file: Output[Artifact]\n):\n    \"\"\"\
+          \u041A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442 \u0434\u043B\u044F\
+          \ \u043E\u0446\u0435\u043D\u043A\u0438 \u043A\u0430\u0447\u0435\u0441\u0442\
+          \u0432\u0430 \u043C\u043E\u0434\u0435\u043B\u0438\"\"\"\n    import pandas\
+          \ as pd\n    import pickle\n    import json\n    from sklearn.metrics import\
+          \ accuracy_score\n\n    # \u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430\
+          \ \u043C\u043E\u0434\u0435\u043B\u0438\n    with open(model.path, 'rb')\
+          \ as f:\n        model_obj = pickle.load(f)\n\n    # \u0417\u0430\u0433\u0440\
+          \u0443\u0437\u043A\u0430 \u0442\u0435\u0441\u0442\u043E\u0432\u044B\u0445\
+          \ \u0434\u0430\u043D\u043D\u044B\u0445\n    test_df = pd.read_csv(test_data.path)\n\
+          \    X_test = test_df.drop('target', axis=1)\n    y_test = test_df['target']\n\
+          \n    # \u041E\u0446\u0435\u043D\u043A\u0430 \u043C\u043E\u0434\u0435\u043B\
+          \u0438\n    y_pred = model_obj.predict(X_test)\n    accuracy = float(accuracy_score(y_test,\
+          \ y_pred))\n\n    # \u0421\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\
+          \u0435 \u043C\u0435\u0442\u0440\u0438\u043A\n    metrics = {'accuracy':\
+          \ accuracy}\n\n    # \u0421\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\
+          \u0435 \u043C\u0435\u0442\u0440\u0438\u043A \u0432 \u0444\u0430\u0439\u043B\
+          \n    with open(metrics_file.path, 'w') as f:\n        json.dump(metrics,\
+          \ f)\n\n    print(f\"\u0422\u043E\u0447\u043D\u043E\u0441\u0442\u044C \u043C\
+          \u043E\u0434\u0435\u043B\u0438: {accuracy}\")\n    print(f\"\u041C\u0435\
+          \u0442\u0440\u0438\u043A\u0438 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\
+          \u043D\u044B \u0432 {metrics_file.path}\")\n\n"
+        image: python:3.9
+    exec-load-data:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - load_data
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.13.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef load_data(data: Output[Dataset]):\n    \"\"\"\u041A\u043E\u043C\
+          \u043F\u043E\u043D\u0435\u043D\u0442 \u0434\u043B\u044F \u0437\u0430\u0433\
+          \u0440\u0443\u0437\u043A\u0438 \u0434\u0430\u043D\u043D\u044B\u0445 \u0434\
+          \u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\"\"\"\n  \
+          \  import pandas as pd\n    import numpy as np\n    import os\n\n    # \u0413\
+          \u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F \u0441\u0438\u043D\u0442\
+          \u0435\u0442\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u0434\u0430\u043D\
+          \u043D\u044B\u0445\n    n_samples = 1000\n    n_features = 10\n    X = np.random.rand(n_samples,\
+          \ n_features)\n    y = np.random.randint(0, 2, n_samples)\n\n    # \u0421\
+          \u043E\u0437\u0434\u0430\u043D\u0438\u0435 DataFrame\n    df = pd.DataFrame(X,\
+          \ columns=[f'feature_{i}' for i in range(n_features)])\n    df['target']\
+          \ = y\n\n    # \u0421\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u0435\
+          \ \u0434\u0430\u043D\u043D\u044B\u0445\n    df.to_csv(data.path, index=False)\n\
+          \n    print(f\"\u0414\u0430\u043D\u043D\u044B\u0435 \u0434\u043B\u044F \u043E\
+          \u0431\u0443\u0447\u0435\u043D\u0438\u044F \u0441\u043E\u0445\u0440\u0430\
+          \u043D\u0435\u043D\u044B \u0432 {data.path}\")\n\n"
+        image: python:3.9
+    exec-preprocess-data:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - preprocess_data
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.13.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef preprocess_data(\n        data: Input[Dataset],\n        train_data:\
+          \ Output[Dataset],\n        test_data: Output[Dataset]\n):\n    \"\"\"\u041A\
+          \u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442 \u0434\u043B\u044F \u043F\
+          \u0440\u0435\u0434\u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438\
+          \ \u0434\u0430\u043D\u043D\u044B\u0445\"\"\"\n    import pandas as pd\n\
+          \    from sklearn.model_selection import train_test_split\n\n    # \u0417\
+          \u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u0434\u0430\u043D\u043D\u044B\
+          \u0445\n    df = pd.read_csv(data.path)\n\n    # \u0420\u0430\u0437\u0434\
+          \u0435\u043B\u0435\u043D\u0438\u0435 \u043D\u0430 \u043F\u0440\u0438\u0437\
+          \u043D\u0430\u043A\u0438 \u0438 \u0446\u0435\u043B\u0435\u0432\u0443\u044E\
+          \ \u043F\u0435\u0440\u0435\u043C\u0435\u043D\u043D\u0443\u044E\n    X =\
+          \ df.drop('target', axis=1)\n    y = df['target']\n\n    # \u0420\u0430\u0437\
+          \u0434\u0435\u043B\u0435\u043D\u0438\u0435 \u043D\u0430 \u043E\u0431\u0443\
+          \u0447\u0430\u044E\u0449\u0443\u044E \u0438 \u0442\u0435\u0441\u0442\u043E\
+          \u0432\u0443\u044E \u0432\u044B\u0431\u043E\u0440\u043A\u0438\n    X_train,\
+          \ X_test, y_train, y_test = train_test_split(\n        X, y, test_size=0.2,\
+          \ random_state=42\n    )\n\n    # \u0421\u043E\u0445\u0440\u0430\u043D\u0435\
+          \u043D\u0438\u0435 \u043F\u0440\u0435\u0434\u043E\u0431\u0440\u0430\u0431\
+          \u043E\u0442\u0430\u043D\u043D\u044B\u0445 \u0434\u0430\u043D\u043D\u044B\
+          \u0445\n    pd.concat([X_train, y_train], axis=1).to_csv(train_data.path,\
+          \ index=False)\n    pd.concat([X_test, y_test], axis=1).to_csv(test_data.path,\
+          \ index=False)\n\n    print(f\"\u041E\u0431\u0443\u0447\u0430\u044E\u0449\
+          \u0438\u0435 \u0434\u0430\u043D\u043D\u044B\u0435 \u0441\u043E\u0445\u0440\
+          \u0430\u043D\u0435\u043D\u044B \u0432 {train_data.path}\")\n    print(f\"\
+          \u0422\u0435\u0441\u0442\u043E\u0432\u044B\u0435 \u0434\u0430\u043D\u043D\
+          \u044B\u0435 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u044B \u0432\
+          \ {test_data.path}\")\n\n"
+        image: python:3.9
+    exec-train-model:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - train_model
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.13.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef train_model(\n        train_data: Input[Dataset],\n        model:\
+          \ Output[Artifact]\n):\n    \"\"\"\u041A\u043E\u043C\u043F\u043E\u043D\u0435\
+          \u043D\u0442 \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\
+          \u044F \u043C\u043E\u0434\u0435\u043B\u0438\"\"\"\n    import pandas as\
+          \ pd\n    import pickle\n    from sklearn.ensemble import RandomForestClassifier\n\
+          \n    # \u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u043E\u0431\u0443\
+          \u0447\u0430\u044E\u0449\u0438\u0445 \u0434\u0430\u043D\u043D\u044B\u0445\
+          \n    train_df = pd.read_csv(train_data.path)\n    X_train = train_df.drop('target',\
+          \ axis=1)\n    y_train = train_df['target']\n\n    # \u041E\u0431\u0443\u0447\
+          \u0435\u043D\u0438\u0435 \u043C\u043E\u0434\u0435\u043B\u0438\n    model_obj\
+          \ = RandomForestClassifier(n_estimators=100, random_state=42)\n    model_obj.fit(X_train,\
+          \ y_train)\n\n    # \u0421\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\
+          \u0435 \u043C\u043E\u0434\u0435\u043B\u0438\n    with open(model.path, 'wb')\
+          \ as f:\n        pickle.dump(model_obj, f)\n\n    print(f\"\u041C\u043E\u0434\
+          \u0435\u043B\u044C \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0430\
+          \ \u0432 {model.path}\")\n\n"
+        image: python:3.9
+pipelineInfo:
+  description: "\u041F\u0430\u0439\u043F\u043B\u0430\u0439\u043D \u0434\u043B\u044F\
+    \ \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F \u043C\u043E\u0434\u0435\u043B\
+    \u0438 \u043C\u0430\u0448\u0438\u043D\u043D\u043E\u0433\u043E \u043E\u0431\u0443\
+    \u0447\u0435\u043D\u0438\u044F"
+  name: training-pipeline
+root:
+  dag:
+    tasks:
+      evaluate-model:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-evaluate-model
+        dependentTasks:
+        - preprocess-data
+        - train-model
+        inputs:
+          artifacts:
+            model:
+              taskOutputArtifact:
+                outputArtifactKey: model
+                producerTask: train-model
+            test_data:
+              taskOutputArtifact:
+                outputArtifactKey: test_data
+                producerTask: preprocess-data
+        taskInfo:
+          name: evaluate-model
+      load-data:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-load-data
+        taskInfo:
+          name: load-data
+      preprocess-data:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-preprocess-data
+        dependentTasks:
+        - load-data
+        inputs:
+          artifacts:
+            data:
+              taskOutputArtifact:
+                outputArtifactKey: data
+                producerTask: load-data
+        taskInfo:
+          name: preprocess-data
+      train-model:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-train-model
+        dependentTasks:
+        - preprocess-data
+        inputs:
+          artifacts:
+            train_data:
+              taskOutputArtifact:
+                outputArtifactKey: train_data
+                producerTask: preprocess-data
+        taskInfo:
+          name: train-model
+schemaVersion: 2.1.0
+sdkVersion: kfp-2.13.0
