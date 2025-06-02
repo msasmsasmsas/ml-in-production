@@ -1,0 +1,21 @@
+[2025-06-02T17:45:59.453+0000] {logging_mixin.py:151} INFO - Changing /opt/***/logs/dag_id=training_pipeline/run_id=scheduled__2025-06-01T17:45:38.549225+00:00/task_id=evaluate_model permission to 509
+[2025-06-02T17:45:59.453+0000] {logging_mixin.py:151} INFO - Failed to change /opt/***/logs/dag_id=training_pipeline/run_id=scheduled__2025-06-01T17:45:38.549225+00:00/task_id=evaluate_model permission to 509: [Errno 1] Operation not permitted: '/opt/***/logs/dag_id=training_pipeline/run_id=scheduled__2025-06-01T17:45:38.549225+00:00/task_id=evaluate_model'
+[2025-06-02T17:45:59.483+0000] {logging_mixin.py:151} INFO - Changing /opt/***/logs/dag_id=training_pipeline/run_id=scheduled__2025-06-01T17:45:38.549225+00:00/task_id=evaluate_model permission to 509
+[2025-06-02T17:45:59.484+0000] {logging_mixin.py:151} INFO - Failed to change /opt/***/logs/dag_id=training_pipeline/run_id=scheduled__2025-06-01T17:45:38.549225+00:00/task_id=evaluate_model permission to 509: [Errno 1] Operation not permitted: '/opt/***/logs/dag_id=training_pipeline/run_id=scheduled__2025-06-01T17:45:38.549225+00:00/task_id=evaluate_model'
+[2025-06-02T17:45:59.523+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: training_pipeline.evaluate_model scheduled__2025-06-01T17:45:38.549225+00:00 [queued]>
+[2025-06-02T17:45:59.532+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: training_pipeline.evaluate_model scheduled__2025-06-01T17:45:38.549225+00:00 [queued]>
+[2025-06-02T17:45:59.533+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-06-02T17:45:59.558+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): evaluate_model> on 2025-06-01 17:45:38.549225+00:00
+[2025-06-02T17:45:59.571+0000] {standard_task_runner.py:57} INFO - Started process 215 to run task
+[2025-06-02T17:45:59.577+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'training_pipeline', 'evaluate_model', 'scheduled__2025-06-01T17:45:38.549225+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/training_dag.py', '--cfg-path', '/tmp/tmpseqdhr8l']
+[2025-06-02T17:45:59.579+0000] {standard_task_runner.py:85} INFO - Job 9: Subtask evaluate_model
+[2025-06-02T17:45:59.628+0000] {logging_mixin.py:151} INFO - Changing /opt/***/logs/dag_id=training_pipeline/run_id=scheduled__2025-06-01T17:45:38.549225+00:00/task_id=evaluate_model permission to 509
+[2025-06-02T17:45:59.628+0000] {logging_mixin.py:151} INFO - Failed to change /opt/***/logs/dag_id=training_pipeline/run_id=scheduled__2025-06-01T17:45:38.549225+00:00/task_id=evaluate_model permission to 509: [Errno 1] Operation not permitted: '/opt/***/logs/dag_id=training_pipeline/run_id=scheduled__2025-06-01T17:45:38.549225+00:00/task_id=evaluate_model'
+[2025-06-02T17:45:59.630+0000] {task_command.py:415} INFO - Running <TaskInstance: training_pipeline.evaluate_model scheduled__2025-06-01T17:45:38.549225+00:00 [running]> on host 959207c5aef9
+[2025-06-02T17:45:59.704+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='training_pipeline' AIRFLOW_CTX_TASK_ID='evaluate_model' AIRFLOW_CTX_EXECUTION_DATE='2025-06-01T17:45:38.549225+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-01T17:45:38.549225+00:00'
+[2025-06-02T17:45:59.774+0000] {logging_mixin.py:151} INFO - Точность модели: 0.53
+[2025-06-02T17:45:59.775+0000] {logging_mixin.py:151} INFO - Метрики сохранены в /opt/***/data/metrics.json
+[2025-06-02T17:45:59.775+0000] {python.py:194} INFO - Done. Returned value was: {'accuracy': 0.53}
+[2025-06-02T17:45:59.793+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=training_pipeline, task_id=evaluate_model, execution_date=20250601T174538, start_date=20250602T174559, end_date=20250602T174559
+[2025-06-02T17:45:59.826+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-06-02T17:45:59.840+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

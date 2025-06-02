@@ -1,0 +1,21 @@
+[2025-06-02T17:45:55.670+0000] {logging_mixin.py:151} INFO - Changing /opt/***/logs/dag_id=inference_pipeline/run_id=scheduled__2025-06-01T17:45:35.560065+00:00/task_id=run_inference permission to 509
+[2025-06-02T17:45:55.672+0000] {logging_mixin.py:151} INFO - Failed to change /opt/***/logs/dag_id=inference_pipeline/run_id=scheduled__2025-06-01T17:45:35.560065+00:00/task_id=run_inference permission to 509: [Errno 1] Operation not permitted: '/opt/***/logs/dag_id=inference_pipeline/run_id=scheduled__2025-06-01T17:45:35.560065+00:00/task_id=run_inference'
+[2025-06-02T17:45:55.753+0000] {logging_mixin.py:151} INFO - Changing /opt/***/logs/dag_id=inference_pipeline/run_id=scheduled__2025-06-01T17:45:35.560065+00:00/task_id=run_inference permission to 509
+[2025-06-02T17:45:55.753+0000] {logging_mixin.py:151} INFO - Failed to change /opt/***/logs/dag_id=inference_pipeline/run_id=scheduled__2025-06-01T17:45:35.560065+00:00/task_id=run_inference permission to 509: [Errno 1] Operation not permitted: '/opt/***/logs/dag_id=inference_pipeline/run_id=scheduled__2025-06-01T17:45:35.560065+00:00/task_id=run_inference'
+[2025-06-02T17:45:55.806+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: inference_pipeline.run_inference scheduled__2025-06-01T17:45:35.560065+00:00 [queued]>
+[2025-06-02T17:45:55.819+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: inference_pipeline.run_inference scheduled__2025-06-01T17:45:35.560065+00:00 [queued]>
+[2025-06-02T17:45:55.820+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-06-02T17:45:55.838+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): run_inference> on 2025-06-01 17:45:35.560065+00:00
+[2025-06-02T17:45:55.845+0000] {standard_task_runner.py:57} INFO - Started process 206 to run task
+[2025-06-02T17:45:55.855+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'inference_pipeline', 'run_inference', 'scheduled__2025-06-01T17:45:35.560065+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/inference_dag.py', '--cfg-path', '/tmp/tmptpu07eg1']
+[2025-06-02T17:45:55.858+0000] {standard_task_runner.py:85} INFO - Job 6: Subtask run_inference
+[2025-06-02T17:45:55.925+0000] {logging_mixin.py:151} INFO - Changing /opt/***/logs/dag_id=inference_pipeline/run_id=scheduled__2025-06-01T17:45:35.560065+00:00/task_id=run_inference permission to 509
+[2025-06-02T17:45:55.925+0000] {logging_mixin.py:151} INFO - Failed to change /opt/***/logs/dag_id=inference_pipeline/run_id=scheduled__2025-06-01T17:45:35.560065+00:00/task_id=run_inference permission to 509: [Errno 1] Operation not permitted: '/opt/***/logs/dag_id=inference_pipeline/run_id=scheduled__2025-06-01T17:45:35.560065+00:00/task_id=run_inference'
+[2025-06-02T17:45:55.927+0000] {task_command.py:415} INFO - Running <TaskInstance: inference_pipeline.run_inference scheduled__2025-06-01T17:45:35.560065+00:00 [running]> on host 959207c5aef9
+[2025-06-02T17:45:56.004+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='inference_pipeline' AIRFLOW_CTX_TASK_ID='run_inference' AIRFLOW_CTX_EXECUTION_DATE='2025-06-01T17:45:35.560065+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-01T17:45:35.560065+00:00'
+[2025-06-02T17:45:56.637+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/sklearn/base.py:458 UserWarning: X has feature names, but RandomForestClassifier was fitted without feature names
+[2025-06-02T17:45:56.669+0000] {logging_mixin.py:151} INFO - Результаты инференса сохранены в /opt/***/data/predictions.csv
+[2025-06-02T17:45:56.670+0000] {python.py:194} INFO - Done. Returned value was: /opt/***/data/predictions.csv
+[2025-06-02T17:45:56.692+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=inference_pipeline, task_id=run_inference, execution_date=20250601T174535, start_date=20250602T174555, end_date=20250602T174556
+[2025-06-02T17:45:56.749+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-06-02T17:45:56.772+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,365 @@
+# PIPELINE DEFINITION
+# Name: image-classification-inference-pipeline
+# Description: A pipeline to run inference on new data using a trained model
+# Inputs:
+#    batch_size: int [Default: 32.0]
+#    confidence_threshold: float [Default: 0.5]
+#    create_visualizations: bool [Default: True]
+#    data_path: str [Default: 'gs://your-bucket/inference-data']
+#    model_info_path: str [Default: 'gs://your-bucket/models/model_info.json']
+#    model_path: str [Default: 'gs://your-bucket/models/resnet18_model.pt']
+#    output_path: str [Default: 'gs://your-bucket/inference-results']
+components:
+  comp-load-inference-data-component:
+    executorLabel: exec-load-inference-data-component
+    inputDefinitions:
+      parameters:
+        batch_size:
+          parameterType: NUMBER_INTEGER
+        data_path:
+          parameterType: STRING
+    outputDefinitions:
+      parameters:
+        Output:
+          parameterType: STRING
+  comp-load-model-component:
+    executorLabel: exec-load-model-component
+    inputDefinitions:
+      parameters:
+        model_info_path:
+          parameterType: STRING
+        model_path:
+          parameterType: STRING
+    outputDefinitions:
+      parameters:
+        model_config_path:
+          parameterType: STRING
+        prepared_model_path:
+          parameterType: STRING
+  comp-run-inference-component:
+    executorLabel: exec-run-inference-component
+    inputDefinitions:
+      parameters:
+        batch_size:
+          parameterType: NUMBER_INTEGER
+        confidence_threshold:
+          parameterType: NUMBER_DOUBLE
+        data_path:
+          parameterType: STRING
+        model_config_path:
+          parameterType: STRING
+        model_path:
+          parameterType: STRING
+    outputDefinitions:
+      parameters:
+        Output:
+          parameterType: STRING
+  comp-save-results-component:
+    executorLabel: exec-save-results-component
+    inputDefinitions:
+      parameters:
+        create_visualizations:
+          parameterType: BOOLEAN
+        output_path:
+          parameterType: STRING
+        predictions_path:
+          parameterType: STRING
+    outputDefinitions:
+      parameters:
+        Output:
+          parameterType: STRING
+deploymentSpec:
+  executors:
+    exec-load-inference-data-component:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - load_inference_data_component
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.13.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef load_inference_data_component(data_path: str, batch_size: int)\
+          \ -> str:\n    \"\"\"\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u0434\
+          \u0430\u043D\u043D\u044B\u0445 \u0434\u043B\u044F \u0438\u043D\u0444\u0435\
+          \u0440\u0435\u043D\u0441\u0430\"\"\"\n    return load_inference_data(data_path,\
+          \ batch_size)\n\n"
+        image: python:3.9
+        resources:
+          cpuLimit: 1.0
+          memoryLimit: 2.0
+          resourceCpuLimit: '1'
+          resourceMemoryLimit: 2G
+    exec-load-model-component:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - load_model_component
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.13.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef load_model_component(\n    model_path: str, \n    model_info_path:\
+          \ str,\n    prepared_model_path: OutputPath(str),\n    model_config_path:\
+          \ OutputPath(str)\n):\n    \"\"\"\u0417\u0430\u0433\u0440\u0443\u0437\u043A\
+          \u0430 \u043C\u043E\u0434\u0435\u043B\u0438 \u0438 \u0435\u0435 \u043A\u043E\
+          \u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438\"\"\"\n   \
+          \ import os\n    import json\n\n    # \u0412\u044B\u0437\u043E\u0432 \u0444\
+          \u0443\u043D\u043A\u0446\u0438\u0438 \u0437\u0430\u0433\u0440\u0443\u0437\
+          \u043A\u0438 \u043C\u043E\u0434\u0435\u043B\u0438\n    try:\n        from\
+          \ components.model_loader import load_model\n        result = load_model(model_path,\
+          \ model_info_path)\n    except ImportError:\n        # \u0414\u043B\u044F\
+          \ \u0442\u0435\u0441\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F\
+          \n        print(f\"\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u043C\
+          \u043E\u0434\u0435\u043B\u0438 \u0438\u0437 {model_path} \u0441 \u043A\u043E\
+          \u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0435\u0439 {model_info_path}\"\
+          )\n        result = {\"model_path\": model_path, \"config_path\": model_info_path}\n\
+          \n    # \u0417\u0430\u043F\u0438\u0441\u044B\u0432\u0430\u0435\u043C \u043F\
+          \u0443\u0442\u0438 \u043A \u0444\u0430\u0439\u043B\u0430\u043C \u0432 \u0432\
+          \u044B\u0445\u043E\u0434\u043D\u044B\u0435 \u0444\u0430\u0439\u043B\u044B\
+          \n    with open(prepared_model_path, 'w') as f:\n        f.write(model_path)\n\
+          \n    with open(model_config_path, 'w') as f:\n        f.write(model_info_path)\n\
+          \n    print(f\"\u041C\u043E\u0434\u0435\u043B\u044C \u0437\u0430\u0433\u0440\
+          \u0443\u0436\u0435\u043D\u0430: {model_path}\")\n    print(f\"\u041A\u043E\
+          \u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044F \u043C\u043E\
+          \u0434\u0435\u043B\u0438: {model_info_path}\")\n\n"
+        image: python:3.9
+        resources:
+          cpuLimit: 1.0
+          memoryLimit: 2.0
+          resourceCpuLimit: '1'
+          resourceMemoryLimit: 2G
+    exec-run-inference-component:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - run_inference_component
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.13.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef run_inference_component(data_path: str, model_path: str, model_config_path:\
+          \ str, \n                          batch_size: int, confidence_threshold:\
+          \ float) -> str:\n    \"\"\"\u0417\u0430\u043F\u0443\u0441\u043A \u0438\u043D\
+          \u0444\u0435\u0440\u0435\u043D\u0441\u0430 \u043C\u043E\u0434\u0435\u043B\
+          \u0438 \u043D\u0430 \u0434\u0430\u043D\u043D\u044B\u0445\"\"\"\n    return\
+          \ run_inference(data_path, model_path, model_config_path, \n           \
+          \            batch_size, confidence_threshold)\n\n"
+        image: python:3.9
+        resources:
+          accelerator:
+            count: '1'
+            resourceCount: '1'
+            resourceType: cloud.google.com/gke-accelerator
+            type: cloud.google.com/gke-accelerator
+          cpuLimit: 2.0
+          memoryLimit: 4.0
+          resourceCpuLimit: '2'
+          resourceMemoryLimit: 4G
+    exec-save-results-component:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - save_results_component
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.13.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef save_results_component(predictions_path: str, output_path: str,\
+          \ create_visualizations: bool) -> str:\n    \"\"\"\u0421\u043E\u0445\u0440\
+          \u0430\u043D\u0435\u043D\u0438\u0435 \u0440\u0435\u0437\u0443\u043B\u044C\
+          \u0442\u0430\u0442\u043E\u0432 \u0438\u043D\u0444\u0435\u0440\u0435\u043D\
+          \u0441\u0430\"\"\"\n    return save_results(predictions_path, output_path,\
+          \ create_visualizations)\n\n"
+        image: python:3.9
+        resources:
+          cpuLimit: 1.0
+          memoryLimit: 2.0
+          resourceCpuLimit: '1'
+          resourceMemoryLimit: 2G
+pipelineInfo:
+  description: A pipeline to run inference on new data using a trained model
+  name: image-classification-inference-pipeline
+root:
+  dag:
+    tasks:
+      load-inference-data-component:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-load-inference-data-component
+        inputs:
+          parameters:
+            batch_size:
+              componentInputParameter: batch_size
+            data_path:
+              componentInputParameter: data_path
+        taskInfo:
+          name: load-inference-data-component
+      load-model-component:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-load-model-component
+        inputs:
+          parameters:
+            model_info_path:
+              componentInputParameter: model_info_path
+            model_path:
+              componentInputParameter: model_path
+        taskInfo:
+          name: load-model-component
+      run-inference-component:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-run-inference-component
+        dependentTasks:
+        - load-inference-data-component
+        - load-model-component
+        inputs:
+          parameters:
+            batch_size:
+              componentInputParameter: batch_size
+            confidence_threshold:
+              componentInputParameter: confidence_threshold
+            data_path:
+              taskOutputParameter:
+                outputParameterKey: Output
+                producerTask: load-inference-data-component
+            model_config_path:
+              taskOutputParameter:
+                outputParameterKey: model_config_path
+                producerTask: load-model-component
+            model_path:
+              taskOutputParameter:
+                outputParameterKey: prepared_model_path
+                producerTask: load-model-component
+        taskInfo:
+          name: run-inference-component
+      save-results-component:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-save-results-component
+        dependentTasks:
+        - run-inference-component
+        inputs:
+          parameters:
+            create_visualizations:
+              componentInputParameter: create_visualizations
+            output_path:
+              componentInputParameter: output_path
+            predictions_path:
+              taskOutputParameter:
+                outputParameterKey: Output
+                producerTask: run-inference-component
+        taskInfo:
+          name: save-results-component
+  inputDefinitions:
+    parameters:
+      batch_size:
+        defaultValue: 32.0
+        description: Batch size for inference
+        isOptional: true
+        parameterType: NUMBER_INTEGER
+      confidence_threshold:
+        defaultValue: 0.5
+        description: Confidence threshold for predictions
+        isOptional: true
+        parameterType: NUMBER_DOUBLE
+      create_visualizations:
+        defaultValue: true
+        description: Whether to create visualizations of the results
+        isOptional: true
+        parameterType: BOOLEAN
+      data_path:
+        defaultValue: gs://your-bucket/inference-data
+        description: Path to the data for inference
+        isOptional: true
+        parameterType: STRING
+      model_info_path:
+        defaultValue: gs://your-bucket/models/model_info.json
+        description: Path to the model info JSON file
+        isOptional: true
+        parameterType: STRING
+      model_path:
+        defaultValue: gs://your-bucket/models/resnet18_model.pt
+        description: Path to the trained model
+        isOptional: true
+        parameterType: STRING
+      output_path:
+        defaultValue: gs://your-bucket/inference-results
+        description: Path to save the inference results
+        isOptional: true
+        parameterType: STRING
+schemaVersion: 2.1.0
+sdkVersion: kfp-2.13.0
