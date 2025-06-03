@@ -1,0 +1,16 @@
+2025-06-03 21:14:40,503 [INFO] Initializing model from models/threat_detection_model.pt
+2025-06-03 21:14:40,504 [INFO] Model initialized successfully
+2025-06-03 21:21:23,345 [INFO] Received prediction request with confidence threshold: 0.5
+2025-06-03 21:21:23,346 [WARNING] Invalid file type: None
+2025-06-03 21:34:07,483 [INFO] Received prediction request with confidence threshold: 0.5
+2025-06-03 21:34:07,491 [WARNING] Invalid file type: None
+2025-06-03 21:34:39,816 [INFO] Received prediction request with confidence threshold: 0.5
+2025-06-03 21:34:39,816 [WARNING] Invalid file type: None
+2025-06-03 21:35:17,634 [INFO] Received prediction request with confidence threshold: 0.5
+2025-06-03 21:35:17,634 [WARNING] Invalid file type: None
+2025-06-03 21:35:48,218 [INFO] Received prediction request with confidence threshold: 0.5
+2025-06-03 21:35:48,218 [WARNING] Invalid file type: None
+2025-06-03 21:43:05,334 [INFO] Received prediction request with confidence threshold: 0.5
+2025-06-03 21:43:05,343 [INFO] Running prediction with confidence threshold: 0.5
+2025-06-03 21:43:05,418 [INFO] Prediction completed in 0.08 seconds
+2025-06-03 21:43:05,418 [INFO] Prediction successful. Found 2 threats.
