@@ -1,0 +1,17 @@
+ops:
+  load_inference_data:
+    config:
+      data_path: "data/inference_data.csv"
+  
+  load_model:
+    config:
+      model_path: "models/random_forest_model.pkl"
+  
+  run_inference:
+    config:
+      batch_size: 32
+  
+  save_inference_results:
+    config:
+      output_path: "results/inference_results.csv"
+      save_metadata: true

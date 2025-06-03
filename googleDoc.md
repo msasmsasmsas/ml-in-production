@@ -286,3 +286,43 @@ Continuous Testing:
 - CI/CD pipeline with automated test execution
 - Nightly regression tests on larger datasets
 - Regular security vulnerability scanning
+
+19. ML Pipeline Orchestration: Kubeflow vs Airflow vs Dagster
+
+For our ML production workflow, we considered several pipeline orchestrators to automate and manage both training and inference steps.
+
+**Pipeline Definition Example for Our Use Case:**
+- **Training Pipeline Steps:**
+    1. Load Training Data
+    2. Train Model
+    3. Save Trained Models
+- **Inference Pipeline Steps:**
+    1. Load Data for Inference
+    2. Load Trained Model
+    3. Run Inference
+    4. Save Inference Results
+
+**Comparison Table:**
+
+| Feature           | Kubeflow              | Airflow               | Dagster            |
+|-------------------|-----------------------|-----------------------|--------------------|
+| Initial Purpose   | ML pipelines on K8s   | General workflow      | Data and ML pipelines |
+| Learning Curve    | High                  | Moderate              | Low/Moderate       |
+| UI & Visualization| Good                  | Basic/Dag extensions  | Modern, rich       |
+| Ease of Dev/Test  | Kubernetes required   | Requires DAG scripts  | Pythonic, easy to test |
+| Extensibility     | Kubernetes-native     | Plugins/operators     | Software-defined assets |
+| Integration       | ML tools, K8s, MLMD   | Anything (via Python) | Python ecosystem   |
+| Observability     | Advanced (MLMD)       | Logs, some plugins    | Built-in dashboards |
+| Best for          | Large, prod ML, K8s   | Generic workflows     | ML/data engineering, dev |
+
+**Why Dagster fits our case:**
+- **Development experience:** Pipelines are defined in Python, easy for ML/data teams to create and maintain.
+- **Visualization:** Built-in UI for pipeline layout and step monitoring.
+- **Modularity:** Assets and ops can be reused and organized logically.
+- **Testing:** Easy to locally test parts of the pipeline.
+- **Lightweight Deploy:** Suitable for projects not strictly on Kubernetes.
+
+For large-scale, production-grade ML on Kubernetes, Kubeflow is best. For general ETL/workflow automation, Airflow is a strong choice. Dagster is most developer-friendly for our current hybrid data+ML use case.
+
+**Conclusion:**  
+We build both a training and inference pipeline with Dagster, covering the ML life cycle for RAG-based crop threat detection. See `HW8_Dagster/PR1_Dagster_Training_Pipeline/` and `PR2_Dagster_Inference_Pipeline/` for implementation details.

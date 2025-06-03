@@ -1,0 +1,10 @@
+﻿load_from:
+  - python_module:
+      module_name: assets.data_assets
+      location_name: data_assets_location
+  - python_module:
+      module_name: PR1_Dagster_Training_Pipeline.training_pipeline
+      location_name: training_pipeline_location
+  - python_module:
+      module_name: PR2_Dagster_Inference_Pipeline.inference_pipeline
+      location_name: inference_pipeline_location

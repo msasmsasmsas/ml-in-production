@@ -1,0 +1,19 @@
+ops:
+  load_training_data:
+    config:
+      data_path: "data/crawled_data.csv"
+      test_size: 0.2
+      random_seed: 42
+  
+  train_model:
+    config:
+      learning_rate: 0.001
+      epochs: 10
+      batch_size: 32
+      model_type: "neural_network"
+      random_seed: 42
+  
+  save_trained_model:
+    config:
+      output_dir: "models"
+      model_name: "neural_network_model.pkl"
