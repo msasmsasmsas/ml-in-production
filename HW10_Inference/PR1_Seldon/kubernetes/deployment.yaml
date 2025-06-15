@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resnet50-classifier
+  labels:
+    app: resnet50-classifier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resnet50-classifier
+  template:
+    metadata:
+      labels:
+        app: resnet50-classifier
+    spec:
+      containers:
+      - name: resnet50-classifier
+        image: your-registry/resnet50-classifier:latest
+        ports:
+        - containerPort: 9000
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
