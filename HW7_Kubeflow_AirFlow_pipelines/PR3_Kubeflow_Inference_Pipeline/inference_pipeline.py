@@ -7,51 +7,51 @@ from kfp import compiler
 from kfp.dsl import component, Output, Input, Artifact, Dataset
 
 
-# Определение компонентов пайплайна
+# Визначення компонентів пайплайну
 @component
 def load_inference_data(data: Output[Dataset]):
-    """Компонент для загрузки данных для инференса"""
+    """Компонент для завантаження даних для інференсу"""
     import pandas as pd
     import numpy as np
 
-    # Генерация синтетических данных
+    # Генерація синтетичних даних
     n_samples = 100
     n_features = 10
     X = np.random.rand(n_samples, n_features)
 
-    # Создание DataFrame
+    # Створення DataFrame
     df = pd.DataFrame(X, columns=[f'feature_{i}' for i in range(n_features)])
 
-    # Сохранение данных
+    # Збереження даних
     df.to_csv(data.path, index=False)
 
-    print(f"Данные для инференса сохранены в {data.path}")
+    print(f"Дані для інференсу збережено в {data.path}")
 
 
 @component
 def load_model(model: Output[Artifact]):
-    """Компонент для загрузки обученной модели"""
+    """Компонент для завантаження навченої моделі"""
     import os
     import pickle
     import numpy as np
     from sklearn.ensemble import RandomForestClassifier
 
-    # Создание новой модели
-    print(f"Создание новой модели...")
+    # Створення нової моделі
+    print(f"Створення нової моделі...")
 
-    # Генерация синтетических данных для обучения простой модели
+    # Генерація синтетичних даних для навчання простої моделі
     X = np.random.rand(1000, 10)
     y = np.random.randint(0, 2, 1000)
 
-    # Обучение простой модели
+    # Навчання простої моделі
     model_obj = RandomForestClassifier(n_estimators=10, random_state=42)
     model_obj.fit(X, y)
 
-    # Сохранение модели
+    # Збереження моделі
     with open(model.path, 'wb') as f:
         pickle.dump(model_obj, f)
 
-    print(f"Новая модель создана и сохранена в {model.path}")
+    print(f"Нова модель створена та збережена в {model.path}")
 
 
 @component
@@ -60,28 +60,28 @@ def run_inference(
         model: Input[Artifact],
         predictions: Output[Dataset]
 ):
-    """Компонент для выполнения инференса"""
+    """Компонент для виконання інференсу"""
     import pandas as pd
     import pickle
 
-    # Загрузка данных
+    # Завантаження даних
     df = pd.read_csv(data.path)
 
-    # Загрузка модели
+    # Завантаження моделі
     with open(model.path, 'rb') as f:
         model_obj = pickle.load(f)
 
-    # Выполнение предсказаний
+    # Виконання прогнозувань
     pred = model_obj.predict(df)
 
-    # Добавление предсказаний в DataFrame
+    # Додавання прогнозувань до DataFrame
     result_df = df.copy()
     result_df['prediction'] = pred
 
-    # Сохранение результатов
+    # Збереження результатів
     result_df.to_csv(predictions.path, index=False)
 
-    print(f"Результаты инференса сохранены в {predictions.path}")
+    print(f"Результати інференсу збережено в {predictions.path}")
 
 
 @component
@@ -89,85 +89,85 @@ def save_results(
         predictions: Input[Dataset],
         summary: Output[Artifact]
 ):
-    """Компонент для анализа и сохранения результатов инференса"""
+    """Компонент для аналізу та збереження результатів інференсу"""
     import pandas as pd
     import json
     from datetime import datetime
 
-    # Загрузка результатов предсказаний
+    # Завантаження результатів прогнозувань
     df = pd.read_csv(predictions.path)
 
-    # Анализ результатов
+    # Аналіз результатів
     n_samples = len(df)
 
-    # Подсчет количества каждого класса предсказаний
+    # Підрахунок кількості кожного класу прогнозувань
     if 'prediction' in df.columns:
         prediction_counts = df['prediction'].value_counts().to_dict()
     else:
         prediction_counts = {}
 
-    # Создание сводки
+    # Створення підсумку
     summary_data = {
         'total_samples': n_samples,
         'prediction_distribution': prediction_counts,
         'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
 
-    # Сохранение сводки
+    # Збереження підсумку
     with open(summary.path, 'w') as f:
         json.dump(summary_data, f)
 
-    print(f"Сводка результатов сохранена в {summary.path}")
+    print(f"Підсумок результатів збережено в {summary.path}")
 
 
-# Определение пайплайна
+# Визначення пайплайну
 @dsl.pipeline(
     name="Inference Pipeline",
-    description="Пайплайн для инференса модели машинного обучения"
+    description="Пайплайн для інференсу моделі машинного навчання"
 )
 def inference_pipeline():
-    # Шаг 1: Загрузка данных для инференса
+    # Крок 1: Завантаження даних для інференсу
     load_data_task = load_inference_data()
 
-    # Шаг 2: Загрузка модели
+    # Крок 2: Завантаження моделі
     load_model_task = load_model()
 
-    # Шаг 3: Выполнение инференса
+    # Крок 3: Виконання інференсу
     inference_task = run_inference(
         data=load_data_task.outputs["data"],
         model=load_model_task.outputs["model"]
     )
 
-    # Шаг 4: Сохранение и анализ результатов
+    # Крок 4: Збереження та аналіз результатів
     save_results(predictions=inference_task.outputs["predictions"])
 
 
-# Компиляция пайплайна
+# Компіляція пайплайну
 if __name__ == "__main__":
     compiler.Compiler().compile(
         pipeline_func=inference_pipeline,
         package_path="inference_pipeline.yaml"
     )
-    print("Пайплайн успешно скомпилирован в файл inference_pipeline.yaml")
-    print("Для визуализации пайплайна вы можете:")
-    print("1. Установить и запустить локальный сервер Kubeflow Pipelines:")
-    print("   - Запустите: minikube start --driver=docker")
+    print("Пайплайн успішно скомпільовано в файл inference_pipeline.yaml")
+    print("Для візуалізації пайплайну ви можете:")
+    print("1. Встановити та запустити локальний сервер Kubeflow Pipelines:")
+    print("   - Запустіть: minikube start --driver=docker")
     print(
-        "   - Установите Kubeflow Pipelines: kubectl apply -k github.com/kubeflow/pipelines/manifests/kustomize/cluster-scoped-resources")
-    print("   - Перенаправьте порт: kubectl port-forward -n kubeflow svc/ml-pipeline-ui 8080:80")
-    print("2. Откройте http://localhost:8080 в браузере")
-    print("3. Загрузите файл inference_pipeline.yaml через UI")
-    print("4. Или используйте Kubeflow Central Dashboard если у вас есть доступ")
+        "   - Встановіть Kubeflow Pipelines: kubectl apply -k github.com/kubeflow/pipelines/manifests/kustomize/cluster-scoped-resources")
+    print("   - Перенаправте порт: kubectl port-forward -n kubeflow svc/ml-pipeline-ui 8080:80")
+    print("2. Відкрийте http://localhost:8080 у браузері")
+    print("3. Завантажте файл inference_pipeline.yaml через UI")
+    print("4. Або використовуйте Kubeflow Central Dashboard якщо у вас є доступ")
 
-    # Попытка загрузить пайплайн напрямую (если есть доступ к кластеру)
+    # Спроба завантажити пайплайн напряму (якщо є доступ до кластера)
     try:
         client = kfp.Client()
         client.create_run_from_pipeline_package(
             "inference_pipeline.yaml",
             experiment_name="ML Inference"
         )
-        print("Пайплайн успешно запущен на кластере!")
+        print("Пайплайн успішно запущено на кластері!")
     except Exception as e:
-        print("Не удалось автоматически запустить пайплайн на кластере:")
-        print(f"Ошибка: {str(e)}")
-        print("Вы можете загрузить YAML файл вручную через Kubeflow UI")
+        print("Не вдалося автоматично запустити пайплайн на кластері:")
+        print(f"Помилка: {str(e)}")
+        print("Ви можете завантажити YAML файл вручну через Kubeflow UI")

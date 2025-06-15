@@ -1,0 +1,18 @@
+# Используем базовый образ Python вместо несуществующего seldon-core-microservice
+FROM python:3.9-slim
+
+# Устанавливаем зависимости Seldon Core
+RUN pip install seldon-core==1.17.0 torch torchvision pillow numpy
+
+# Копируем код модели
+COPY ./model /app/model
+
+# Установка рабочей директории
+WORKDIR /app
+
+# Настройка переменных окружения
+ENV MODEL_NAME=ResNet50Classifier
+ENV SERVICE_TYPE=MODEL
+
+# Команда запуска (seldon-core-microservice есть в составе пакета seldon-core)
+CMD ["python", "-m", "seldon_core.microservice", "model.ResNet50Classifier", "--service-type", "MODEL"]

@@ -1,0 +1,49 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: resnet50-classifier
+  namespace: kserve-demo
+  annotations:
+    serving.kserve.io/deploymentMode: ModelMesh
+spec:
+  predictor:
+    serviceAccountName: sa-kserve
+    pytorch:
+      storageUri: s3://model-bucket/resnet50/
+      resources:
+        requests:
+          cpu: 100m
+          memory: 2Gi
+        limits:
+          cpu: 1
+          memory: 4Gi
+      runtimeVersion: "2.2.0"
+      modelClassName: "ResNet50Model"
+      handler: "handler.py"
+  transformer:
+    serviceAccountName: sa-kserve
+    containers:
+    - name: kserve-container
+      image: kserve/image-transformer:v0.10.0
+      resources:
+        requests:
+          cpu: 100m
+          memory: 512Mi
+        limits:
+          cpu: 500m
+          memory: 1Gi
+      args:
+      - --model_name=resnet50-classifier
+      - --predictor_host=$(PREDICTOR_URL)
+      - --storage_uri=s3://model-bucket/image-transformer/
+      env:
+      - name: STORAGE_ACCESS_KEY
+        valueFrom:
+          secretKeyRef:
+            name: s3-secret
+            key: AWS_ACCESS_KEY_ID
+      - name: STORAGE_SECRET_KEY
+        valueFrom:
+          secretKeyRef:
+            name: s3-secret
+            key: AWS_SECRET_ACCESS_KEY
