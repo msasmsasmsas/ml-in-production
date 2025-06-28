@@ -1,5 +1,6 @@
 # HW14: Tools, LLMs and Data Moat
 
+<!-- Оновлена версія для PR -->
 This homework implements monitoring and continuous improvement for both traditional ML models and LLMs in our agricultural threat detection system.
 
 ## Project Structure
