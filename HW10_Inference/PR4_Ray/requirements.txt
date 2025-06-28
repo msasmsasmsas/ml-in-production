@@ -1,0 +1,28 @@
+# Ray dependencies
+ray[serve]>=2.6.0
+pydantic>=2.0.0
+fastapi>=0.95.0
+uvicorn>=0.22.0
+
+# ML dependencies
+torch>=2.2.0
+torchvision>=0.17.0
+pillow>=10.0.0
+numpy>=1.26.0
+
+# Client dependencies
+requests>=2.31.0
+
+# Testing dependencies
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+httpx>=0.24.0
+ray[serve]==2.6.1
+fastapi==0.103.1
+uvicorn==0.23.2
+python-multipart==0.0.6
+pyTorch==2.0.1
+torchvision==0.15.2
+pillow==10.0.0
+numpy==1.24.3
+pydantic==1.10.12
