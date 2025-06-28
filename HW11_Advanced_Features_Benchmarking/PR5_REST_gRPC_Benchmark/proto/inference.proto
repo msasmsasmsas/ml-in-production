@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package inference;
+
+// Сервіс для інференсу моделей машинного навчання
+service InferenceService {
+  // Стандартний запит на прогнозування
+  rpc Predict (PredictRequest) returns (PredictResponse) {}
+
+  // Потоковий запит для обробки кількох зображень
+  rpc PredictStream (stream PredictRequest) returns (stream PredictResponse) {}
+
+  // Перевірка стану сервера
+  rpc HealthCheck (HealthCheckRequest) returns (HealthCheckResponse) {}
+}
+
+// Запит на прогнозування
+message PredictRequest {
+  // Необроблені байти зображення або інших вхідних даних
+  bytes data = 1;
+
+  // Формат вхідних даних (наприклад, "image/jpeg")
+  string content_type = 2;
+
+  // Додаткові параметри запиту
+  map<string, string> parameters = 3;
+}
+
+// Прогноз для одного класу
+message ClassPrediction {
+  // Ідентифікатор класу
+  int32 class_id = 1;
+
+  // Назва класу
+  string class_name = 2;
+
+  // Оцінка ймовірності (від 0 до 1)
+  float score = 3;
+}
+
+// Відповідь на запит прогнозування
+message PredictResponse {
+  // Унікальний ідентифікатор запиту
+  string request_id = 1;
+
+  // Прапорець успішності
+  bool success = 2;
+
+  // Повідомлення про помилку (якщо є)
+  string error = 3;
+
+  // Прогнози для класів (у порядку спадання ймовірності)
+  repeated ClassPrediction predictions = 4;
+
+  // Час обробки на сервері (мс)
+  float processing_time = 5;
+
+  // Додаткова інформація
+  map<string, string> metadata = 6;
+}
+
+// Запит на перевірку здоров'я
+message HealthCheckRequest {
+  // Опціональний сервіс для перевірки
+  string service = 1;
+}
+
+// Статус здоров'я сервісу
+enum ServingStatus {
+  UNKNOWN = 0;
+  SERVING = 1;
+  NOT_SERVING = 2;
+}
+
+// Відповідь на перевірку здоров'я
+message HealthCheckResponse {
+  // Статус сервісу
+  ServingStatus status = 1;
+
+  // Додаткова інформація
+  map<string, string> metadata = 2;
+}
