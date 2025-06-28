@@ -1,3 +1,4 @@
+﻿# Updated version for PR
 import os
 import time
 import argparse
@@ -6,23 +7,23 @@ from pathlib import Path
 import grpc
 import concurrent.futures
 
-# Імпортуємо згенеровані gRPC модулі
+# Р†РјРїРѕСЂС‚СѓС”РјРѕ Р·РіРµРЅРµСЂРѕРІР°РЅС– gRPC РјРѕРґСѓР»С–
 import inference_pb2
 import inference_pb2_grpc
 
 class InferenceClient:
     """
-    Клієнт для gRPC інференсу моделей машинного навчання
+    РљР»С–С”РЅС‚ РґР»СЏ gRPC С–РЅС„РµСЂРµРЅСЃСѓ РјРѕРґРµР»РµР№ РјР°С€РёРЅРЅРѕРіРѕ РЅР°РІС‡Р°РЅРЅСЏ
     """
     def __init__(self, server_address):
         """
-        Ініціалізація клієнта
+        Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ РєР»С–С”РЅС‚Р°
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        server_address: адреса gRPC сервера
+        server_address: Р°РґСЂРµСЃР° gRPC СЃРµСЂРІРµСЂР°
         """
-        # Створення каналу з опціями для великих повідомлень
+        # РЎС‚РІРѕСЂРµРЅРЅСЏ РєР°РЅР°Р»Сѓ Р· РѕРїС†С–СЏРјРё РґР»СЏ РІРµР»РёРєРёС… РїРѕРІС–РґРѕРјР»РµРЅСЊ
         channel_options = [
             ('grpc.max_send_message_length', 50 * 1024 * 1024),  # 50 MB
             ('grpc.max_receive_message_length', 50 * 1024 * 1024),  # 50 MB
@@ -32,39 +33,39 @@ class InferenceClient:
 
     def health_check(self):
         """
-        Перевірка стану сервера
+        РџРµСЂРµРІС–СЂРєР° СЃС‚Р°РЅСѓ СЃРµСЂРІРµСЂР°
 
-        Повертає:
+        РџРѕРІРµСЂС‚Р°С”:
         -----------
-        об'єкт HealthCheckResponse
+        РѕР±'С”РєС‚ HealthCheckResponse
         """
         request = inference_pb2.HealthCheckRequest()
         return self.stub.HealthCheck(request)
 
     def predict(self, image_path):
         """
-        Відправляє запит на прогнозування зображення
+        Р’С–РґРїСЂР°РІР»СЏС” Р·Р°РїРёС‚ РЅР° РїСЂРѕРіРЅРѕР·СѓРІР°РЅРЅСЏ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        image_path: шлях до файлу зображення
+        image_path: С€Р»СЏС… РґРѕ С„Р°Р№Р»Сѓ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
 
-        Повертає:
+        РџРѕРІРµСЂС‚Р°С”:
         -----------
-        об'єкт PredictResponse та час виконання запиту
+        РѕР±'С”РєС‚ PredictResponse С‚Р° С‡Р°СЃ РІРёРєРѕРЅР°РЅРЅСЏ Р·Р°РїРёС‚Сѓ
         """
         try:
-            # Зчитування файлу зображення
+            # Р—С‡РёС‚СѓРІР°РЅРЅСЏ С„Р°Р№Р»Сѓ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
             with open(image_path, 'rb') as f:
                 image_data = f.read()
 
-            # Створення запиту
+            # РЎС‚РІРѕСЂРµРЅРЅСЏ Р·Р°РїРёС‚Сѓ
             request = inference_pb2.PredictRequest(
                 data=image_data,
                 content_type='image/jpeg'
             )
 
-            # Вимірювання часу виконання запиту
+            # Р’РёРјС–СЂСЋРІР°РЅРЅСЏ С‡Р°СЃСѓ РІРёРєРѕРЅР°РЅРЅСЏ Р·Р°РїРёС‚Сѓ
             start_time = time.time()
             response = self.stub.Predict(request)
             elapsed = time.time() - start_time
@@ -72,20 +73,20 @@ class InferenceClient:
             return response, elapsed
 
         except Exception as e:
-            print(f"Помилка при виконанні запиту: {e}")
+            print(f"РџРѕРјРёР»РєР° РїСЂРё РІРёРєРѕРЅР°РЅРЅС– Р·Р°РїРёС‚Сѓ: {e}")
             return None, 0
 
     def predict_stream(self, image_paths):
         """
-        Відправляє потоковий запит на прогнозування кількох зображень
+        Р’С–РґРїСЂР°РІР»СЏС” РїРѕС‚РѕРєРѕРІРёР№ Р·Р°РїРёС‚ РЅР° РїСЂРѕРіРЅРѕР·СѓРІР°РЅРЅСЏ РєС–Р»СЊРєРѕС… Р·РѕР±СЂР°Р¶РµРЅСЊ
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        image_paths: список шляхів до файлів зображень
+        image_paths: СЃРїРёСЃРѕРє С€Р»СЏС…С–РІ РґРѕ С„Р°Р№Р»С–РІ Р·РѕР±СЂР°Р¶РµРЅСЊ
 
-        Повертає:
+        РџРѕРІРµСЂС‚Р°С”:
         -----------
-        генератор пар (відповідь, час виконання)
+        РіРµРЅРµСЂР°С‚РѕСЂ РїР°СЂ (РІС–РґРїРѕРІС–РґСЊ, С‡Р°СЃ РІРёРєРѕРЅР°РЅРЅСЏ)
         """
         def request_generator():
             for path in image_paths:
@@ -102,7 +103,7 @@ class InferenceClient:
                     yield request
 
                 except Exception as e:
-                    print(f"Помилка при підготовці запиту для {path}: {e}")
+                    print(f"РџРѕРјРёР»РєР° РїСЂРё РїС–РґРіРѕС‚РѕРІС†С– Р·Р°РїРёС‚Сѓ РґР»СЏ {path}: {e}")
 
         try:
             start_time = time.time()
@@ -116,78 +117,78 @@ class InferenceClient:
                 yield response, elapsed
 
         except Exception as e:
-            print(f"Помилка при виконанні потокового запиту: {e}")
+            print(f"РџРѕРјРёР»РєР° РїСЂРё РІРёРєРѕРЅР°РЅРЅС– РїРѕС‚РѕРєРѕРІРѕРіРѕ Р·Р°РїРёС‚Сѓ: {e}")
 
     def close(self):
         """
-        Закриття з'єднання
+        Р—Р°РєСЂРёС‚С‚СЏ Р·'С”РґРЅР°РЅРЅСЏ
         """
         self.channel.close()
 
 def format_prediction(prediction):
     """
-    Форматування прогнозу для виведення
+    Р¤РѕСЂРјР°С‚СѓРІР°РЅРЅСЏ РїСЂРѕРіРЅРѕР·Сѓ РґР»СЏ РІРёРІРµРґРµРЅРЅСЏ
 
-    Параметри:
+    РџР°СЂР°РјРµС‚СЂРё:
     -----------
-    prediction: об'єкт ClassPrediction
+    prediction: РѕР±'С”РєС‚ ClassPrediction
 
-    Повертає:
+    РџРѕРІРµСЂС‚Р°С”:
     -----------
-    рядок з форматованим прогнозом
+    СЂСЏРґРѕРє Р· С„РѕСЂРјР°С‚РѕРІР°РЅРёРј РїСЂРѕРіРЅРѕР·РѕРј
     """
     return f"{prediction.class_name} ({prediction.class_id}): {prediction.score:.4f}"
 
 def run_single_request(client, image_path):
     """
-    Виконує один запит і виводить результати
+    Р’РёРєРѕРЅСѓС” РѕРґРёРЅ Р·Р°РїРёС‚ С– РІРёРІРѕРґРёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚Рё
 
-    Параметри:
+    РџР°СЂР°РјРµС‚СЂРё:
     -----------
-    client: екземпляр InferenceClient
-    image_path: шлях до файлу зображення
+    client: РµРєР·РµРјРїР»СЏСЂ InferenceClient
+    image_path: С€Р»СЏС… РґРѕ С„Р°Р№Р»Сѓ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
     """
-    print(f"Відправлення запиту для {image_path}")
+    print(f"Р’С–РґРїСЂР°РІР»РµРЅРЅСЏ Р·Р°РїРёС‚Сѓ РґР»СЏ {image_path}")
 
     response, elapsed = client.predict(image_path)
 
     if response is None:
-        print("Не отримано відповіді від сервера")
+        print("РќРµ РѕС‚СЂРёРјР°РЅРѕ РІС–РґРїРѕРІС–РґС– РІС–Рґ СЃРµСЂРІРµСЂР°")
         return
 
-    print(f"\nРезультати прогнозування:")
-    print(f"ID запиту: {response.request_id}")
-    print(f"Статус: {'Успішно' if response.success else 'Помилка'}")
+    print(f"\nР РµР·СѓР»СЊС‚Р°С‚Рё РїСЂРѕРіРЅРѕР·СѓРІР°РЅРЅСЏ:")
+    print(f"ID Р·Р°РїРёС‚Сѓ: {response.request_id}")
+    print(f"РЎС‚Р°С‚СѓСЃ: {'РЈСЃРїС–С€РЅРѕ' if response.success else 'РџРѕРјРёР»РєР°'}")
 
     if not response.success:
-        print(f"Помилка: {response.error}")
+        print(f"РџРѕРјРёР»РєР°: {response.error}")
         return
 
-    print(f"Час обробки на сервері: {response.processing_time:.2f} мс")
-    print(f"Загальний час запиту: {elapsed*1000:.2f} мс")
-    print(f"Мережева затримка: {(elapsed*1000 - response.processing_time):.2f} мс")
+    print(f"Р§Р°СЃ РѕР±СЂРѕР±РєРё РЅР° СЃРµСЂРІРµСЂС–: {response.processing_time:.2f} РјСЃ")
+    print(f"Р—Р°РіР°Р»СЊРЅРёР№ С‡Р°СЃ Р·Р°РїРёС‚Сѓ: {elapsed*1000:.2f} РјСЃ")
+    print(f"РњРµСЂРµР¶РµРІР° Р·Р°С‚СЂРёРјРєР°: {(elapsed*1000 - response.processing_time):.2f} РјСЃ")
 
-    print("\nТоп-5 прогнозів:")
+    print("\nРўРѕРї-5 РїСЂРѕРіРЅРѕР·С–РІ:")
     for i, prediction in enumerate(response.predictions):
         print(f"{i+1}. {format_prediction(prediction)}")
 
     if response.metadata:
-        print("\nМетадані:")
+        print("\nРњРµС‚Р°РґР°РЅС–:")
         for key, value in response.metadata.items():
             print(f"{key}: {value}")
 
 def run_benchmark(client, image_path, num_requests, concurrency):
     """
-    Виконує benchmark з використанням паралельних запитів
+    Р’РёРєРѕРЅСѓС” benchmark Р· РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏРј РїР°СЂР°Р»РµР»СЊРЅРёС… Р·Р°РїРёС‚С–РІ
 
-    Параметри:
+    РџР°СЂР°РјРµС‚СЂРё:
     -----------
-    client: екземпляр InferenceClient
-    image_path: шлях до файлу зображення
-    num_requests: кількість запитів
-    concurrency: кількість паралельних запитів
+    client: РµРєР·РµРјРїР»СЏСЂ InferenceClient
+    image_path: С€Р»СЏС… РґРѕ С„Р°Р№Р»Сѓ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
+    num_requests: РєС–Р»СЊРєС–СЃС‚СЊ Р·Р°РїРёС‚С–РІ
+    concurrency: РєС–Р»СЊРєС–СЃС‚СЊ РїР°СЂР°Р»РµР»СЊРЅРёС… Р·Р°РїРёС‚С–РІ
     """
-    print(f"Запуск benchmark: {num_requests} запитів з рівнем паралелізму {concurrency}")
+    print(f"Р—Р°РїСѓСЃРє benchmark: {num_requests} Р·Р°РїРёС‚С–РІ Р· СЂС–РІРЅРµРј РїР°СЂР°Р»РµР»С–Р·РјСѓ {concurrency}")
 
     results = []
     errors = 0
@@ -199,7 +200,7 @@ def run_benchmark(client, image_path, num_requests, concurrency):
         return {
             'success': True, 
             'elapsed': elapsed, 
-            'server_time': response.processing_time / 1000  # конвертація з мс в секунди
+            'server_time': response.processing_time / 1000  # РєРѕРЅРІРµСЂС‚Р°С†С–СЏ Р· РјСЃ РІ СЃРµРєСѓРЅРґРё
         }
 
     start_time = time.time()
@@ -215,7 +216,7 @@ def run_benchmark(client, image_path, num_requests, concurrency):
 
     total_time = time.time() - start_time
 
-    # Обчислення статистики
+    # РћР±С‡РёСЃР»РµРЅРЅСЏ СЃС‚Р°С‚РёСЃС‚РёРєРё
     if results:
         client_times = [r['elapsed'] for r in results if r['success']]
         server_times = [r['server_time'] for r in results if r['success']]
@@ -238,22 +239,22 @@ def run_benchmark(client, image_path, num_requests, concurrency):
 
         rps = num_requests / total_time
 
-        print(f"\nРезультати benchmark:")
-        print(f"Загальний час: {total_time:.2f} с")
-        print(f"Успішних запитів: {num_requests - errors} з {num_requests} ({100 * (num_requests - errors) / num_requests:.2f}%)")
-        print(f"RPS (запитів на секунду): {rps:.2f}")
-        print(f"\nЧас виконання запиту (клієнт):")
-        print(f"  Середній: {avg_client_time * 1000:.2f} мс")
-        print(f"  Мінімальний: {min_client_time * 1000:.2f} мс")
-        print(f"  Максимальний: {max_client_time * 1000:.2f} мс")
-        print(f"  P95: {p95_client_time * 1000:.2f} мс")
-        print(f"\nЧас обробки (сервер):")
-        print(f"  Середній: {avg_server_time * 1000:.2f} мс")
-        print(f"  Мінімальний: {min_server_time * 1000:.2f} мс")
-        print(f"  Максимальний: {max_server_time * 1000:.2f} мс")
-        print(f"  P95: {p95_server_time * 1000:.2f} мс")
-        print(f"\nМережева затримка (туди-назад):")
-        print(f"  Середня: {(avg_client_time - avg_server_time) * 1000:.2f} мс")
+        print(f"\nР РµР·СѓР»СЊС‚Р°С‚Рё benchmark:")
+        print(f"Р—Р°РіР°Р»СЊРЅРёР№ С‡Р°СЃ: {total_time:.2f} СЃ")
+        print(f"РЈСЃРїС–С€РЅРёС… Р·Р°РїРёС‚С–РІ: {num_requests - errors} Р· {num_requests} ({100 * (num_requests - errors) / num_requests:.2f}%)")
+        print(f"RPS (Р·Р°РїРёС‚С–РІ РЅР° СЃРµРєСѓРЅРґСѓ): {rps:.2f}")
+        print(f"\nР§Р°СЃ РІРёРєРѕРЅР°РЅРЅСЏ Р·Р°РїРёС‚Сѓ (РєР»С–С”РЅС‚):")
+        print(f"  РЎРµСЂРµРґРЅС–Р№: {avg_client_time * 1000:.2f} РјСЃ")
+        print(f"  РњС–РЅС–РјР°Р»СЊРЅРёР№: {min_client_time * 1000:.2f} РјСЃ")
+        print(f"  РњР°РєСЃРёРјР°Р»СЊРЅРёР№: {max_client_time * 1000:.2f} РјСЃ")
+        print(f"  P95: {p95_client_time * 1000:.2f} РјСЃ")
+        print(f"\nР§Р°СЃ РѕР±СЂРѕР±РєРё (СЃРµСЂРІРµСЂ):")
+        print(f"  РЎРµСЂРµРґРЅС–Р№: {avg_server_time * 1000:.2f} РјСЃ")
+        print(f"  РњС–РЅС–РјР°Р»СЊРЅРёР№: {min_server_time * 1000:.2f} РјСЃ")
+        print(f"  РњР°РєСЃРёРјР°Р»СЊРЅРёР№: {max_server_time * 1000:.2f} РјСЃ")
+        print(f"  P95: {p95_server_time * 1000:.2f} РјСЃ")
+        print(f"\nРњРµСЂРµР¶РµРІР° Р·Р°С‚СЂРёРјРєР° (С‚СѓРґРё-РЅР°Р·Р°Рґ):")
+        print(f"  РЎРµСЂРµРґРЅСЏ: {(avg_client_time - avg_server_time) * 1000:.2f} РјСЃ")
 
         return {
             'total_time': total_time,
@@ -265,49 +266,50 @@ def run_benchmark(client, image_path, num_requests, concurrency):
             'avg_network_time_ms': (avg_client_time - avg_server_time) * 1000
         }
     else:
-        print("Не отримано успішних результатів")
+        print("РќРµ РѕС‚СЂРёРјР°РЅРѕ СѓСЃРїС–С€РЅРёС… СЂРµР·СѓР»СЊС‚Р°С‚С–РІ")
         return None
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='gRPC клієнт для інференсу моделей')
-    parser.add_argument('--server', type=str, default='localhost:50051', help='Адреса gRPC сервера')
-    parser.add_argument('--image', type=str, default='test_image.jpg', help='Шлях до тестового зображення')
+    parser = argparse.ArgumentParser(description='gRPC РєР»С–С”РЅС‚ РґР»СЏ С–РЅС„РµСЂРµРЅСЃСѓ РјРѕРґРµР»РµР№')
+    parser.add_argument('--server', type=str, default='localhost:50051', help='РђРґСЂРµСЃР° gRPC СЃРµСЂРІРµСЂР°')
+    parser.add_argument('--image', type=str, default='test_image.jpg', help='РЁР»СЏС… РґРѕ С‚РµСЃС‚РѕРІРѕРіРѕ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ')
     parser.add_argument('--mode', type=str, choices=['single', 'benchmark'], default='single', 
-                        help='Режим роботи: одиночний запит (single) або тестування продуктивності (benchmark)')
-    parser.add_argument('--requests', type=int, default=100, help='Кількість запитів для режиму benchmark')
-    parser.add_argument('--concurrency', type=int, default=10, help='Рівень паралелізму для режиму benchmark')
+                        help='Р РµР¶РёРј СЂРѕР±РѕС‚Рё: РѕРґРёРЅРѕС‡РЅРёР№ Р·Р°РїРёС‚ (single) Р°Р±Рѕ С‚РµСЃС‚СѓРІР°РЅРЅСЏ РїСЂРѕРґСѓРєС‚РёРІРЅРѕСЃС‚С– (benchmark)')
+    parser.add_argument('--requests', type=int, default=100, help='РљС–Р»СЊРєС–СЃС‚СЊ Р·Р°РїРёС‚С–РІ РґР»СЏ СЂРµР¶РёРјСѓ benchmark')
+    parser.add_argument('--concurrency', type=int, default=10, help='Р С–РІРµРЅСЊ РїР°СЂР°Р»РµР»С–Р·РјСѓ РґР»СЏ СЂРµР¶РёРјСѓ benchmark')
 
     args = parser.parse_args()
 
     if not Path(args.image).exists():
-        print(f"Помилка: файл {args.image} не існує")
+        print(f"РџРѕРјРёР»РєР°: С„Р°Р№Р» {args.image} РЅРµ С–СЃРЅСѓС”")
         sys.exit(1)
 
     client = InferenceClient(args.server)
 
     try:
-        # Перевірка здоров'я сервера
+        # РџРµСЂРµРІС–СЂРєР° Р·РґРѕСЂРѕРІ'СЏ СЃРµСЂРІРµСЂР°
         health_response = client.health_check()
-        print(f"Статус сервера: {health_response.status}")
+        print(f"РЎС‚Р°С‚СѓСЃ СЃРµСЂРІРµСЂР°: {health_response.status}")
 
         if health_response.status != inference_pb2.ServingStatus.SERVING:
-            print("Сервер не готовий до роботи")
+            print("РЎРµСЂРІРµСЂ РЅРµ РіРѕС‚РѕРІРёР№ РґРѕ СЂРѕР±РѕС‚Рё")
             sys.exit(1)
 
-        print("Сервер готовий до роботи")
+        print("РЎРµСЂРІРµСЂ РіРѕС‚РѕРІРёР№ РґРѕ СЂРѕР±РѕС‚Рё")
         if health_response.metadata:
-            print("Інформація про сервер:")
+            print("Р†РЅС„РѕСЂРјР°С†С–СЏ РїСЂРѕ СЃРµСЂРІРµСЂ:")
             for key, value in health_response.metadata.items():
                 print(f"{key}: {value}")
 
-        # Виконання запитів відповідно до режиму
+        # Р’РёРєРѕРЅР°РЅРЅСЏ Р·Р°РїРёС‚С–РІ РІС–РґРїРѕРІС–РґРЅРѕ РґРѕ СЂРµР¶РёРјСѓ
         if args.mode == 'single':
             run_single_request(client, args.image)
         else:  # benchmark
             run_benchmark(client, args.image, args.requests, args.concurrency)
 
     except Exception as e:
-        print(f"Помилка: {e}")
+        print(f"РџРѕРјРёР»РєР°: {e}")
         sys.exit(1)
     finally:
         client.close()
+

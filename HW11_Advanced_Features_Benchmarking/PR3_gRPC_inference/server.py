@@ -1,3 +1,4 @@
+﻿# Updated version for PR
 import os
 import io
 import json
@@ -11,22 +12,22 @@ from PIL import Image
 import torchvision.transforms as transforms
 from torchvision.models import resnet50, ResNet50_Weights
 
-# Імпортуємо згенеровані gRPC модулі
+# Р†РјРїРѕСЂС‚СѓС”РјРѕ Р·РіРµРЅРµСЂРѕРІР°РЅС– gRPC РјРѕРґСѓР»С–
 import inference_pb2
 import inference_pb2_grpc
 
 class InferenceServicer(inference_pb2_grpc.InferenceServiceServicer):
     """
-    Сервіс для gRPC інференсу моделей машинного навчання
+    РЎРµСЂРІС–СЃ РґР»СЏ gRPC С–РЅС„РµСЂРµРЅСЃСѓ РјРѕРґРµР»РµР№ РјР°С€РёРЅРЅРѕРіРѕ РЅР°РІС‡Р°РЅРЅСЏ
     """
     def __init__(self):
         """
-        Ініціалізація сервісу
+        Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ СЃРµСЂРІС–СЃСѓ
         """
-        # Завантаження моделі
+        # Р—Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ РјРѕРґРµР»С–
         self.model = self._load_model()
 
-        # Створення трансформацій для зображень
+        # РЎС‚РІРѕСЂРµРЅРЅСЏ С‚СЂР°РЅСЃС„РѕСЂРјР°С†С–Р№ РґР»СЏ Р·РѕР±СЂР°Р¶РµРЅСЊ
         self.preprocessing = transforms.Compose([
             transforms.Resize(256),
             transforms.CenterCrop(224),
@@ -34,13 +35,13 @@ class InferenceServicer(inference_pb2_grpc.InferenceServiceServicer):
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ])
 
-        # Завантаження класів ImageNet
+        # Р—Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ РєР»Р°СЃС–РІ ImageNet
         with open('imagenet_classes.json', 'r') as f:
             self.labels = json.load(f)
 
     def _load_model(self):
         """
-        Завантаження попередньо навченої моделі ResNet50
+        Р—Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ РїРѕРїРµСЂРµРґРЅСЊРѕ РЅР°РІС‡РµРЅРѕС— РјРѕРґРµР»С– ResNet50
         """
         model = resnet50(weights=ResNet50_Weights.IMAGENET1K_V1)
         model.eval()
@@ -50,18 +51,18 @@ class InferenceServicer(inference_pb2_grpc.InferenceServiceServicer):
 
     def _preprocess_image(self, image_bytes):
         """
-        Попередня обробка зображення
+        РџРѕРїРµСЂРµРґРЅСЏ РѕР±СЂРѕР±РєР° Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        image_bytes: байти зображення
+        image_bytes: Р±Р°Р№С‚Рё Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
 
-        Повертає:
+        РџРѕРІРµСЂС‚Р°С”:
         -----------
-        тензор зображення
+        С‚РµРЅР·РѕСЂ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
         """
         img = Image.open(io.BytesIO(image_bytes))
-        img_tensor = self.preprocessing(img).unsqueeze(0)  # Додаємо вимірність батчу
+        img_tensor = self.preprocessing(img).unsqueeze(0)  # Р”РѕРґР°С”РјРѕ РІРёРјС–СЂРЅС–СЃС‚СЊ Р±Р°С‚С‡Сѓ
 
         if torch.cuda.is_available():
             img_tensor = img_tensor.cuda()
@@ -70,28 +71,28 @@ class InferenceServicer(inference_pb2_grpc.InferenceServiceServicer):
 
     def _process_prediction(self, outputs, top_k=5):
         """
-        Обробка результатів прогнозування
+        РћР±СЂРѕР±РєР° СЂРµР·СѓР»СЊС‚Р°С‚С–РІ РїСЂРѕРіРЅРѕР·СѓРІР°РЅРЅСЏ
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        outputs: вивід моделі
-        top_k: кількість найкращих класів для повернення
+        outputs: РІРёРІС–Рґ РјРѕРґРµР»С–
+        top_k: РєС–Р»СЊРєС–СЃС‚СЊ РЅР°Р№РєСЂР°С‰РёС… РєР»Р°СЃС–РІ РґР»СЏ РїРѕРІРµСЂРЅРµРЅРЅСЏ
 
-        Повертає:
+        РџРѕРІРµСЂС‚Р°С”:
         -----------
-        список об'єктів ClassPrediction
+        СЃРїРёСЃРѕРє РѕР±'С”РєС‚С–РІ ClassPrediction
         """
-        # Застосування softmax для отримання ймовірностей
+        # Р—Р°СЃС‚РѕСЃСѓРІР°РЅРЅСЏ softmax РґР»СЏ РѕС‚СЂРёРјР°РЅРЅСЏ Р№РјРѕРІС–СЂРЅРѕСЃС‚РµР№
         probs = torch.nn.functional.softmax(outputs, dim=1)[0]
 
-        # Отримання top_k найкращих результатів
+        # РћС‚СЂРёРјР°РЅРЅСЏ top_k РЅР°Р№РєСЂР°С‰РёС… СЂРµР·СѓР»СЊС‚Р°С‚С–РІ
         top_probs, top_indices = torch.topk(probs, top_k)
 
-        # Перетворення в numpy для легшої обробки
+        # РџРµСЂРµС‚РІРѕСЂРµРЅРЅСЏ РІ numpy РґР»СЏ Р»РµРіС€РѕС— РѕР±СЂРѕР±РєРё
         top_probs = top_probs.cpu().numpy()
         top_indices = top_indices.cpu().numpy()
 
-        # Створення списку прогнозів
+        # РЎС‚РІРѕСЂРµРЅРЅСЏ СЃРїРёСЃРєСѓ РїСЂРѕРіРЅРѕР·С–РІ
         predictions = []
         for i, (idx, prob) in enumerate(zip(top_indices, top_probs)):
             prediction = inference_pb2.ClassPrediction(
@@ -105,45 +106,45 @@ class InferenceServicer(inference_pb2_grpc.InferenceServiceServicer):
 
     def Predict(self, request, context):
         """
-        Реалізація RPC методу Predict
+        Р РµР°Р»С–Р·Р°С†С–СЏ RPC РјРµС‚РѕРґСѓ Predict
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        request: об'єкт PredictRequest
-        context: контекст gRPC
+        request: РѕР±'С”РєС‚ PredictRequest
+        context: РєРѕРЅС‚РµРєСЃС‚ gRPC
 
-        Повертає:
+        РџРѕРІРµСЂС‚Р°С”:
         -----------
-        об'єкт PredictResponse
+        РѕР±'С”РєС‚ PredictResponse
         """
         request_id = str(uuid.uuid4())
         start_time = time.time()
 
         try:
-            # Перевірка наявності даних
+            # РџРµСЂРµРІС–СЂРєР° РЅР°СЏРІРЅРѕСЃС‚С– РґР°РЅРёС…
             if not request.data:
                 context.set_code(grpc.StatusCode.INVALID_ARGUMENT)
-                context.set_details("Відсутні дані зображення")
+                context.set_details("Р’С–РґСЃСѓС‚РЅС– РґР°РЅС– Р·РѕР±СЂР°Р¶РµРЅРЅСЏ")
                 return inference_pb2.PredictResponse(
                     request_id=request_id,
                     success=False,
-                    error="Відсутні дані зображення"
+                    error="Р’С–РґСЃСѓС‚РЅС– РґР°РЅС– Р·РѕР±СЂР°Р¶РµРЅРЅСЏ"
                 )
 
-            # Попередня обробка зображення
+            # РџРѕРїРµСЂРµРґРЅСЏ РѕР±СЂРѕР±РєР° Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
             img_tensor = self._preprocess_image(request.data)
 
-            # Прогнозування
+            # РџСЂРѕРіРЅРѕР·СѓРІР°РЅРЅСЏ
             with torch.no_grad():
                 outputs = self.model(img_tensor)
 
-            # Обробка результатів
+            # РћР±СЂРѕР±РєР° СЂРµР·СѓР»СЊС‚Р°С‚С–РІ
             predictions = self._process_prediction(outputs)
 
-            # Обчислення часу обробки
-            processing_time = (time.time() - start_time) * 1000  # мс
+            # РћР±С‡РёСЃР»РµРЅРЅСЏ С‡Р°СЃСѓ РѕР±СЂРѕР±РєРё
+            processing_time = (time.time() - start_time) * 1000  # РјСЃ
 
-            # Підготовка відповіді
+            # РџС–РґРіРѕС‚РѕРІРєР° РІС–РґРїРѕРІС–РґС–
             response = inference_pb2.PredictResponse(
                 request_id=request_id,
                 success=True,
@@ -159,8 +160,8 @@ class InferenceServicer(inference_pb2_grpc.InferenceServiceServicer):
             return response
 
         except Exception as e:
-            # Обробка помилок
-            processing_time = (time.time() - start_time) * 1000  # мс
+            # РћР±СЂРѕР±РєР° РїРѕРјРёР»РѕРє
+            processing_time = (time.time() - start_time) * 1000  # РјСЃ
 
             context.set_code(grpc.StatusCode.INTERNAL)
             context.set_details(str(e))
@@ -174,32 +175,32 @@ class InferenceServicer(inference_pb2_grpc.InferenceServiceServicer):
 
     def PredictStream(self, request_iterator, context):
         """
-        Реалізація потокового RPC методу PredictStream
+        Р РµР°Р»С–Р·Р°С†С–СЏ РїРѕС‚РѕРєРѕРІРѕРіРѕ RPC РјРµС‚РѕРґСѓ PredictStream
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        request_iterator: ітератор запитів PredictRequest
-        context: контекст gRPC
+        request_iterator: С–С‚РµСЂР°С‚РѕСЂ Р·Р°РїРёС‚С–РІ PredictRequest
+        context: РєРѕРЅС‚РµРєСЃС‚ gRPC
 
-        Повертає:
+        РџРѕРІРµСЂС‚Р°С”:
         -----------
-        ітератор відповідей PredictResponse
+        С–С‚РµСЂР°С‚РѕСЂ РІС–РґРїРѕРІС–РґРµР№ PredictResponse
         """
         for request in request_iterator:
             yield self.Predict(request, context)
 
     def HealthCheck(self, request, context):
         """
-        Реалізація RPC методу HealthCheck
+        Р РµР°Р»С–Р·Р°С†С–СЏ RPC РјРµС‚РѕРґСѓ HealthCheck
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        request: об'єкт HealthCheckRequest
-        context: контекст gRPC
+        request: РѕР±'С”РєС‚ HealthCheckRequest
+        context: РєРѕРЅС‚РµРєСЃС‚ gRPC
 
-        Повертає:
+        РџРѕРІРµСЂС‚Р°С”:
         -----------
-        об'єкт HealthCheckResponse
+        РѕР±'С”РєС‚ HealthCheckResponse
         """
         return inference_pb2.HealthCheckResponse(
             status=inference_pb2.ServingStatus.SERVING,
@@ -213,12 +214,12 @@ class InferenceServicer(inference_pb2_grpc.InferenceServiceServicer):
 
 def serve(port=50051, max_workers=10):
     """
-    Запуск gRPC сервера
+    Р—Р°РїСѓСЃРє gRPC СЃРµСЂРІРµСЂР°
 
-    Параметри:
+    РџР°СЂР°РјРµС‚СЂРё:
     -----------
-    port: порт для прослуховування
-    max_workers: максимальна кількість потоків для обробки запитів
+    port: РїРѕСЂС‚ РґР»СЏ РїСЂРѕСЃР»СѓС…РѕРІСѓРІР°РЅРЅСЏ
+    max_workers: РјР°РєСЃРёРјР°Р»СЊРЅР° РєС–Р»СЊРєС–СЃС‚СЊ РїРѕС‚РѕРєС–РІ РґР»СЏ РѕР±СЂРѕР±РєРё Р·Р°РїРёС‚С–РІ
     """
     server = grpc.server(
         concurrent.futures.ThreadPoolExecutor(max_workers=max_workers),
@@ -235,15 +236,16 @@ def serve(port=50051, max_workers=10):
     server.add_insecure_port(f'[::]:{port}')
     server.start()
 
-    print(f"gRPC сервер запущено на порту {port}")
+    print(f"gRPC СЃРµСЂРІРµСЂ Р·Р°РїСѓС‰РµРЅРѕ РЅР° РїРѕСЂС‚Сѓ {port}")
 
     try:
-        # Сервер працює до переривання (Ctrl+C)
+        # РЎРµСЂРІРµСЂ РїСЂР°С†СЋС” РґРѕ РїРµСЂРµСЂРёРІР°РЅРЅСЏ (Ctrl+C)
         server.wait_for_termination()
     except KeyboardInterrupt:
         server.stop(0)
-        print("Сервер зупинено")
+        print("РЎРµСЂРІРµСЂ Р·СѓРїРёРЅРµРЅРѕ")
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 50051))
     serve(port=port)
+

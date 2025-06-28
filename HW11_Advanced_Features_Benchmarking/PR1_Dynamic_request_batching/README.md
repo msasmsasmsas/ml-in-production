@@ -1,3 +1,4 @@
+﻿<!-- Updated version for PR -->
 # Dynamic Request Batching
 
 This module implements a dynamic request batching system for machine learning models. Dynamic batching is a technique that combines multiple inference requests into a single batch to improve throughput and resource utilization.
@@ -53,3 +54,4 @@ Dynamic batching improves inference performance by:
 - `max_wait_time`: Maximum time to wait (in seconds) for additional requests before processing the batch
 
 These parameters can be tuned based on your specific model characteristics and load patterns.
+

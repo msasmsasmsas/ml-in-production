@@ -1,3 +1,4 @@
+﻿<!-- Updated version for PR -->
 # Model Server Benchmarking by Components
 
 This module provides detailed benchmarking tools to analyze the performance of machine learning model servers by breaking down the latency into individual components:
@@ -181,3 +182,4 @@ The benchmark generates comprehensive visualizations that help you understand:
 - If **model inference** is slow, consider model quantization or hardware acceleration
 - If **network latency** is high, consider protocol optimization or data compression
 - If performance degrades under concurrency, investigate thread pool sizing and batching strategies
+

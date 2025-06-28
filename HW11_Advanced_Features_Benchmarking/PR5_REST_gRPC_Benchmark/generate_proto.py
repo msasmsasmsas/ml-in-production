@@ -1,6 +1,7 @@
+﻿# Updated version for PR
 #!/usr/bin/env python
 """
-Скрипт для генерації Python-коду з .proto файлів
+РЎРєСЂРёРїС‚ РґР»СЏ РіРµРЅРµСЂР°С†С–С— Python-РєРѕРґСѓ Р· .proto С„Р°Р№Р»С–РІ
 """
 
 import os
@@ -10,21 +11,21 @@ from pathlib import Path
 
 def generate_grpc_code(proto_file, output_dir="."):
     """
-    Генерує Python-код з .proto файлу за допомогою protoc
+    Р“РµРЅРµСЂСѓС” Python-РєРѕРґ Р· .proto С„Р°Р№Р»Сѓ Р·Р° РґРѕРїРѕРјРѕРіРѕСЋ protoc
 
-    Параметри:
+    РџР°СЂР°РјРµС‚СЂРё:
     -----------
-    proto_file: шлях до .proto файлу
-    output_dir: директорія для вихідних файлів
+    proto_file: С€Р»СЏС… РґРѕ .proto С„Р°Р№Р»Сѓ
+    output_dir: РґРёСЂРµРєС‚РѕСЂС–СЏ РґР»СЏ РІРёС…С–РґРЅРёС… С„Р°Р№Р»С–РІ
     """
     proto_file = Path(proto_file)
 
     if not proto_file.exists():
-        print(f"Помилка: файл {proto_file} не існує")
+        print(f"РџРѕРјРёР»РєР°: С„Р°Р№Р» {proto_file} РЅРµ С–СЃРЅСѓС”")
         return False
 
     try:
-        # Команда для генерації Python-коду
+        # РљРѕРјР°РЅРґР° РґР»СЏ РіРµРЅРµСЂР°С†С–С— Python-РєРѕРґСѓ
         cmd = [
             "python", "-m", "grpc_tools.protoc",
             f"--proto_path={proto_file.parent}",
@@ -33,27 +34,28 @@ def generate_grpc_code(proto_file, output_dir="."):
             str(proto_file)
         ]
 
-        print(f"Виконання команди: {' '.join(cmd)}")
+        print(f"Р’РёРєРѕРЅР°РЅРЅСЏ РєРѕРјР°РЅРґРё: {' '.join(cmd)}")
         subprocess.check_call(cmd)
 
-        print(f"Успішно згенеровано Python-код з {proto_file}")
+        print(f"РЈСЃРїС–С€РЅРѕ Р·РіРµРЅРµСЂРѕРІР°РЅРѕ Python-РєРѕРґ Р· {proto_file}")
         return True
 
     except subprocess.CalledProcessError as e:
-        print(f"Помилка при генерації коду: {e}")
+        print(f"РџРѕРјРёР»РєР° РїСЂРё РіРµРЅРµСЂР°С†С–С— РєРѕРґСѓ: {e}")
         return False
     except Exception as e:
-        print(f"Неочікувана помилка: {e}")
+        print(f"РќРµРѕС‡С–РєСѓРІР°РЅР° РїРѕРјРёР»РєР°: {e}")
         return False
 
 if __name__ == "__main__":
-    # Шлях до .proto файлу за замовчуванням
+    # РЁР»СЏС… РґРѕ .proto С„Р°Р№Р»Сѓ Р·Р° Р·Р°РјРѕРІС‡СѓРІР°РЅРЅСЏРј
     default_proto = "proto/inference.proto"
 
-    # Отримання шляху з аргументів командного рядка, якщо вказано
+    # РћС‚СЂРёРјР°РЅРЅСЏ С€Р»СЏС…Сѓ Р· Р°СЂРіСѓРјРµРЅС‚С–РІ РєРѕРјР°РЅРґРЅРѕРіРѕ СЂСЏРґРєР°, СЏРєС‰Рѕ РІРєР°Р·Р°РЅРѕ
     proto_file = sys.argv[1] if len(sys.argv) > 1 else default_proto
 
     success = generate_grpc_code(proto_file)
 
     if not success:
         sys.exit(1)
+

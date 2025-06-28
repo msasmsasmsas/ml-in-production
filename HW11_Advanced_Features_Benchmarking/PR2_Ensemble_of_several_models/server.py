@@ -1,3 +1,4 @@
+﻿# Updated version for PR
 import os
 import io
 import json
@@ -10,21 +11,21 @@ from model_ensemble import ModelEnsemble
 
 app = Flask(__name__)
 
-# Ініціалізація моделей для ансамблю
+# Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ РјРѕРґРµР»РµР№ РґР»СЏ Р°РЅСЃР°РјР±Р»СЋ
 def load_models():
     """
-    Завантаження попередньо навчених моделей для ансамблю
+    Р—Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ РїРѕРїРµСЂРµРґРЅСЊРѕ РЅР°РІС‡РµРЅРёС… РјРѕРґРµР»РµР№ РґР»СЏ Р°РЅСЃР°РјР±Р»СЋ
     """
     model1 = models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V1)
     model2 = models.densenet121(weights=models.DenseNet121_Weights.IMAGENET1K_V1)
     model3 = models.efficientnet_b0(weights=models.EfficientNet_B0_Weights.IMAGENET1K_V1)
 
-    # Переведення моделей у режим оцінки
+    # РџРµСЂРµРІРµРґРµРЅРЅСЏ РјРѕРґРµР»РµР№ Сѓ СЂРµР¶РёРј РѕС†С–РЅРєРё
     model1.eval()
     model2.eval()
     model3.eval()
 
-    # Переміщення моделей на GPU, якщо доступно
+    # РџРµСЂРµРјС–С‰РµРЅРЅСЏ РјРѕРґРµР»РµР№ РЅР° GPU, СЏРєС‰Рѕ РґРѕСЃС‚СѓРїРЅРѕ
     if torch.cuda.is_available():
         model1 = model1.cuda()
         model2 = model2.cuda()
@@ -32,15 +33,15 @@ def load_models():
 
     return [model1, model2, model3]
 
-# Створення ансамблю моделей
+# РЎС‚РІРѕСЂРµРЅРЅСЏ Р°РЅСЃР°РјР±Р»СЋ РјРѕРґРµР»РµР№
 models_list = load_models()
 ensemble = ModelEnsemble(
     models=models_list,
-    weights=[0.4, 0.3, 0.3],  # Вагові коефіцієнти для кожної моделі
-    aggregation_method='softmax_average'  # Метод агрегації
+    weights=[0.4, 0.3, 0.3],  # Р’Р°РіРѕРІС– РєРѕРµС„С–С†С–С”РЅС‚Рё РґР»СЏ РєРѕР¶РЅРѕС— РјРѕРґРµР»С–
+    aggregation_method='softmax_average'  # РњРµС‚РѕРґ Р°РіСЂРµРіР°С†С–С—
 )
 
-# Підготовка трансформацій для зображень
+# РџС–РґРіРѕС‚РѕРІРєР° С‚СЂР°РЅСЃС„РѕСЂРјР°С†С–Р№ РґР»СЏ Р·РѕР±СЂР°Р¶РµРЅСЊ
 preprocessing = transforms.Compose([
     transforms.Resize(256),
     transforms.CenterCrop(224),
@@ -48,40 +49,40 @@ preprocessing = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
 ])
 
-# Завантаження класів ImageNet
+# Р—Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ РєР»Р°СЃС–РІ ImageNet
 with open('imagenet_classes.json', 'r') as f:
     labels = json.load(f)
 
 @app.route('/predict', methods=['POST'])
 def predict():
     """
-    Ендпоінт для прогнозування з використанням ансамблю моделей
+    Р•РЅРґРїРѕС–РЅС‚ РґР»СЏ РїСЂРѕРіРЅРѕР·СѓРІР°РЅРЅСЏ Р· РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏРј Р°РЅСЃР°РјР±Р»СЋ РјРѕРґРµР»РµР№
     """
     if 'file' not in request.files:
-        return jsonify({'error': 'Немає файлу в запиті'}), 400
+        return jsonify({'error': 'РќРµРјР°С” С„Р°Р№Р»Сѓ РІ Р·Р°РїРёС‚С–'}), 400
 
     file = request.files['file']
     img_bytes = file.read()
 
     try:
-        # Попередня обробка зображення
+        # РџРѕРїРµСЂРµРґРЅСЏ РѕР±СЂРѕР±РєР° Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
         img = Image.open(io.BytesIO(img_bytes))
-        img_tensor = preprocessing(img).unsqueeze(0)  # додавання вимірності батчу
+        img_tensor = preprocessing(img).unsqueeze(0)  # РґРѕРґР°РІР°РЅРЅСЏ РІРёРјС–СЂРЅРѕСЃС‚С– Р±Р°С‚С‡Сѓ
 
         if torch.cuda.is_available():
             img_tensor = img_tensor.cuda()
 
-        # Прогнозування ансамблем моделей
+        # РџСЂРѕРіРЅРѕР·СѓРІР°РЅРЅСЏ Р°РЅСЃР°РјР±Р»РµРј РјРѕРґРµР»РµР№
         ensemble_outputs = ensemble(img_tensor)
 
-        # Отримання прогнозів від окремих моделей, якщо запитано
+        # РћС‚СЂРёРјР°РЅРЅСЏ РїСЂРѕРіРЅРѕР·С–РІ РІС–Рґ РѕРєСЂРµРјРёС… РјРѕРґРµР»РµР№, СЏРєС‰Рѕ Р·Р°РїРёС‚Р°РЅРѕ
         individual_predictions = None
         if request.args.get('include_individual', '').lower() == 'true':
             individual_outputs = ensemble.get_individual_predictions(img_tensor)
             individual_predictions = []
 
             for i, output in enumerate(individual_outputs):
-                # Отримання топ-5 класів для кожної моделі
+                # РћС‚СЂРёРјР°РЅРЅСЏ С‚РѕРї-5 РєР»Р°СЃС–РІ РґР»СЏ РєРѕР¶РЅРѕС— РјРѕРґРµР»С–
                 probs = torch.nn.functional.softmax(output, dim=1)[0]
                 top5_probs, top5_indices = torch.topk(probs, 5)
 
@@ -97,7 +98,7 @@ def predict():
                     'predictions': model_predictions
                 })
 
-        # Обробка результатів ансамблю
+        # РћР±СЂРѕР±РєР° СЂРµР·СѓР»СЊС‚Р°С‚С–РІ Р°РЅСЃР°РјР±Р»СЋ
         probs = torch.nn.functional.softmax(ensemble_outputs, dim=1)[0]
         top5_probs, top5_indices = torch.topk(probs, 5)
 
@@ -123,7 +124,7 @@ def predict():
 @app.route('/health', methods=['GET'])
 def health_check():
     """
-    Ендпоінт для перевірки стану сервера
+    Р•РЅРґРїРѕС–РЅС‚ РґР»СЏ РїРµСЂРµРІС–СЂРєРё СЃС‚Р°РЅСѓ СЃРµСЂРІРµСЂР°
     """
     return jsonify({
         'status': 'ok',
@@ -134,3 +135,4 @@ def health_check():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+

@@ -1,3 +1,4 @@
+﻿<!-- Updated version for PR -->
 # gRPC Inference Server
 
 This module implements a high-performance gRPC-based inference server for machine learning models.
@@ -80,3 +81,4 @@ The client includes a benchmark mode that measures:
 - Network latency
 
 This allows for precise performance analysis and optimization.
+

@@ -1,3 +1,4 @@
+﻿# Updated version for PR
 import requests
 import time
 import sys
@@ -8,30 +9,30 @@ from pathlib import Path
 
 class ModelClient:
     """
-    Клієнт для тестування сервера з динамічним пакетуванням
+    РљР»С–С”РЅС‚ РґР»СЏ С‚РµСЃС‚СѓРІР°РЅРЅСЏ СЃРµСЂРІРµСЂР° Р· РґРёРЅР°РјС–С‡РЅРёРј РїР°РєРµС‚СѓРІР°РЅРЅСЏРј
     """
     def __init__(self, base_url):
         """
-        Ініціалізація клієнта
+        Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ РєР»С–С”РЅС‚Р°
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        base_url: базова URL адреса сервера
+        base_url: Р±Р°Р·РѕРІР° URL Р°РґСЂРµСЃР° СЃРµСЂРІРµСЂР°
         """
         self.base_url = base_url
         self.predict_url = f"{base_url}/predict"
 
     def predict(self, image_path):
         """
-        Відправляє запит на прогнозування
+        Р’С–РґРїСЂР°РІР»СЏС” Р·Р°РїРёС‚ РЅР° РїСЂРѕРіРЅРѕР·СѓРІР°РЅРЅСЏ
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        image_path: шлях до файлу зображення
+        image_path: С€Р»СЏС… РґРѕ С„Р°Р№Р»Сѓ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
 
-        Повертає:
+        РџРѕРІРµСЂС‚Р°С”:
         -----------
-        словник з результатами прогнозування або помилкою
+        СЃР»РѕРІРЅРёРє Р· СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё РїСЂРѕРіРЅРѕР·СѓРІР°РЅРЅСЏ Р°Р±Рѕ РїРѕРјРёР»РєРѕСЋ
         """
         try:
             with open(image_path, 'rb') as f:
@@ -45,22 +46,22 @@ class ModelClient:
                     result['latency'] = elapsed
                     return result
                 else:
-                    return {'error': f'HTTP помилка: {response.status_code}', 'response': response.text, 'latency': elapsed}
+                    return {'error': f'HTTP РїРѕРјРёР»РєР°: {response.status_code}', 'response': response.text, 'latency': elapsed}
         except Exception as e:
             return {'error': str(e), 'latency': 0}
 
 def run_concurrent_test(client, image_path, num_requests, concurrency):
     """
-    Запускає конкурентне тестування сервера
+    Р—Р°РїСѓСЃРєР°С” РєРѕРЅРєСѓСЂРµРЅС‚РЅРµ С‚РµСЃС‚СѓРІР°РЅРЅСЏ СЃРµСЂРІРµСЂР°
 
-    Параметри:
+    РџР°СЂР°РјРµС‚СЂРё:
     -----------
-    client: екземпляр класу ModelClient
-    image_path: шлях до файлу зображення
-    num_requests: загальна кількість запитів
-    concurrency: кількість паралельних запитів
+    client: РµРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСѓ ModelClient
+    image_path: С€Р»СЏС… РґРѕ С„Р°Р№Р»Сѓ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
+    num_requests: Р·Р°РіР°Р»СЊРЅР° РєС–Р»СЊРєС–СЃС‚СЊ Р·Р°РїРёС‚С–РІ
+    concurrency: РєС–Р»СЊРєС–СЃС‚СЊ РїР°СЂР°Р»РµР»СЊРЅРёС… Р·Р°РїРёС‚С–РІ
     """
-    print(f"Запуск {num_requests} запитів з рівнем паралелізму {concurrency}")
+    print(f"Р—Р°РїСѓСЃРє {num_requests} Р·Р°РїРёС‚С–РІ Р· СЂС–РІРЅРµРј РїР°СЂР°Р»РµР»С–Р·РјСѓ {concurrency}")
 
     results = []
     errors = 0
@@ -78,7 +79,7 @@ def run_concurrent_test(client, image_path, num_requests, concurrency):
 
     total_time = time.time() - start_time
 
-    # Обчислення статистики
+    # РћР±С‡РёСЃР»РµРЅРЅСЏ СЃС‚Р°С‚РёСЃС‚РёРєРё
     latencies = [r['latency'] for r in results]
     avg_latency = sum(latencies) / len(latencies)
     min_latency = min(latencies)
@@ -86,14 +87,14 @@ def run_concurrent_test(client, image_path, num_requests, concurrency):
     p95_latency = sorted(latencies)[int(len(latencies) * 0.95)]
     rps = num_requests / total_time
 
-    print(f"\nРезультати тестування:")
-    print(f"Загальний час: {total_time:.2f} с")
-    print(f"Успішних запитів: {num_requests - errors} з {num_requests} ({100 * (num_requests - errors) / num_requests:.2f}%)")
-    print(f"RPS (запитів на секунду): {rps:.2f}")
-    print(f"Середня затримка: {avg_latency * 1000:.2f} мс")
-    print(f"Мінімальна затримка: {min_latency * 1000:.2f} мс")
-    print(f"Максимальна затримка: {max_latency * 1000:.2f} мс")
-    print(f"P95 затримка: {p95_latency * 1000:.2f} мс")
+    print(f"\nР РµР·СѓР»СЊС‚Р°С‚Рё С‚РµСЃС‚СѓРІР°РЅРЅСЏ:")
+    print(f"Р—Р°РіР°Р»СЊРЅРёР№ С‡Р°СЃ: {total_time:.2f} СЃ")
+    print(f"РЈСЃРїС–С€РЅРёС… Р·Р°РїРёС‚С–РІ: {num_requests - errors} Р· {num_requests} ({100 * (num_requests - errors) / num_requests:.2f}%)")
+    print(f"RPS (Р·Р°РїРёС‚С–РІ РЅР° СЃРµРєСѓРЅРґСѓ): {rps:.2f}")
+    print(f"РЎРµСЂРµРґРЅСЏ Р·Р°С‚СЂРёРјРєР°: {avg_latency * 1000:.2f} РјСЃ")
+    print(f"РњС–РЅС–РјР°Р»СЊРЅР° Р·Р°С‚СЂРёРјРєР°: {min_latency * 1000:.2f} РјСЃ")
+    print(f"РњР°РєСЃРёРјР°Р»СЊРЅР° Р·Р°С‚СЂРёРјРєР°: {max_latency * 1000:.2f} РјСЃ")
+    print(f"P95 Р·Р°С‚СЂРёРјРєР°: {p95_latency * 1000:.2f} РјСЃ")
 
     return {
         'total_time': total_time,
@@ -107,29 +108,30 @@ def run_concurrent_test(client, image_path, num_requests, concurrency):
     }
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Клієнт для тестування сервера з динамічним пакетуванням')
-    parser.add_argument('--url', type=str, default='http://localhost:5000', help='Базова URL сервера')
-    parser.add_argument('--image', type=str, default='test_image.jpg', help='Шлях до тестового зображення')
-    parser.add_argument('--requests', type=int, default=100, help='Кількість запитів')
-    parser.add_argument('--concurrency', type=int, default=10, help='Рівень паралелізму')
+    parser = argparse.ArgumentParser(description='РљР»С–С”РЅС‚ РґР»СЏ С‚РµСЃС‚СѓРІР°РЅРЅСЏ СЃРµСЂРІРµСЂР° Р· РґРёРЅР°РјС–С‡РЅРёРј РїР°РєРµС‚СѓРІР°РЅРЅСЏРј')
+    parser.add_argument('--url', type=str, default='http://localhost:5000', help='Р‘Р°Р·РѕРІР° URL СЃРµСЂРІРµСЂР°')
+    parser.add_argument('--image', type=str, default='test_image.jpg', help='РЁР»СЏС… РґРѕ С‚РµСЃС‚РѕРІРѕРіРѕ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ')
+    parser.add_argument('--requests', type=int, default=100, help='РљС–Р»СЊРєС–СЃС‚СЊ Р·Р°РїРёС‚С–РІ')
+    parser.add_argument('--concurrency', type=int, default=10, help='Р С–РІРµРЅСЊ РїР°СЂР°Р»РµР»С–Р·РјСѓ')
 
     args = parser.parse_args()
 
     if not Path(args.image).exists():
-        print(f"Помилка: файл {args.image} не існує")
+        print(f"РџРѕРјРёР»РєР°: С„Р°Р№Р» {args.image} РЅРµ С–СЃРЅСѓС”")
         sys.exit(1)
 
     client = ModelClient(args.url)
 
-    # Перевірка здоров'я сервера
+    # РџРµСЂРµРІС–СЂРєР° Р·РґРѕСЂРѕРІ'СЏ СЃРµСЂРІРµСЂР°
     try:
         health_response = requests.get(f"{args.url}/health")
         if health_response.status_code != 200:
-            print(f"Сервер не готовий до роботи. Статус: {health_response.status_code}")
+            print(f"РЎРµСЂРІРµСЂ РЅРµ РіРѕС‚РѕРІРёР№ РґРѕ СЂРѕР±РѕС‚Рё. РЎС‚Р°С‚СѓСЃ: {health_response.status_code}")
             sys.exit(1)
     except Exception as e:
-        print(f"Не вдалося підключитися до сервера: {e}")
+        print(f"РќРµ РІРґР°Р»РѕСЃСЏ РїС–РґРєР»СЋС‡РёС‚РёСЃСЏ РґРѕ СЃРµСЂРІРµСЂР°: {e}")
         sys.exit(1)
 
-    print(f"Сервер готовий до роботи. Початок тестування...")
+    print(f"РЎРµСЂРІРµСЂ РіРѕС‚РѕРІРёР№ РґРѕ СЂРѕР±РѕС‚Рё. РџРѕС‡Р°С‚РѕРє С‚РµСЃС‚СѓРІР°РЅРЅСЏ...")
     run_concurrent_test(client, args.image, args.requests, args.concurrency)
+

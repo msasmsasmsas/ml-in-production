@@ -1,6 +1,7 @@
+﻿# Updated version for PR
 #!/usr/bin/env python
 """
-Скрипт для порівняльного бенчмаркінгу REST та gRPC інтерфейсів моделей машинного навчання
+РЎРєСЂРёРїС‚ РґР»СЏ РїРѕСЂС–РІРЅСЏР»СЊРЅРѕРіРѕ Р±РµРЅС‡РјР°СЂРєС–РЅРіСѓ REST С‚Р° gRPC С–РЅС‚РµСЂС„РµР№СЃС–РІ РјРѕРґРµР»РµР№ РјР°С€РёРЅРЅРѕРіРѕ РЅР°РІС‡Р°РЅРЅСЏ
 """
 
 import os
@@ -14,10 +15,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
-# Для REST запитів
+# Р”Р»СЏ REST Р·Р°РїРёС‚С–РІ
 import requests
 
-# Для gRPC запитів
+# Р”Р»СЏ gRPC Р·Р°РїРёС‚С–РІ
 try:
     import grpc
     import inference_pb2
@@ -25,34 +26,34 @@ try:
     grpc_available = True
 except ImportError:
     grpc_available = False
-    print("УВАГА: gRPC модулі не знайдено. gRPC бенчмаркінг буде недоступний.")
+    print("РЈР’РђР“Рђ: gRPC РјРѕРґСѓР»С– РЅРµ Р·РЅР°Р№РґРµРЅРѕ. gRPC Р±РµРЅС‡РјР°СЂРєС–РЅРі Р±СѓРґРµ РЅРµРґРѕСЃС‚СѓРїРЅРёР№.")
 
 class RestClient:
     """
-    Клієнт для REST API
+    РљР»С–С”РЅС‚ РґР»СЏ REST API
     """
     def __init__(self, base_url):
         """
-        Ініціалізація клієнта
+        Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ РєР»С–С”РЅС‚Р°
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        base_url: базова URL адреса сервера
+        base_url: Р±Р°Р·РѕРІР° URL Р°РґСЂРµСЃР° СЃРµСЂРІРµСЂР°
         """
         self.base_url = base_url
         self.predict_url = f"{base_url}/predict"
 
     def predict(self, image_path):
         """
-        Відправляє запит на прогнозування
+        Р’С–РґРїСЂР°РІР»СЏС” Р·Р°РїРёС‚ РЅР° РїСЂРѕРіРЅРѕР·СѓРІР°РЅРЅСЏ
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        image_path: шлях до файлу зображення
+        image_path: С€Р»СЏС… РґРѕ С„Р°Р№Р»Сѓ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
 
-        Повертає:
+        РџРѕРІРµСЂС‚Р°С”:
         -----------
-        кортеж (відповідь, час виконання, успіх)
+        РєРѕСЂС‚РµР¶ (РІС–РґРїРѕРІС–РґСЊ, С‡Р°СЃ РІРёРєРѕРЅР°РЅРЅСЏ, СѓСЃРїС–С…)
         """
         try:
             with open(image_path, 'rb') as f:
@@ -66,26 +67,26 @@ class RestClient:
                     result = response.json()
                     return result, elapsed, True
                 else:
-                    return {'error': f'HTTP помилка: {response.status_code}'}, elapsed, False
+                    return {'error': f'HTTP РїРѕРјРёР»РєР°: {response.status_code}'}, elapsed, False
         except Exception as e:
             return {'error': str(e)}, 0, False
 
 class GrpcClient:
     """
-    Клієнт для gRPC API
+    РљР»С–С”РЅС‚ РґР»СЏ gRPC API
     """
     def __init__(self, server_address):
         """
-        Ініціалізація клієнта
+        Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ РєР»С–С”РЅС‚Р°
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        server_address: адреса gRPC сервера
+        server_address: Р°РґСЂРµСЃР° gRPC СЃРµСЂРІРµСЂР°
         """
         if not grpc_available:
-            raise ImportError("gRPC модулі недоступні")
+            raise ImportError("gRPC РјРѕРґСѓР»С– РЅРµРґРѕСЃС‚СѓРїРЅС–")
 
-        # Створення каналу з опціями для великих повідомлень
+        # РЎС‚РІРѕСЂРµРЅРЅСЏ РєР°РЅР°Р»Сѓ Р· РѕРїС†С–СЏРјРё РґР»СЏ РІРµР»РёРєРёС… РїРѕРІС–РґРѕРјР»РµРЅСЊ
         channel_options = [
             ('grpc.max_send_message_length', 50 * 1024 * 1024),  # 50 MB
             ('grpc.max_receive_message_length', 50 * 1024 * 1024),  # 50 MB
@@ -95,33 +96,33 @@ class GrpcClient:
 
     def predict(self, image_path):
         """
-        Відправляє запит на прогнозування
+        Р’С–РґРїСЂР°РІР»СЏС” Р·Р°РїРёС‚ РЅР° РїСЂРѕРіРЅРѕР·СѓРІР°РЅРЅСЏ
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        image_path: шлях до файлу зображення
+        image_path: С€Р»СЏС… РґРѕ С„Р°Р№Р»Сѓ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
 
-        Повертає:
+        РџРѕРІРµСЂС‚Р°С”:
         -----------
-        кортеж (відповідь, час виконання, успіх)
+        РєРѕСЂС‚РµР¶ (РІС–РґРїРѕРІС–РґСЊ, С‡Р°СЃ РІРёРєРѕРЅР°РЅРЅСЏ, СѓСЃРїС–С…)
         """
         try:
-            # Зчитування файлу зображення
+            # Р—С‡РёС‚СѓРІР°РЅРЅСЏ С„Р°Р№Р»Сѓ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
             with open(image_path, 'rb') as f:
                 image_data = f.read()
 
-            # Створення запиту
+            # РЎС‚РІРѕСЂРµРЅРЅСЏ Р·Р°РїРёС‚Сѓ
             request = inference_pb2.PredictRequest(
                 data=image_data,
                 content_type='image/jpeg'
             )
 
-            # Вимірювання часу виконання запиту
+            # Р’РёРјС–СЂСЋРІР°РЅРЅСЏ С‡Р°СЃСѓ РІРёРєРѕРЅР°РЅРЅСЏ Р·Р°РїРёС‚Сѓ
             start_time = time.time()
             response = self.stub.Predict(request)
             elapsed = time.time() - start_time
 
-            # Конвертація response у словник для уніфікації з REST
+            # РљРѕРЅРІРµСЂС‚Р°С†С–СЏ response Сѓ СЃР»РѕРІРЅРёРє РґР»СЏ СѓРЅС–С„С–РєР°С†С–С— Р· REST
             result = {
                 'request_id': response.request_id,
                 'success': response.success,
@@ -146,24 +147,24 @@ class GrpcClient:
 
     def close(self):
         """
-        Закриття з'єднання
+        Р—Р°РєСЂРёС‚С‚СЏ Р·'С”РґРЅР°РЅРЅСЏ
         """
         self.channel.close()
 
 def run_benchmark(client, image_path, num_requests, concurrency):
     """
-    Запускає бенчмаркінг
+    Р—Р°РїСѓСЃРєР°С” Р±РµРЅС‡РјР°СЂРєС–РЅРі
 
-    Параметри:
+    РџР°СЂР°РјРµС‚СЂРё:
     -----------
-    client: клієнт (RestClient або GrpcClient)
-    image_path: шлях до файлу зображення
-    num_requests: кількість запитів
-    concurrency: рівень паралелізму
+    client: РєР»С–С”РЅС‚ (RestClient Р°Р±Рѕ GrpcClient)
+    image_path: С€Р»СЏС… РґРѕ С„Р°Р№Р»Сѓ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
+    num_requests: РєС–Р»СЊРєС–СЃС‚СЊ Р·Р°РїРёС‚С–РІ
+    concurrency: СЂС–РІРµРЅСЊ РїР°СЂР°Р»РµР»С–Р·РјСѓ
 
-    Повертає:
+    РџРѕРІРµСЂС‚Р°С”:
     -----------
-    словник з результатами
+    СЃР»РѕРІРЅРёРє Р· СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё
     """
     results = []
     errors = 0
@@ -186,11 +187,11 @@ def run_benchmark(client, image_path, num_requests, concurrency):
 
     total_time = time.time() - start_time
 
-    # Обчислення статистики
+    # РћР±С‡РёСЃР»РµРЅРЅСЏ СЃС‚Р°С‚РёСЃС‚РёРєРё
     latencies = [r['elapsed'] for r in results if r['success']]
 
     if not latencies:
-        print("Всі запити завершилися з помилками")
+        print("Р’СЃС– Р·Р°РїРёС‚Рё Р·Р°РІРµСЂС€РёР»РёСЃСЏ Р· РїРѕРјРёР»РєР°РјРё")
         return {
             'total_requests': num_requests,
             'successful_requests': 0,
@@ -200,17 +201,17 @@ def run_benchmark(client, image_path, num_requests, concurrency):
             'stats': None
         }
 
-    # Базова статистика
+    # Р‘Р°Р·РѕРІР° СЃС‚Р°С‚РёСЃС‚РёРєР°
     stats = {
-        'min': min(latencies) * 1000,  # мс
-        'max': max(latencies) * 1000,  # мс
-        'mean': statistics.mean(latencies) * 1000,  # мс
-        'median': statistics.median(latencies) * 1000,  # мс
-        'p90': np.percentile(latencies, 90) * 1000,  # мс
-        'p95': np.percentile(latencies, 95) * 1000,  # мс
-        'p99': np.percentile(latencies, 99) * 1000,  # мс
-        'std': statistics.stdev(latencies) * 1000 if len(latencies) > 1 else 0,  # мс
-        'rps': len(latencies) / total_time  # запитів на секунду
+        'min': min(latencies) * 1000,  # РјСЃ
+        'max': max(latencies) * 1000,  # РјСЃ
+        'mean': statistics.mean(latencies) * 1000,  # РјСЃ
+        'median': statistics.median(latencies) * 1000,  # РјСЃ
+        'p90': np.percentile(latencies, 90) * 1000,  # РјСЃ
+        'p95': np.percentile(latencies, 95) * 1000,  # РјСЃ
+        'p99': np.percentile(latencies, 99) * 1000,  # РјСЃ
+        'std': statistics.stdev(latencies) * 1000 if len(latencies) > 1 else 0,  # РјСЃ
+        'rps': len(latencies) / total_time  # Р·Р°РїРёС‚С–РІ РЅР° СЃРµРєСѓРЅРґСѓ
     }
 
     return {
@@ -225,81 +226,81 @@ def run_benchmark(client, image_path, num_requests, concurrency):
 
 def print_benchmark_results(protocol, results):
     """
-    Виводить результати бенчмаркінгу
+    Р’РёРІРѕРґРёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚Рё Р±РµРЅС‡РјР°СЂРєС–РЅРіСѓ
 
-    Параметри:
+    РџР°СЂР°РјРµС‚СЂРё:
     -----------
-    protocol: назва протоколу (REST або gRPC)
-    results: словник з результатами
+    protocol: РЅР°Р·РІР° РїСЂРѕС‚РѕРєРѕР»Сѓ (REST Р°Р±Рѕ gRPC)
+    results: СЃР»РѕРІРЅРёРє Р· СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё
     """
-    print(f"\nРезультати бенчмаркінгу {protocol}:")
-    print(f"Загальний час: {results['total_time']:.2f} с")
-    print(f"Запитів: {results['total_requests']}")
-    print(f"Успішних: {results['successful_requests']} ({100 * results['successful_requests'] / results['total_requests']:.2f}%)")
-    print(f"Невдалих: {results['failed_requests']}")
-    print(f"Рівень паралелізму: {results['concurrency']}")
+    print(f"\nР РµР·СѓР»СЊС‚Р°С‚Рё Р±РµРЅС‡РјР°СЂРєС–РЅРіСѓ {protocol}:")
+    print(f"Р—Р°РіР°Р»СЊРЅРёР№ С‡Р°СЃ: {results['total_time']:.2f} СЃ")
+    print(f"Р—Р°РїРёС‚С–РІ: {results['total_requests']}")
+    print(f"РЈСЃРїС–С€РЅРёС…: {results['successful_requests']} ({100 * results['successful_requests'] / results['total_requests']:.2f}%)")
+    print(f"РќРµРІРґР°Р»РёС…: {results['failed_requests']}")
+    print(f"Р С–РІРµРЅСЊ РїР°СЂР°Р»РµР»С–Р·РјСѓ: {results['concurrency']}")
 
     if results['stats']:
         stats = results['stats']
-        print("\nСтатистика часу виконання (мс):")
-        print(f"  Мін: {stats['min']:.2f}")
-        print(f"  Макс: {stats['max']:.2f}")
-        print(f"  Середнє: {stats['mean']:.2f}")
-        print(f"  Медіана: {stats['median']:.2f}")
+        print("\nРЎС‚Р°С‚РёСЃС‚РёРєР° С‡Р°СЃСѓ РІРёРєРѕРЅР°РЅРЅСЏ (РјСЃ):")
+        print(f"  РњС–РЅ: {stats['min']:.2f}")
+        print(f"  РњР°РєСЃ: {stats['max']:.2f}")
+        print(f"  РЎРµСЂРµРґРЅС”: {stats['mean']:.2f}")
+        print(f"  РњРµРґС–Р°РЅР°: {stats['median']:.2f}")
         print(f"  P90: {stats['p90']:.2f}")
         print(f"  P95: {stats['p95']:.2f}")
         print(f"  P99: {stats['p99']:.2f}")
-        print(f"  Стандартне відхилення: {stats['std']:.2f}")
-        print(f"  Запитів на секунду (RPS): {stats['rps']:.2f}")
+        print(f"  РЎС‚Р°РЅРґР°СЂС‚РЅРµ РІС–РґС…РёР»РµРЅРЅСЏ: {stats['std']:.2f}")
+        print(f"  Р—Р°РїРёС‚С–РІ РЅР° СЃРµРєСѓРЅРґСѓ (RPS): {stats['rps']:.2f}")
 
 def compare_and_plot(rest_results, grpc_results, output_file=None):
     """
-    Порівнює та візуалізує результати бенчмаркінгу REST та gRPC
+    РџРѕСЂС–РІРЅСЋС” С‚Р° РІС–Р·СѓР°Р»С–Р·СѓС” СЂРµР·СѓР»СЊС‚Р°С‚Рё Р±РµРЅС‡РјР°СЂРєС–РЅРіСѓ REST С‚Р° gRPC
 
-    Параметри:
+    РџР°СЂР°РјРµС‚СЂРё:
     -----------
-    rest_results: словник з результатами REST
-    grpc_results: словник з результатами gRPC
-    output_file: шлях до вихідного файлу (якщо None, графіки відображаються)
+    rest_results: СЃР»РѕРІРЅРёРє Р· СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё REST
+    grpc_results: СЃР»РѕРІРЅРёРє Р· СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё gRPC
+    output_file: С€Р»СЏС… РґРѕ РІРёС…С–РґРЅРѕРіРѕ С„Р°Р№Р»Сѓ (СЏРєС‰Рѕ None, РіСЂР°С„С–РєРё РІС–РґРѕР±СЂР°Р¶Р°СЋС‚СЊСЃСЏ)
     """
     if not rest_results['stats'] or not grpc_results['stats']:
-        print("Недостатньо даних для порівняння")
+        print("РќРµРґРѕСЃС‚Р°С‚РЅСЊРѕ РґР°РЅРёС… РґР»СЏ РїРѕСЂС–РІРЅСЏРЅРЅСЏ")
         return
 
-    # Створення датафрейму для візуалізації
-    rest_latencies = [l * 1000 for l in rest_results['raw_latencies']]  # мс
-    grpc_latencies = [l * 1000 for l in grpc_results['raw_latencies']]  # мс
+    # РЎС‚РІРѕСЂРµРЅРЅСЏ РґР°С‚Р°С„СЂРµР№РјСѓ РґР»СЏ РІС–Р·СѓР°Р»С–Р·Р°С†С–С—
+    rest_latencies = [l * 1000 for l in rest_results['raw_latencies']]  # РјСЃ
+    grpc_latencies = [l * 1000 for l in grpc_results['raw_latencies']]  # РјСЃ
 
     rest_df = pd.DataFrame({'latency': rest_latencies, 'protocol': 'REST'})
     grpc_df = pd.DataFrame({'latency': grpc_latencies, 'protocol': 'gRPC'})
     df = pd.concat([rest_df, grpc_df])
 
-    # Створення графіків
+    # РЎС‚РІРѕСЂРµРЅРЅСЏ РіСЂР°С„С–РєС–РІ
     fig, axes = plt.subplots(2, 2, figsize=(15, 10))
-    fig.suptitle('Порівняння REST та gRPC', fontsize=16)
+    fig.suptitle('РџРѕСЂС–РІРЅСЏРЅРЅСЏ REST С‚Р° gRPC', fontsize=16)
 
-    # Графік 1: RPS
+    # Р“СЂР°С„С–Рє 1: RPS
     protocols = ['REST', 'gRPC']
     rps = [rest_results['stats']['rps'], grpc_results['stats']['rps']]
 
     axes[0, 0].bar(protocols, rps)
-    axes[0, 0].set_title('Запити на секунду (RPS)')
+    axes[0, 0].set_title('Р—Р°РїРёС‚Рё РЅР° СЃРµРєСѓРЅРґСѓ (RPS)')
     axes[0, 0].set_ylabel('RPS')
     for i, v in enumerate(rps):
         axes[0, 0].text(i, v, f"{v:.2f}", ha='center', va='bottom')
 
-    # Графік 2: Розподіл затримок
+    # Р“СЂР°С„С–Рє 2: Р РѕР·РїРѕРґС–Р» Р·Р°С‚СЂРёРјРѕРє
     sns.boxplot(x='protocol', y='latency', data=df, ax=axes[0, 1])
-    axes[0, 1].set_title('Розподіл затримок')
-    axes[0, 1].set_ylabel('Затримка (мс)')
+    axes[0, 1].set_title('Р РѕР·РїРѕРґС–Р» Р·Р°С‚СЂРёРјРѕРє')
+    axes[0, 1].set_ylabel('Р—Р°С‚СЂРёРјРєР° (РјСЃ)')
 
-    # Графік 3: Гістограма затримок
+    # Р“СЂР°С„С–Рє 3: Р“С–СЃС‚РѕРіСЂР°РјР° Р·Р°С‚СЂРёРјРѕРє
     sns.histplot(data=df, x='latency', hue='protocol', kde=True, ax=axes[1, 0])
-    axes[1, 0].set_title('Гістограма затримок')
-    axes[1, 0].set_xlabel('Затримка (мс)')
-    axes[1, 0].set_ylabel('Кількість запитів')
+    axes[1, 0].set_title('Р“С–СЃС‚РѕРіСЂР°РјР° Р·Р°С‚СЂРёРјРѕРє')
+    axes[1, 0].set_xlabel('Р—Р°С‚СЂРёРјРєР° (РјСЃ)')
+    axes[1, 0].set_ylabel('РљС–Р»СЊРєС–СЃС‚СЊ Р·Р°РїРёС‚С–РІ')
 
-    # Графік 4: Порівняння метрик
+    # Р“СЂР°С„С–Рє 4: РџРѕСЂС–РІРЅСЏРЅРЅСЏ РјРµС‚СЂРёРє
     metrics = ['mean', 'median', 'p90', 'p95', 'p99']
     rest_metrics = [rest_results['stats'][m] for m in metrics]
     grpc_metrics = [grpc_results['stats'][m] for m in metrics]
@@ -310,31 +311,31 @@ def compare_and_plot(rest_results, grpc_results, output_file=None):
     axes[1, 1].bar(x - width/2, rest_metrics, width, label='REST')
     axes[1, 1].bar(x + width/2, grpc_metrics, width, label='gRPC')
 
-    axes[1, 1].set_title('Порівняння метрик')
+    axes[1, 1].set_title('РџРѕСЂС–РІРЅСЏРЅРЅСЏ РјРµС‚СЂРёРє')
     axes[1, 1].set_xticks(x)
     axes[1, 1].set_xticklabels(metrics)
-    axes[1, 1].set_ylabel('Затримка (мс)')
+    axes[1, 1].set_ylabel('Р—Р°С‚СЂРёРјРєР° (РјСЃ)')
     axes[1, 1].legend()
 
     plt.tight_layout(rect=[0, 0, 1, 0.95])
 
     if output_file:
         plt.savefig(output_file)
-        print(f"Графіки збережено у {output_file}")
+        print(f"Р“СЂР°С„С–РєРё Р·Р±РµСЂРµР¶РµРЅРѕ Сѓ {output_file}")
     else:
         plt.show()
 
 def save_results_json(rest_results, grpc_results, output_file):
     """
-    Зберігає результати у JSON файл
+    Р—Р±РµСЂС–РіР°С” СЂРµР·СѓР»СЊС‚Р°С‚Рё Сѓ JSON С„Р°Р№Р»
 
-    Параметри:
+    РџР°СЂР°РјРµС‚СЂРё:
     -----------
-    rest_results: словник з результатами REST
-    grpc_results: словник з результатами gRPC
-    output_file: шлях до вихідного файлу
+    rest_results: СЃР»РѕРІРЅРёРє Р· СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё REST
+    grpc_results: СЃР»РѕРІРЅРёРє Р· СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё gRPC
+    output_file: С€Р»СЏС… РґРѕ РІРёС…С–РґРЅРѕРіРѕ С„Р°Р№Р»Сѓ
     """
-    # Створення копій без raw_latencies для компактності
+    # РЎС‚РІРѕСЂРµРЅРЅСЏ РєРѕРїС–Р№ Р±РµР· raw_latencies РґР»СЏ РєРѕРјРїР°РєС‚РЅРѕСЃС‚С–
     rest_copy = rest_results.copy()
     if 'raw_latencies' in rest_copy:
         del rest_copy['raw_latencies']
@@ -351,63 +352,63 @@ def save_results_json(rest_results, grpc_results, output_file):
     with open(output_file, 'w') as f:
         json.dump(results, f, indent=2)
 
-    print(f"Результати збережено у {output_file}")
+    print(f"Р РµР·СѓР»СЊС‚Р°С‚Рё Р·Р±РµСЂРµР¶РµРЅРѕ Сѓ {output_file}")
 
 def main():
-    parser = argparse.ArgumentParser(description='Порівняльний бенчмаркінг REST та gRPC')
+    parser = argparse.ArgumentParser(description='РџРѕСЂС–РІРЅСЏР»СЊРЅРёР№ Р±РµРЅС‡РјР°СЂРєС–РЅРі REST С‚Р° gRPC')
 
-    # Основні параметри
+    # РћСЃРЅРѕРІРЅС– РїР°СЂР°РјРµС‚СЂРё
     parser.add_argument('--image', type=str, required=True,
-                        help='Шлях до тестового зображення')
+                        help='РЁР»СЏС… РґРѕ С‚РµСЃС‚РѕРІРѕРіРѕ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ')
     parser.add_argument('--rest-url', type=str, default='http://localhost:5000',
-                        help='URL для REST API')
+                        help='URL РґР»СЏ REST API')
     parser.add_argument('--grpc-server', type=str, default='localhost:50051',
-                        help='Адреса gRPC сервера')
+                        help='РђРґСЂРµСЃР° gRPC СЃРµСЂРІРµСЂР°')
 
-    # Параметри бенчмаркінгу
+    # РџР°СЂР°РјРµС‚СЂРё Р±РµРЅС‡РјР°СЂРєС–РЅРіСѓ
     parser.add_argument('--requests', type=int, default=100,
-                        help='Кількість запитів')
+                        help='РљС–Р»СЊРєС–СЃС‚СЊ Р·Р°РїРёС‚С–РІ')
     parser.add_argument('--concurrency', type=int, default=10,
-                        help='Рівень паралелізму')
+                        help='Р С–РІРµРЅСЊ РїР°СЂР°Р»РµР»С–Р·РјСѓ')
 
-    # Параметри вихідних даних
+    # РџР°СЂР°РјРµС‚СЂРё РІРёС…С–РґРЅРёС… РґР°РЅРёС…
     parser.add_argument('--output-json', type=str, default=None,
-                        help='Шлях для збереження результатів у JSON')
+                        help='РЁР»СЏС… РґР»СЏ Р·Р±РµСЂРµР¶РµРЅРЅСЏ СЂРµР·СѓР»СЊС‚Р°С‚С–РІ Сѓ JSON')
     parser.add_argument('--output-plot', type=str, default=None,
-                        help='Шлях для збереження графіків')
+                        help='РЁР»СЏС… РґР»СЏ Р·Р±РµСЂРµР¶РµРЅРЅСЏ РіСЂР°С„С–РєС–РІ')
 
     args = parser.parse_args()
 
-    # Перевірка наявності файлу зображення
+    # РџРµСЂРµРІС–СЂРєР° РЅР°СЏРІРЅРѕСЃС‚С– С„Р°Р№Р»Сѓ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
     if not os.path.isfile(args.image):
-        print(f"Помилка: файл {args.image} не існує")
+        print(f"РџРѕРјРёР»РєР°: С„Р°Р№Р» {args.image} РЅРµ С–СЃРЅСѓС”")
         return 1
 
-    # REST бенчмаркінг
-    print(f"\nЗапуск REST бенчмаркінгу ({args.requests} запитів, паралелізм {args.concurrency})...")
+    # REST Р±РµРЅС‡РјР°СЂРєС–РЅРі
+    print(f"\nР—Р°РїСѓСЃРє REST Р±РµРЅС‡РјР°СЂРєС–РЅРіСѓ ({args.requests} Р·Р°РїРёС‚С–РІ, РїР°СЂР°Р»РµР»С–Р·Рј {args.concurrency})...")
     rest_client = RestClient(args.rest_url)
     rest_results = run_benchmark(rest_client, args.image, args.requests, args.concurrency)
     print_benchmark_results("REST", rest_results)
 
-    # gRPC бенчмаркінг
+    # gRPC Р±РµРЅС‡РјР°СЂРєС–РЅРі
     grpc_results = None
     if grpc_available:
         try:
-            print(f"\nЗапуск gRPC бенчмаркінгу ({args.requests} запитів, паралелізм {args.concurrency})...")
+            print(f"\nР—Р°РїСѓСЃРє gRPC Р±РµРЅС‡РјР°СЂРєС–РЅРіСѓ ({args.requests} Р·Р°РїРёС‚С–РІ, РїР°СЂР°Р»РµР»С–Р·Рј {args.concurrency})...")
             grpc_client = GrpcClient(args.grpc_server)
             grpc_results = run_benchmark(grpc_client, args.image, args.requests, args.concurrency)
             print_benchmark_results("gRPC", grpc_results)
             grpc_client.close()
         except Exception as e:
-            print(f"Помилка при gRPC бенчмаркінгу: {e}")
+            print(f"РџРѕРјРёР»РєР° РїСЂРё gRPC Р±РµРЅС‡РјР°СЂРєС–РЅРіСѓ: {e}")
     else:
-        print("\ngRPC бенчмаркінг недоступний (модулі не знайдено)")
+        print("\ngRPC Р±РµРЅС‡РјР°СЂРєС–РЅРі РЅРµРґРѕСЃС‚СѓРїРЅРёР№ (РјРѕРґСѓР»С– РЅРµ Р·РЅР°Р№РґРµРЅРѕ)")
 
-    # Порівняння та візуалізація
+    # РџРѕСЂС–РІРЅСЏРЅРЅСЏ С‚Р° РІС–Р·СѓР°Р»С–Р·Р°С†С–СЏ
     if grpc_results and grpc_results['stats'] and rest_results['stats']:
         compare_and_plot(rest_results, grpc_results, args.output_plot)
 
-    # Збереження результатів
+    # Р—Р±РµСЂРµР¶РµРЅРЅСЏ СЂРµР·СѓР»СЊС‚Р°С‚С–РІ
     if args.output_json:
         save_results_json(rest_results, grpc_results, args.output_json)
 
@@ -416,3 +417,4 @@ def main():
 if __name__ == "__main__":
     import sys
     sys.exit(main())
+

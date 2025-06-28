@@ -1,3 +1,4 @@
+﻿<!-- Updated version for PR -->
 # REST vs gRPC Benchmark
 
 This module provides comprehensive benchmarking tools for comparing REST and gRPC performance for machine learning model serving.
@@ -106,3 +107,4 @@ Typical benchmark results show:
 - Consider REST for public APIs and browser clients
 - For high-volume inference, gRPC offers significant performance benefits
 - Implement both protocols with a shared backend for flexibility
+
