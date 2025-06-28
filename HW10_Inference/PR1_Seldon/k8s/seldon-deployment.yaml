@@ -1,0 +1,42 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+  name: resnet50-classifier
+  namespace: seldon
+spec:
+  name: resnet50-classifier
+  predictors:
+  - componentSpecs:
+    - spec:
+        containers:
+        - name: classifier
+          image: seldon-resnet50:latest
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "1"
+          env:
+          - name: SELDON_LOG_LEVEL
+            value: INFO
+          - name: GUNICORN_WORKERS
+            value: "2"
+    graph:
+      name: classifier
+      type: MODEL
+      children: []
+    name: default
+    replicas: 1
+    annotations:
+      seldon.io/executor: "true"
+    traffic: 100
+    engineResources:
+      requests:
+        memory: "500Mi"
+        cpu: "250m"
+      limits:
+        memory: "1Gi"
+        cpu: "500m"

@@ -1,0 +1,65 @@
+﻿# новлена версія для PR
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  batch:
+    timeout: 1s
+    send_batch_size: 1024
+
+  # Р”РѕРґР°С‚РєРѕРІРёР№ РїСЂРѕС†РµСЃРѕСЂ РґР»СЏ С„С–Р»СЊС‚СЂР°С†С–С— С‚Р° Р·Р±Р°РіР°С‡РµРЅРЅСЏ С‚РµР»РµРјРµС‚СЂС–С—
+  attributes:
+    actions:
+      - key: "environment"
+        value: "production"
+        action: "insert"
+      - key: "app"
+        value: "threat-detection-api"
+        action: "insert"
+
+  resource:
+    attributes:
+      - key: service.name
+        action: upsert
+        from_attribute: service.name
+        value: "threat-detection-api"
+
+exporters:
+  clickhouse:
+    endpoint: tcp://signoz-clickhouse:9000/?database=signoz_traces
+    username: default
+    password: ""
+
+  # Р”РѕРґР°С‚РєРѕРІРёР№ РµРєСЃРїРѕСЂС‚РµСЂ РґР»СЏ Р»РѕРіСѓРІР°РЅРЅСЏ (РґР»СЏ РЅР°Р»Р°РіРѕРґР¶РµРЅРЅСЏ)
+  logging:
+    loglevel: debug
+
+extensions:
+  health_check:
+    endpoint: 0.0.0.0:13133
+  pprof:
+    endpoint: 0.0.0.0:1777
+  zpages:
+    endpoint: 0.0.0.0:55679
+
+service:
+  extensions: [health_check, pprof, zpages]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch, attributes, resource]
+      exporters: [clickhouse, logging]
+    metrics:
+      receivers: [otlp]
+      processors: [batch, attributes, resource]
+      exporters: [clickhouse, logging]
+    logs:
+      receivers: [otlp]
+      processors: [batch, attributes, resource]
+      exporters: [clickhouse, logging]
+

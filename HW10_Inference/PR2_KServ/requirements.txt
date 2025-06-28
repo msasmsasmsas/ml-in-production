@@ -1,0 +1,25 @@
+# KServe and serving dependencies
+kserve>=0.10.0
+torchserve>=0.8.0
+torch-model-archiver>=0.8.0
+torch-workflow-archiver>=0.2.1
+
+# ML dependencies
+torch>=2.2.0
+torchvision>=0.17.0
+pillow>=10.0.0
+numpy>=1.26.0
+scikit-learn>=1.4.0
+lime>=0.2.0
+
+# API and web
+fastapi>=0.95.0
+uvicorn>=0.22.0
+pydantic>=2.0.0
+
+# Client dependencies
+requests>=2.31.0
+
+# Testing dependencies
+pytest>=7.4.0
+pytest-cov>=4.1.0

@@ -1,0 +1,11 @@
+numpy>=1.21.0
+matplotlib>=3.4.3
+pandas>=1.3.3
+seaborn>=0.11.2
+requests>=2.26.0
+grpcio>=1.42.0
+grpcio-tools>=1.42.0
+torch>=1.9.0
+torchvision>=0.10.0
+Pillow>=8.3.1
+protobuf>=3.19.0,<4.0.0
