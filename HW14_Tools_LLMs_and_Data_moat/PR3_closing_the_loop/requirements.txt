@@ -1,0 +1,13 @@
+# Залежності для створення датасету з моніторингу
+pandas==1.5.3
+numpy==1.24.3
+arize-ai==6.0.0
+python-dotenv==1.0.0
+scikit-learn==1.2.2
+evidently==0.4.16
+tqdm==4.65.0
+labelbox==3.53.0
+pyarrow==14.0.1
+fastapi==0.104.1
+uvicorn==0.23.2
+jinja2==3.1.2
