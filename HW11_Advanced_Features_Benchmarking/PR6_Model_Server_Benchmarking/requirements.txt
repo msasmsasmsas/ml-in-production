@@ -1,0 +1,24 @@
+# Core dependencies
+numpy>=1.20.0
+pandas>=1.3.0
+matplotlib>=3.4.0
+seaborn>=0.11.0
+requests>=2.25.0
+
+# For gRPC
+grpcio>=1.38.0
+grpcio-tools>=1.38.0
+protobuf>=3.17.0
+
+# For REST server
+flask>=2.0.0
+
+# For image processing
+pillow>=8.2.0
+
+# For concurrent processing
+futures>=3.1.1
+
+# For model support
+torch>=1.9.0
+torchvision>=0.10.0

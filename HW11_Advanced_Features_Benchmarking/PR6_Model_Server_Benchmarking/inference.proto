@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package inference;
+
+// Service definition for model inference
+service InferenceService {
+  // Predict method for single image inference
+  rpc Predict (PredictRequest) returns (PredictResponse) {}
+
+  // Streaming predict for multiple images
+  rpc StreamingPredict (stream PredictRequest) returns (stream PredictResponse) {}
+}
+
+// Request message for prediction
+message PredictRequest {
+  // Raw image data
+  bytes image_data = 1;
+
+  // Whether to enable detailed timing information
+  bool enable_timing = 2;
+
+  // Optional metadata for the request
+  map<string, string> metadata = 3;
+}
+
+// Response message with prediction results
+message PredictResponse {
+  // Prediction results as JSON string
+  string result = 1;
+
+  // Error message if any
+  string error = 2;
+
+  // Timing information for benchmarking
+  repeated TimingInfo timing_info = 3;
+}
+
+// Timing information for component benchmarking
+message TimingInfo {
+  // Component name (preprocessing, inference, postprocessing, etc.)
+  string component = 1;
+
+  // Duration in milliseconds
+  double duration_ms = 2;
+}
