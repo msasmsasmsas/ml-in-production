@@ -1,3 +1,4 @@
+﻿<!-- новлена версія для PR -->
 # Model Benchmarking Tools
 
 This module provides comprehensive tools for benchmarking and profiling machine learning models after optimization.
@@ -137,3 +138,4 @@ python model_pruning.py --model models/original.pt --save-path models/pruned.pt
 python model_distillation.py --teacher models/original.pt --save-path models/distilled.pt
 python benchmark_models.py --models "original:models/original.pt,quantized:models/quantized.pt,pruned:models/pruned.pt,distilled:models/distilled.pt"
 ```
+

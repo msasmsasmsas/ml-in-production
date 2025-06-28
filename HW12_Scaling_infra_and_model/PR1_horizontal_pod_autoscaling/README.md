@@ -1,3 +1,4 @@
+﻿<!-- новлена версія для PR -->
 # Horizontal Pod Autoscaling for Model Server
 
 This module provides configuration for automatically scaling model server deployments based on load metrics.
@@ -96,3 +97,4 @@ You should see the number of pods increasing as the load increases, and decreasi
 3. Use custom metrics for more targeted scaling
 4. Monitor scaling events to fine-tune HPA parameters
 5. Consider using Pod Disruption Budgets (PDBs) for higher availability
+

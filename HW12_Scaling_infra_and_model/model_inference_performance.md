@@ -1,3 +1,4 @@
+﻿<!-- новлена версія для PR -->
 # Model Inference Performance Optimization
 
 ## Overview
@@ -168,3 +169,4 @@ Based on our comprehensive testing, we recommend the following approach for prod
 2. Hinton, G., et al. (2015). Distilling the knowledge in a neural network. NIPS 2015.
 3. Han, S., et al. (2015). Learning both weights and connections for efficient neural networks. NIPS 2015.
 4. Jacob, B., et al. (2018). Quantization and training of neural networks for efficient integer-arithmetic-only inference. CVPR 2018.
+

@@ -1,3 +1,4 @@
+﻿<!-- новлена версія для PR -->
 # Asynchronous Inference Service with Kafka
 
 This module provides an asynchronous model inference service using Apache Kafka as a message queue.
@@ -131,3 +132,4 @@ kubectl apply -f kubernetes/
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+

@@ -1,7 +1,8 @@
+﻿# новлена версія для PR
 #!/usr/bin/env python
 
 '''
-Сервіс асинхронного інференсу з використанням Apache Kafka
+РЎРµСЂРІС–СЃ Р°СЃРёРЅС…СЂРѕРЅРЅРѕРіРѕ С–РЅС„РµСЂРµРЅСЃСѓ Р· РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏРј Apache Kafka
 '''
 
 import os
@@ -12,10 +13,10 @@ import threading
 import logging
 from typing import Dict, List, Any, Optional, Callable
 
-# Kafka клієнт
+# Kafka РєР»С–С”РЅС‚
 from confluent_kafka import Producer, Consumer, KafkaError, KafkaException
 
-# Налаштування логування
+# РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ Р»РѕРіСѓРІР°РЅРЅСЏ
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -24,7 +25,7 @@ logger = logging.getLogger('kafka_queue')
 
 class KafkaQueueService:
     '''
-    Сервіс асинхронного інференсу з використанням Apache Kafka
+    РЎРµСЂРІС–СЃ Р°СЃРёРЅС…СЂРѕРЅРЅРѕРіРѕ С–РЅС„РµСЂРµРЅСЃСѓ Р· РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏРј Apache Kafka
     '''
 
     def __init__(self, 
@@ -34,15 +35,15 @@ class KafkaQueueService:
                 consumer_group: str,
                 num_workers: int = 2):
         '''
-        Ініціалізація сервісу Kafka черги
+        Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ СЃРµСЂРІС–СЃСѓ Kafka С‡РµСЂРіРё
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        bootstrap_servers: список Kafka серверів
-        request_topic: тема для запитів інференсу
-        response_topic: тема для відповідей інференсу
-        consumer_group: група споживачів
-        num_workers: кількість воркерів для обробки запитів
+        bootstrap_servers: СЃРїРёСЃРѕРє Kafka СЃРµСЂРІРµСЂС–РІ
+        request_topic: С‚РµРјР° РґР»СЏ Р·Р°РїРёС‚С–РІ С–РЅС„РµСЂРµРЅСЃСѓ
+        response_topic: С‚РµРјР° РґР»СЏ РІС–РґРїРѕРІС–РґРµР№ С–РЅС„РµСЂРµРЅСЃСѓ
+        consumer_group: РіСЂСѓРїР° СЃРїРѕР¶РёРІР°С‡С–РІ
+        num_workers: РєС–Р»СЊРєС–СЃС‚СЊ РІРѕСЂРєРµСЂС–РІ РґР»СЏ РѕР±СЂРѕР±РєРё Р·Р°РїРёС‚С–РІ
         '''
         self.bootstrap_servers = bootstrap_servers
         self.request_topic = request_topic
@@ -50,23 +51,23 @@ class KafkaQueueService:
         self.consumer_group = consumer_group
         self.num_workers = num_workers
 
-        # Налаштування продюсера Kafka
+        # РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РїСЂРѕРґСЋСЃРµСЂР° Kafka
         self.producer_config = {
             'bootstrap.servers': bootstrap_servers,
             'client.id': f'model-inference-producer-{uuid.uuid4()}',
-            'acks': 'all',  # Очікувати підтвердження від всіх реплік
-            'retries': 3,    # Кількість повторних спроб
-            'retry.backoff.ms': 100  # Затримка між спробами
+            'acks': 'all',  # РћС‡С–РєСѓРІР°С‚Рё РїС–РґС‚РІРµСЂРґР¶РµРЅРЅСЏ РІС–Рґ РІСЃС–С… СЂРµРїР»С–Рє
+            'retries': 3,    # РљС–Р»СЊРєС–СЃС‚СЊ РїРѕРІС‚РѕСЂРЅРёС… СЃРїСЂРѕР±
+            'retry.backoff.ms': 100  # Р—Р°С‚СЂРёРјРєР° РјС–Р¶ СЃРїСЂРѕР±Р°РјРё
         }
 
-        # Налаштування споживача Kafka
+        # РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ СЃРїРѕР¶РёРІР°С‡Р° Kafka
         self.consumer_config = {
             'bootstrap.servers': bootstrap_servers,
             'group.id': consumer_group,
-            'auto.offset.reset': 'earliest',  # Починати з найстаріших повідомлень
-            'enable.auto.commit': True,       # Автоматичний коміт офсетів
-            'auto.commit.interval.ms': 1000,  # Інтервал коміту офсетів
-            'max.poll.interval.ms': 300000    # Максимальний інтервал між опитуваннями
+            'auto.offset.reset': 'earliest',  # РџРѕС‡РёРЅР°С‚Рё Р· РЅР°Р№СЃС‚Р°СЂС–С€РёС… РїРѕРІС–РґРѕРјР»РµРЅСЊ
+            'enable.auto.commit': True,       # РђРІС‚РѕРјР°С‚РёС‡РЅРёР№ РєРѕРјС–С‚ РѕС„СЃРµС‚С–РІ
+            'auto.commit.interval.ms': 1000,  # Р†РЅС‚РµСЂРІР°Р» РєРѕРјС–С‚Сѓ РѕС„СЃРµС‚С–РІ
+            'max.poll.interval.ms': 300000    # РњР°РєСЃРёРјР°Р»СЊРЅРёР№ С–РЅС‚РµСЂРІР°Р» РјС–Р¶ РѕРїРёС‚СѓРІР°РЅРЅСЏРјРё
         }
 
         self.producer = None
@@ -74,53 +75,53 @@ class KafkaQueueService:
         self.worker_threads = []
         self.running = False
 
-        # Колбеки для обробки запитів
+        # РљРѕР»Р±РµРєРё РґР»СЏ РѕР±СЂРѕР±РєРё Р·Р°РїРёС‚С–РІ
         self.request_handlers = {}
 
-        # Словник для callback-ів очікування відповідей
+        # РЎР»РѕРІРЅРёРє РґР»СЏ callback-С–РІ РѕС‡С–РєСѓРІР°РЅРЅСЏ РІС–РґРїРѕРІС–РґРµР№
         self.response_callbacks = {}
         self.response_lock = threading.Lock()
 
     def start(self):
         '''
-        Запуск сервісу Kafka черги
+        Р—Р°РїСѓСЃРє СЃРµСЂРІС–СЃСѓ Kafka С‡РµСЂРіРё
         '''
         if self.running:
-            logger.warning("Сервіс вже запущено")
+            logger.warning("РЎРµСЂРІС–СЃ РІР¶Рµ Р·Р°РїСѓС‰РµРЅРѕ")
             return
 
         self.running = True
 
-        # Створення продюсера
+        # РЎС‚РІРѕСЂРµРЅРЅСЏ РїСЂРѕРґСЋСЃРµСЂР°
         self.producer = Producer(self.producer_config)
 
-        # Запуск обробника відповідей
+        # Р—Р°РїСѓСЃРє РѕР±СЂРѕР±РЅРёРєР° РІС–РґРїРѕРІС–РґРµР№
         self._start_response_consumer()
 
-        # Запуск воркерів
+        # Р—Р°РїСѓСЃРє РІРѕСЂРєРµСЂС–РІ
         for i in range(self.num_workers):
             self._start_worker(i)
 
-        logger.info(f"Запущено сервіс Kafka черги з {self.num_workers} воркерами")
+        logger.info(f"Р—Р°РїСѓС‰РµРЅРѕ СЃРµСЂРІС–СЃ Kafka С‡РµСЂРіРё Р· {self.num_workers} РІРѕСЂРєРµСЂР°РјРё")
 
     def stop(self):
         '''
-        Зупинка сервісу Kafka черги
+        Р—СѓРїРёРЅРєР° СЃРµСЂРІС–СЃСѓ Kafka С‡РµСЂРіРё
         '''
         if not self.running:
             return
 
         self.running = False
 
-        # Зупинка всіх воркерів
+        # Р—СѓРїРёРЅРєР° РІСЃС–С… РІРѕСЂРєРµСЂС–РІ
         for consumer in self.consumers:
             consumer.close()
 
-        # Очікування завершення всіх потоків
+        # РћС‡С–РєСѓРІР°РЅРЅСЏ Р·Р°РІРµСЂС€РµРЅРЅСЏ РІСЃС–С… РїРѕС‚РѕРєС–РІ
         for thread in self.worker_threads:
             thread.join(timeout=5.0)
 
-        # Закриття продюсера
+        # Р—Р°РєСЂРёС‚С‚СЏ РїСЂРѕРґСЋСЃРµСЂР°
         if self.producer:
             self.producer.flush()
 
@@ -128,38 +129,38 @@ class KafkaQueueService:
         self.worker_threads = []
         self.response_callbacks = {}
 
-        logger.info("Сервіс Kafka черги зупинено")
+        logger.info("РЎРµСЂРІС–СЃ Kafka С‡РµСЂРіРё Р·СѓРїРёРЅРµРЅРѕ")
 
     def register_handler(self, model_name: str, handler_func: Callable):
         '''
-        Реєстрація обробника для моделі
+        Р РµС”СЃС‚СЂР°С†С–СЏ РѕР±СЂРѕР±РЅРёРєР° РґР»СЏ РјРѕРґРµР»С–
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        model_name: назва моделі
-        handler_func: функція-обробник запитів інференсу
+        model_name: РЅР°Р·РІР° РјРѕРґРµР»С–
+        handler_func: С„СѓРЅРєС†С–СЏ-РѕР±СЂРѕР±РЅРёРє Р·Р°РїРёС‚С–РІ С–РЅС„РµСЂРµРЅСЃСѓ
         '''
         self.request_handlers[model_name] = handler_func
-        logger.info(f"Зареєстровано обробник для моделі '{model_name}'")
+        logger.info(f"Р—Р°СЂРµС”СЃС‚СЂРѕРІР°РЅРѕ РѕР±СЂРѕР±РЅРёРє РґР»СЏ РјРѕРґРµР»С– '{model_name}'")
 
     def submit_inference_request(self, model_name: str, data: Any, callback: Optional[Callable] = None, timeout: int = 30):
         '''
-        Відправка запиту на асинхронний інференс
+        Р’С–РґРїСЂР°РІРєР° Р·Р°РїРёС‚Сѓ РЅР° Р°СЃРёРЅС…СЂРѕРЅРЅРёР№ С–РЅС„РµСЂРµРЅСЃ
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        model_name: назва моделі
-        data: дані для інференсу
-        callback: функція, яка буде викликана з результатом
-        timeout: таймаут очікування відповіді в секундах
+        model_name: РЅР°Р·РІР° РјРѕРґРµР»С–
+        data: РґР°РЅС– РґР»СЏ С–РЅС„РµСЂРµРЅСЃСѓ
+        callback: С„СѓРЅРєС†С–СЏ, СЏРєР° Р±СѓРґРµ РІРёРєР»РёРєР°РЅР° Р· СЂРµР·СѓР»СЊС‚Р°С‚РѕРј
+        timeout: С‚Р°Р№РјР°СѓС‚ РѕС‡С–РєСѓРІР°РЅРЅСЏ РІС–РґРїРѕРІС–РґС– РІ СЃРµРєСѓРЅРґР°С…
 
-        Повертає:
+        РџРѕРІРµСЂС‚Р°С”:
         -----------
-        request_id: ідентифікатор запиту
+        request_id: С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ Р·Р°РїРёС‚Сѓ
         '''
         request_id = str(uuid.uuid4())
 
-        # Створення повідомлення
+        # РЎС‚РІРѕСЂРµРЅРЅСЏ РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ
         message = {
             'request_id': request_id,
             'model_name': model_name,
@@ -167,16 +168,16 @@ class KafkaQueueService:
             'data': data
         }
 
-        # Серіалізація повідомлення
+        # РЎРµСЂС–Р°Р»С–Р·Р°С†С–СЏ РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ
         try:
             payload = json.dumps(message).encode('utf-8')
         except (TypeError, ValueError) as e:
-            logger.error(f"Помилка серіалізації запиту: {e}")
+            logger.error(f"РџРѕРјРёР»РєР° СЃРµСЂС–Р°Р»С–Р·Р°С†С–С— Р·Р°РїРёС‚Сѓ: {e}")
             if callback:
-                callback({'error': f"Помилка серіалізації запиту: {e}", 'request_id': request_id})
+                callback({'error': f"РџРѕРјРёР»РєР° СЃРµСЂС–Р°Р»С–Р·Р°С†С–С— Р·Р°РїРёС‚Сѓ: {e}", 'request_id': request_id})
             return request_id
 
-        # Реєстрація callback'у для очікування відповіді
+        # Р РµС”СЃС‚СЂР°С†С–СЏ callback'Сѓ РґР»СЏ РѕС‡С–РєСѓРІР°РЅРЅСЏ РІС–РґРїРѕРІС–РґС–
         if callback:
             with self.response_lock:
                 self.response_callbacks[request_id] = {
@@ -184,7 +185,7 @@ class KafkaQueueService:
                     'expires': time.time() + timeout
                 }
 
-        # Відправка повідомлення в Kafka
+        # Р’С–РґРїСЂР°РІРєР° РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ РІ Kafka
         try:
             self.producer.produce(
                 self.request_topic,
@@ -192,29 +193,29 @@ class KafkaQueueService:
                 value=payload,
                 callback=self._delivery_callback
             )
-            self.producer.poll(0)  # Тригер доставки повідомлень
+            self.producer.poll(0)  # РўСЂРёРіРµСЂ РґРѕСЃС‚Р°РІРєРё РїРѕРІС–РґРѕРјР»РµРЅСЊ
         except Exception as e:
-            logger.error(f"Помилка відправки запиту в Kafka: {e}")
+            logger.error(f"РџРѕРјРёР»РєР° РІС–РґРїСЂР°РІРєРё Р·Р°РїРёС‚Сѓ РІ Kafka: {e}")
             if callback:
                 with self.response_lock:
                     if request_id in self.response_callbacks:
                         del self.response_callbacks[request_id]
-                callback({'error': f"Помилка відправки запиту: {e}", 'request_id': request_id})
+                callback({'error': f"РџРѕРјРёР»РєР° РІС–РґРїСЂР°РІРєРё Р·Р°РїРёС‚Сѓ: {e}", 'request_id': request_id})
 
         return request_id
 
     def _delivery_callback(self, err, msg):
         '''
-        Callback для підтвердження доставки повідомлення
+        Callback РґР»СЏ РїС–РґС‚РІРµСЂРґР¶РµРЅРЅСЏ РґРѕСЃС‚Р°РІРєРё РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ
         '''
         if err:
-            logger.error(f"Помилка доставки повідомлення: {err}")
+            logger.error(f"РџРѕРјРёР»РєР° РґРѕСЃС‚Р°РІРєРё РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ: {err}")
         else:
-            logger.debug(f"Повідомлення доставлено в {msg.topic()} [{msg.partition()}] в оффсет {msg.offset()}")
+            logger.debug(f"РџРѕРІС–РґРѕРјР»РµРЅРЅСЏ РґРѕСЃС‚Р°РІР»РµРЅРѕ РІ {msg.topic()} [{msg.partition()}] РІ РѕС„С„СЃРµС‚ {msg.offset()}")
 
     def _start_response_consumer(self):
         '''
-        Запуск споживача для обробки відповідей
+        Р—Р°РїСѓСЃРє СЃРїРѕР¶РёРІР°С‡Р° РґР»СЏ РѕР±СЂРѕР±РєРё РІС–РґРїРѕРІС–РґРµР№
         '''
         response_consumer = Consumer({
             **self.consumer_config,
@@ -224,7 +225,7 @@ class KafkaQueueService:
 
         self.consumers.append(response_consumer)
 
-        # Запуск обробника відповідей в окремому потоці
+        # Р—Р°РїСѓСЃРє РѕР±СЂРѕР±РЅРёРєР° РІС–РґРїРѕРІС–РґРµР№ РІ РѕРєСЂРµРјРѕРјСѓ РїРѕС‚РѕС†С–
         response_thread = threading.Thread(
             target=self._response_handler,
             args=(response_consumer,),
@@ -235,13 +236,13 @@ class KafkaQueueService:
 
     def _start_worker(self, worker_id):
         '''
-        Запуск воркера для обробки запитів
+        Р—Р°РїСѓСЃРє РІРѕСЂРєРµСЂР° РґР»СЏ РѕР±СЂРѕР±РєРё Р·Р°РїРёС‚С–РІ
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        worker_id: ідентифікатор воркера
+        worker_id: С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ РІРѕСЂРєРµСЂР°
         '''
-        # Створення споживача для воркера
+        # РЎС‚РІРѕСЂРµРЅРЅСЏ СЃРїРѕР¶РёРІР°С‡Р° РґР»СЏ РІРѕСЂРєРµСЂР°
         worker_consumer = Consumer({
             **self.consumer_config,
             'group.id': f"{self.consumer_group}-{worker_id}"
@@ -250,7 +251,7 @@ class KafkaQueueService:
 
         self.consumers.append(worker_consumer)
 
-        # Запуск воркера в окремому потоці
+        # Р—Р°РїСѓСЃРє РІРѕСЂРєРµСЂР° РІ РѕРєСЂРµРјРѕРјСѓ РїРѕС‚РѕС†С–
         worker_thread = threading.Thread(
             target=self._worker_loop,
             args=(worker_id, worker_consumer),
@@ -259,16 +260,16 @@ class KafkaQueueService:
         worker_thread.start()
         self.worker_threads.append(worker_thread)
 
-        logger.info(f"Запущено воркер {worker_id}")
+        logger.info(f"Р—Р°РїСѓС‰РµРЅРѕ РІРѕСЂРєРµСЂ {worker_id}")
 
     def _worker_loop(self, worker_id, consumer):
         '''
-        Основний цикл воркера
+        РћСЃРЅРѕРІРЅРёР№ С†РёРєР» РІРѕСЂРєРµСЂР°
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        worker_id: ідентифікатор воркера
-        consumer: споживач Kafka
+        worker_id: С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ РІРѕСЂРєРµСЂР°
+        consumer: СЃРїРѕР¶РёРІР°С‡ Kafka
         '''
         try:
             while self.running:
@@ -279,36 +280,36 @@ class KafkaQueueService:
 
                 if msg.error():
                     if msg.error().code() == KafkaError._PARTITION_EOF:
-                        # Кінець партиції
+                        # РљС–РЅРµС†СЊ РїР°СЂС‚РёС†С–С—
                         continue
                     else:
-                        logger.error(f"Помилка споживача: {msg.error()}")
+                        logger.error(f"РџРѕРјРёР»РєР° СЃРїРѕР¶РёРІР°С‡Р°: {msg.error()}")
                         continue
 
-                # Обробка повідомлення
+                # РћР±СЂРѕР±РєР° РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ
                 try:
                     self._process_request(msg.key(), msg.value(), worker_id)
                 except Exception as e:
-                    logger.error(f"Помилка обробки запиту воркером {worker_id}: {e}")
+                    logger.error(f"РџРѕРјРёР»РєР° РѕР±СЂРѕР±РєРё Р·Р°РїРёС‚Сѓ РІРѕСЂРєРµСЂРѕРј {worker_id}: {e}")
         except Exception as e:
-            logger.error(f"Критична помилка в воркері {worker_id}: {e}")
+            logger.error(f"РљСЂРёС‚РёС‡РЅР° РїРѕРјРёР»РєР° РІ РІРѕСЂРєРµСЂС– {worker_id}: {e}")
         finally:
-            logger.info(f"Воркер {worker_id} завершив роботу")
+            logger.info(f"Р’РѕСЂРєРµСЂ {worker_id} Р·Р°РІРµСЂС€РёРІ СЂРѕР±РѕС‚Сѓ")
 
     def _process_request(self, key, value, worker_id):
         '''
-        Обробка запиту інференсу
+        РћР±СЂРѕР±РєР° Р·Р°РїРёС‚Сѓ С–РЅС„РµСЂРµРЅСЃСѓ
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        key: ключ повідомлення (request_id)
-        value: значення повідомлення (дані запиту)
-        worker_id: ідентифікатор воркера
+        key: РєР»СЋС‡ РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ (request_id)
+        value: Р·РЅР°С‡РµРЅРЅСЏ РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ (РґР°РЅС– Р·Р°РїРёС‚Сѓ)
+        worker_id: С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ РІРѕСЂРєРµСЂР°
         '''
         start_time = time.time()
 
         try:
-            # Декодування ключа та повідомлення
+            # Р”РµРєРѕРґСѓРІР°РЅРЅСЏ РєР»СЋС‡Р° С‚Р° РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ
             request_id = key.decode('utf-8')
             request = json.loads(value.decode('utf-8'))
 
@@ -316,19 +317,19 @@ class KafkaQueueService:
             data = request.get('data')
             timestamp = request.get('timestamp', 0)
 
-            # Перевірка часу очікування в черзі
+            # РџРµСЂРµРІС–СЂРєР° С‡Р°СЃСѓ РѕС‡С–РєСѓРІР°РЅРЅСЏ РІ С‡РµСЂР·С–
             queue_time = time.time() - timestamp
-            logger.debug(f"Запит {request_id} очікував у черзі {queue_time:.4f} секунд")
+            logger.debug(f"Р—Р°РїРёС‚ {request_id} РѕС‡С–РєСѓРІР°РІ Сѓ С‡РµСЂР·С– {queue_time:.4f} СЃРµРєСѓРЅРґ")
 
-            # Пошук обробника для моделі
+            # РџРѕС€СѓРє РѕР±СЂРѕР±РЅРёРєР° РґР»СЏ РјРѕРґРµР»С–
             handler = self.request_handlers.get(model_name)
             if not handler:
-                raise ValueError(f"Обробник для моделі '{model_name}' не знайдено")
+                raise ValueError(f"РћР±СЂРѕР±РЅРёРє РґР»СЏ РјРѕРґРµР»С– '{model_name}' РЅРµ Р·РЅР°Р№РґРµРЅРѕ")
 
-            # Виклик обробника
+            # Р’РёРєР»РёРє РѕР±СЂРѕР±РЅРёРєР°
             result = handler(data)
 
-            # Підготовка відповіді
+            # РџС–РґРіРѕС‚РѕРІРєР° РІС–РґРїРѕРІС–РґС–
             response = {
                 'request_id': request_id,
                 'success': True,
@@ -339,7 +340,7 @@ class KafkaQueueService:
             }
 
         except Exception as e:
-            logger.error(f"Помилка обробки запиту {key}: {e}")
+            logger.error(f"РџРѕРјРёР»РєР° РѕР±СЂРѕР±РєРё Р·Р°РїРёС‚Сѓ {key}: {e}")
             response = {
                 'request_id': key.decode('utf-8') if isinstance(key, bytes) else str(key),
                 'success': False,
@@ -347,7 +348,7 @@ class KafkaQueueService:
                 'error': str(e)
             }
 
-        # Відправка відповіді
+        # Р’С–РґРїСЂР°РІРєР° РІС–РґРїРѕРІС–РґС–
         try:
             self.producer.produce(
                 self.response_topic,
@@ -355,24 +356,24 @@ class KafkaQueueService:
                 value=json.dumps(response).encode('utf-8'),
                 callback=self._delivery_callback
             )
-            self.producer.poll(0)  # Тригер доставки повідомлень
+            self.producer.poll(0)  # РўСЂРёРіРµСЂ РґРѕСЃС‚Р°РІРєРё РїРѕРІС–РґРѕРјР»РµРЅСЊ
         except Exception as e:
-            logger.error(f"Помилка відправки відповіді: {e}")
+            logger.error(f"РџРѕРјРёР»РєР° РІС–РґРїСЂР°РІРєРё РІС–РґРїРѕРІС–РґС–: {e}")
 
     def _response_handler(self, consumer):
         '''
-        Обробник відповідей
+        РћР±СЂРѕР±РЅРёРє РІС–РґРїРѕРІС–РґРµР№
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        consumer: споживач Kafka
+        consumer: СЃРїРѕР¶РёРІР°С‡ Kafka
         '''
         try:
             while self.running:
-                # Очищення прострочених колбеків
+                # РћС‡РёС‰РµРЅРЅСЏ РїСЂРѕСЃС‚СЂРѕС‡РµРЅРёС… РєРѕР»Р±РµРєС–РІ
                 self._clean_expired_callbacks()
 
-                # Опитування наступного повідомлення
+                # РћРїРёС‚СѓРІР°РЅРЅСЏ РЅР°СЃС‚СѓРїРЅРѕРіРѕ РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ
                 msg = consumer.poll(1.0)
 
                 if msg is None:
@@ -382,52 +383,52 @@ class KafkaQueueService:
                     if msg.error().code() == KafkaError._PARTITION_EOF:
                         continue
                     else:
-                        logger.error(f"Помилка споживача відповідей: {msg.error()}")
+                        logger.error(f"РџРѕРјРёР»РєР° СЃРїРѕР¶РёРІР°С‡Р° РІС–РґРїРѕРІС–РґРµР№: {msg.error()}")
                         continue
 
-                # Обробка відповіді
+                # РћР±СЂРѕР±РєР° РІС–РґРїРѕРІС–РґС–
                 try:
                     self._process_response(msg.key(), msg.value())
                 except Exception as e:
-                    logger.error(f"Помилка обробки відповіді: {e}")
+                    logger.error(f"РџРѕРјРёР»РєР° РѕР±СЂРѕР±РєРё РІС–РґРїРѕРІС–РґС–: {e}")
         except Exception as e:
-            logger.error(f"Критична помилка в обробнику відповідей: {e}")
+            logger.error(f"РљСЂРёС‚РёС‡РЅР° РїРѕРјРёР»РєР° РІ РѕР±СЂРѕР±РЅРёРєСѓ РІС–РґРїРѕРІС–РґРµР№: {e}")
         finally:
-            logger.info("Обробник відповідей завершив роботу")
+            logger.info("РћР±СЂРѕР±РЅРёРє РІС–РґРїРѕРІС–РґРµР№ Р·Р°РІРµСЂС€РёРІ СЂРѕР±РѕС‚Сѓ")
 
     def _process_response(self, key, value):
         '''
-        Обробка відповіді інференсу
+        РћР±СЂРѕР±РєР° РІС–РґРїРѕРІС–РґС– С–РЅС„РµСЂРµРЅСЃСѓ
 
-        Параметри:
+        РџР°СЂР°РјРµС‚СЂРё:
         -----------
-        key: ключ повідомлення (request_id)
-        value: значення повідомлення (дані відповіді)
+        key: РєР»СЋС‡ РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ (request_id)
+        value: Р·РЅР°С‡РµРЅРЅСЏ РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ (РґР°РЅС– РІС–РґРїРѕРІС–РґС–)
         '''
         try:
-            # Декодування ключа та повідомлення
+            # Р”РµРєРѕРґСѓРІР°РЅРЅСЏ РєР»СЋС‡Р° С‚Р° РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ
             request_id = key.decode('utf-8')
             response = json.loads(value.decode('utf-8'))
 
-            # Пошук відповідного callback'у
+            # РџРѕС€СѓРє РІС–РґРїРѕРІС–РґРЅРѕРіРѕ callback'Сѓ
             callback_info = None
             with self.response_lock:
                 if request_id in self.response_callbacks:
                     callback_info = self.response_callbacks.pop(request_id)
 
-            # Виклик callback'у, якщо він є
+            # Р’РёРєР»РёРє callback'Сѓ, СЏРєС‰Рѕ РІС–РЅ С”
             if callback_info and 'callback' in callback_info:
                 try:
                     callback_info['callback'](response)
                 except Exception as e:
-                    logger.error(f"Помилка виклику callback'у для {request_id}: {e}")
+                    logger.error(f"РџРѕРјРёР»РєР° РІРёРєР»РёРєСѓ callback'Сѓ РґР»СЏ {request_id}: {e}")
 
         except Exception as e:
-            logger.error(f"Помилка обробки відповіді {key}: {e}")
+            logger.error(f"РџРѕРјРёР»РєР° РѕР±СЂРѕР±РєРё РІС–РґРїРѕРІС–РґС– {key}: {e}")
 
     def _clean_expired_callbacks(self):
         '''
-        Очищення прострочених callback'ів
+        РћС‡РёС‰РµРЅРЅСЏ РїСЂРѕСЃС‚СЂРѕС‡РµРЅРёС… callback'С–РІ
         '''
         now = time.time()
         expired_ids = []
@@ -448,24 +449,24 @@ class KafkaQueueService:
                             'timestamp': now
                         })
                     except Exception as e:
-                        logger.error(f"Помилка виклику callback'у для простроченого запиту {request_id}: {e}")
+                        logger.error(f"РџРѕРјРёР»РєР° РІРёРєР»РёРєСѓ callback'Сѓ РґР»СЏ РїСЂРѕСЃС‚СЂРѕС‡РµРЅРѕРіРѕ Р·Р°РїРёС‚Сѓ {request_id}: {e}")
 
-# Приклад використання
+# РџСЂРёРєР»Р°Рґ РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ
 if __name__ == "__main__":
-    # Приклад обробника для моделі
+    # РџСЂРёРєР»Р°Рґ РѕР±СЂРѕР±РЅРёРєР° РґР»СЏ РјРѕРґРµР»С–
     def example_handler(data):
-        # Імітація інференсу
-        time.sleep(0.5)  # Імітація затримки обробки
+        # Р†РјС–С‚Р°С†С–СЏ С–РЅС„РµСЂРµРЅСЃСѓ
+        time.sleep(0.5)  # Р†РјС–С‚Р°С†С–СЏ Р·Р°С‚СЂРёРјРєРё РѕР±СЂРѕР±РєРё
         return {'prediction': data * 2}
 
-    # Колбек для обробки результату
+    # РљРѕР»Р±РµРє РґР»СЏ РѕР±СЂРѕР±РєРё СЂРµР·СѓР»СЊС‚Р°С‚Сѓ
     def result_callback(response):
         if response.get('success', False):
-            print(f"Отримано результат: {response['result']}")
+            print(f"РћС‚СЂРёРјР°РЅРѕ СЂРµР·СѓР»СЊС‚Р°С‚: {response['result']}")
         else:
-            print(f"Помилка: {response.get('error', 'Невідома помилка')}")
+            print(f"РџРѕРјРёР»РєР°: {response.get('error', 'РќРµРІС–РґРѕРјР° РїРѕРјРёР»РєР°')}")
 
-    # Створення та запуск сервісу
+    # РЎС‚РІРѕСЂРµРЅРЅСЏ С‚Р° Р·Р°РїСѓСЃРє СЃРµСЂРІС–СЃСѓ
     service = KafkaQueueService(
         bootstrap_servers="localhost:9092",
         request_topic="model-inference-requests",
@@ -474,24 +475,25 @@ if __name__ == "__main__":
         num_workers=2
     )
 
-    # Реєстрація обробника
+    # Р РµС”СЃС‚СЂР°С†С–СЏ РѕР±СЂРѕР±РЅРёРєР°
     service.register_handler("example_model", example_handler)
 
-    # Запуск сервісу
+    # Р—Р°РїСѓСЃРє СЃРµСЂРІС–СЃСѓ
     service.start()
 
     try:
-        # Відправка тестового запиту
+        # Р’С–РґРїСЂР°РІРєР° С‚РµСЃС‚РѕРІРѕРіРѕ Р·Р°РїРёС‚Сѓ
         for i in range(5):
             request_id = service.submit_inference_request(
                 model_name="example_model",
                 data=i,
                 callback=result_callback
             )
-            print(f"Відправлено запит {request_id}")
+            print(f"Р’С–РґРїСЂР°РІР»РµРЅРѕ Р·Р°РїРёС‚ {request_id}")
 
-        # Очікування завершення обробки
+        # РћС‡С–РєСѓРІР°РЅРЅСЏ Р·Р°РІРµСЂС€РµРЅРЅСЏ РѕР±СЂРѕР±РєРё
         time.sleep(10)
     finally:
-        # Зупинка сервісу
+        # Р—СѓРїРёРЅРєР° СЃРµСЂРІС–СЃСѓ
         service.stop()
+

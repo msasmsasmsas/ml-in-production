@@ -1,3 +1,4 @@
+﻿<!-- новлена версія для PR -->
 # Scaling Infrastructure and Model Optimization
 
 This module provides tools and configurations for scaling machine learning infrastructure and optimizing models for improved performance in production environments.
@@ -13,31 +14,31 @@ This module provides tools and configurations for scaling machine learning infra
 
 ```
 HW12_Scaling_infra_and_model/
-│
-├── PR1_horizontal_pod_autoscaling/    # Kubernetes configuration for autoscaling
-│   ├── k8s-deployment.yaml            # Base deployment configuration
-│   ├── hpa.yaml                       # HPA for CPU/memory-based scaling
-│   ├── custom-metrics-hpa.yaml        # HPA with custom metrics
-│   ├── prometheus-adapter-config.yaml # Configuration for custom metrics
-│   └── README.md                      # Documentation
-│
-├── PR2_async_inference/               # Async inference with message queues
-│   ├── kafka_queue_service.py         # Kafka queue implementation
-│   ├── async_fastapi_server.py        # FastAPI server with async endpoints
-│   ├── model_worker.py                # Worker for processing inference requests
-│   ├── docker-compose.yaml            # Docker Compose configuration
-│   └── README.md                      # Documentation
-│
-├── PR3_model_optimization/            # Model optimization techniques
-│   ├── model_distillation.py          # Knowledge distillation implementation
-│   ├── model_pruning.py               # Weight pruning implementation
-│   ├── model_quantization.py          # Model quantization implementation
-│   └── README.md                      # Documentation
-│
-└── PR4_model_benchmarking/            # Benchmarking and profiling tools
-    ├── benchmark_models.py            # Comprehensive model benchmarking
-    ├── model_flamegraph.py            # Performance profiling and flame graphs
-    └── README.md                      # Documentation
+в”‚
+в”њв”Ђв”Ђ PR1_horizontal_pod_autoscaling/    # Kubernetes configuration for autoscaling
+в”‚   в”њв”Ђв”Ђ k8s-deployment.yaml            # Base deployment configuration
+в”‚   в”њв”Ђв”Ђ hpa.yaml                       # HPA for CPU/memory-based scaling
+в”‚   в”њв”Ђв”Ђ custom-metrics-hpa.yaml        # HPA with custom metrics
+в”‚   в”њв”Ђв”Ђ prometheus-adapter-config.yaml # Configuration for custom metrics
+в”‚   в””в”Ђв”Ђ README.md                      # Documentation
+в”‚
+в”њв”Ђв”Ђ PR2_async_inference/               # Async inference with message queues
+в”‚   в”њв”Ђв”Ђ kafka_queue_service.py         # Kafka queue implementation
+в”‚   в”њв”Ђв”Ђ async_fastapi_server.py        # FastAPI server with async endpoints
+в”‚   в”њв”Ђв”Ђ model_worker.py                # Worker for processing inference requests
+в”‚   в”њв”Ђв”Ђ docker-compose.yaml            # Docker Compose configuration
+в”‚   в””в”Ђв”Ђ README.md                      # Documentation
+в”‚
+в”њв”Ђв”Ђ PR3_model_optimization/            # Model optimization techniques
+в”‚   в”њв”Ђв”Ђ model_distillation.py          # Knowledge distillation implementation
+в”‚   в”њв”Ђв”Ђ model_pruning.py               # Weight pruning implementation
+в”‚   в”њв”Ђв”Ђ model_quantization.py          # Model quantization implementation
+в”‚   в””в”Ђв”Ђ README.md                      # Documentation
+в”‚
+в””в”Ђв”Ђ PR4_model_benchmarking/            # Benchmarking and profiling tools
+    в”њв”Ђв”Ђ benchmark_models.py            # Comprehensive model benchmarking
+    в”њв”Ђв”Ђ model_flamegraph.py            # Performance profiling and flame graphs
+    в””в”Ђв”Ђ README.md                      # Documentation
 ```
 
 ## Quick Start
@@ -134,3 +135,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+

@@ -1,3 +1,4 @@
+﻿<!-- новлена версія для PR -->
 # Model Optimization Techniques
 
 This module provides tools for optimizing deep learning models to improve inference speed and reduce memory footprint.
@@ -104,3 +105,4 @@ This ordered approach typically yields the best balance of speed and accuracy.
 - [Distilling the Knowledge in a Neural Network](https://arxiv.org/abs/1503.02531)
 - [To Prune, or Not to Prune: Exploring the Efficacy of Pruning for Model Compression](https://arxiv.org/abs/1710.01878)
 - [Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference](https://arxiv.org/abs/1712.05877)
+

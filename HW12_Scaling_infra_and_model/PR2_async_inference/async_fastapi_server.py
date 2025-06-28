@@ -1,7 +1,8 @@
+﻿# новлена версія для PR
 #!/usr/bin/env python
 
 '''
-FastAPI сервер з асинхронним інференсом моделей
+FastAPI СЃРµСЂРІРµСЂ Р· Р°СЃРёРЅС…СЂРѕРЅРЅРёРј С–РЅС„РµСЂРµРЅСЃРѕРј РјРѕРґРµР»РµР№
 '''
 
 import os
@@ -19,31 +20,31 @@ from fastapi import FastAPI, File, UploadFile, BackgroundTasks, HTTPException, s
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
-# Kafka інтеграція
+# Kafka С–РЅС‚РµРіСЂР°С†С–СЏ
 from kafka_queue_service import KafkaQueueService
 
-# Налаштування логування
+# РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ Р»РѕРіСѓРІР°РЅРЅСЏ
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger('async_server')
 
-# Створення FastAPI додатку
+# РЎС‚РІРѕСЂРµРЅРЅСЏ FastAPI РґРѕРґР°С‚РєСѓ
 app = FastAPI(
     title="Async Model Inference API",
-    description="API для асинхронного інференсу моделей машинного навчання",
+    description="API РґР»СЏ Р°СЃРёРЅС…СЂРѕРЅРЅРѕРіРѕ С–РЅС„РµСЂРµРЅСЃСѓ РјРѕРґРµР»РµР№ РјР°С€РёРЅРЅРѕРіРѕ РЅР°РІС‡Р°РЅРЅСЏ",
     version="1.0.0"
 )
 
-# Конфігурація
+# РљРѕРЅС„С–РіСѓСЂР°С†С–СЏ
 KAFKA_BOOTSTRAP_SERVERS = os.environ.get("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")
 REQUEST_TOPIC = os.environ.get("KAFKA_REQUEST_TOPIC", "model-inference-requests")
 RESPONSE_TOPIC = os.environ.get("KAFKA_RESPONSE_TOPIC", "model-inference-responses")
 CONSUMER_GROUP = os.environ.get("KAFKA_CONSUMER_GROUP", "model-inference-group")
 NUM_WORKERS = int(os.environ.get("NUM_WORKERS", "2"))
 
-# Створення сервісу черги Kafka
+# РЎС‚РІРѕСЂРµРЅРЅСЏ СЃРµСЂРІС–СЃСѓ С‡РµСЂРіРё Kafka
 queue_service = KafkaQueueService(
     bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
     request_topic=REQUEST_TOPIC,
@@ -52,11 +53,11 @@ queue_service = KafkaQueueService(
     num_workers=NUM_WORKERS
 )
 
-# Словник для відстеження статусу запитів
+# РЎР»РѕРІРЅРёРє РґР»СЏ РІС–РґСЃС‚РµР¶РµРЅРЅСЏ СЃС‚Р°С‚СѓСЃСѓ Р·Р°РїРёС‚С–РІ
 request_status = {}
 status_lock = threading.Lock()
 
-# Моделі даних
+# РњРѕРґРµР»С– РґР°РЅРёС…
 class InferenceRequest(BaseModel):
     model_name: str
     data: Any
@@ -75,14 +76,14 @@ class RequestStatusResponse(BaseModel):
     completed_at: Optional[float] = None
     result_url: Optional[str] = None
 
-# Обробники
+# РћР±СЂРѕР±РЅРёРєРё
 def inference_callback(response):
     '''
-    Callback для обробки результату інференсу
+    Callback РґР»СЏ РѕР±СЂРѕР±РєРё СЂРµР·СѓР»СЊС‚Р°С‚Сѓ С–РЅС„РµСЂРµРЅСЃСѓ
 
-    Параметри:
+    РџР°СЂР°РјРµС‚СЂРё:
     -----------
-    response: відповідь від сервісу черги
+    response: РІС–РґРїРѕРІС–РґСЊ РІС–Рґ СЃРµСЂРІС–СЃСѓ С‡РµСЂРіРё
     '''
     request_id = response.get('request_id')
 
@@ -99,7 +100,7 @@ def inference_callback(response):
 
             status_info['completed_at'] = time.time()
 
-    # Відправка webhook, якщо вказано
+    # Р’С–РґРїСЂР°РІРєР° webhook, СЏРєС‰Рѕ РІРєР°Р·Р°РЅРѕ
     webhook_url = status_info.get('webhook_url')
     if webhook_url:
         try:
@@ -115,34 +116,34 @@ def inference_callback(response):
                 timeout=5
             )
         except Exception as e:
-            logger.error(f"Помилка відправки webhook для {request_id}: {e}")
+            logger.error(f"РџРѕРјРёР»РєР° РІС–РґРїСЂР°РІРєРё webhook РґР»СЏ {request_id}: {e}")
 
 @app.on_event("startup")
 async def startup_event():
     '''
-    Ініціалізація при запуску сервера
+    Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ РїСЂРё Р·Р°РїСѓСЃРєСѓ СЃРµСЂРІРµСЂР°
     '''
-    # Запуск сервісу Kafka черги
+    # Р—Р°РїСѓСЃРє СЃРµСЂРІС–СЃСѓ Kafka С‡РµСЂРіРё
     queue_service.start()
-    logger.info("Сервіс асинхронного інференсу запущено")
+    logger.info("РЎРµСЂРІС–СЃ Р°СЃРёРЅС…СЂРѕРЅРЅРѕРіРѕ С–РЅС„РµСЂРµРЅСЃСѓ Р·Р°РїСѓС‰РµРЅРѕ")
 
 @app.on_event("shutdown")
 async def shutdown_event():
     '''
-    Зупинка при завершенні роботи сервера
+    Р—СѓРїРёРЅРєР° РїСЂРё Р·Р°РІРµСЂС€РµРЅРЅС– СЂРѕР±РѕС‚Рё СЃРµСЂРІРµСЂР°
     '''
-    # Зупинка сервісу Kafka черги
+    # Р—СѓРїРёРЅРєР° СЃРµСЂРІС–СЃСѓ Kafka С‡РµСЂРіРё
     queue_service.stop()
-    logger.info("Сервіс асинхронного інференсу зупинено")
+    logger.info("РЎРµСЂРІС–СЃ Р°СЃРёРЅС…СЂРѕРЅРЅРѕРіРѕ С–РЅС„РµСЂРµРЅСЃСѓ Р·СѓРїРёРЅРµРЅРѕ")
 
 @app.post("/inference", response_model=InferenceResponse)
 async def submit_inference(request: InferenceRequest):
     '''
-    Ендпоінт для асинхронного інференсу моделі
+    Р•РЅРґРїРѕС–РЅС‚ РґР»СЏ Р°СЃРёРЅС…СЂРѕРЅРЅРѕРіРѕ С–РЅС„РµСЂРµРЅСЃСѓ РјРѕРґРµР»С–
     '''
     request_id = str(uuid.uuid4())
 
-    # Збереження інформації про запит
+    # Р—Р±РµСЂРµР¶РµРЅРЅСЏ С–РЅС„РѕСЂРјР°С†С–С— РїСЂРѕ Р·Р°РїРёС‚
     with status_lock:
         request_status[request_id] = {
             'status': 'submitted',
@@ -151,7 +152,7 @@ async def submit_inference(request: InferenceRequest):
         }
 
     try:
-        # Відправка запиту в чергу
+        # Р’С–РґРїСЂР°РІРєР° Р·Р°РїРёС‚Сѓ РІ С‡РµСЂРіСѓ
         queue_service.submit_inference_request(
             model_name=request.model_name,
             data=request.data,
@@ -163,7 +164,7 @@ async def submit_inference(request: InferenceRequest):
             status='submitted'
         )
     except Exception as e:
-        logger.error(f"Помилка відправки запиту: {e}")
+        logger.error(f"РџРѕРјРёР»РєР° РІС–РґРїСЂР°РІРєРё Р·Р°РїРёС‚Сѓ: {e}")
         with status_lock:
             if request_id in request_status:
                 request_status[request_id]['status'] = 'failed'
@@ -172,21 +173,21 @@ async def submit_inference(request: InferenceRequest):
 
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Помилка відправки запиту: {str(e)}"
+            detail=f"РџРѕРјРёР»РєР° РІС–РґРїСЂР°РІРєРё Р·Р°РїРёС‚Сѓ: {str(e)}"
         )
 
 @app.post("/inference/file", response_model=InferenceResponse)
 async def submit_file_inference(
-    model_name: str = Query(..., description="Назва моделі для інференсу"),
-    file: UploadFile = File(..., description="Файл для інференсу"),
-    webhook_url: Optional[str] = Query(None, description="URL для webhook сповіщення")
+    model_name: str = Query(..., description="РќР°Р·РІР° РјРѕРґРµР»С– РґР»СЏ С–РЅС„РµСЂРµРЅСЃСѓ"),
+    file: UploadFile = File(..., description="Р¤Р°Р№Р» РґР»СЏ С–РЅС„РµСЂРµРЅСЃСѓ"),
+    webhook_url: Optional[str] = Query(None, description="URL РґР»СЏ webhook СЃРїРѕРІС–С‰РµРЅРЅСЏ")
 ):
     '''
-    Ендпоінт для асинхронного інференсу моделі з файлом
+    Р•РЅРґРїРѕС–РЅС‚ РґР»СЏ Р°СЃРёРЅС…СЂРѕРЅРЅРѕРіРѕ С–РЅС„РµСЂРµРЅСЃСѓ РјРѕРґРµР»С– Р· С„Р°Р№Р»РѕРј
     '''
     request_id = str(uuid.uuid4())
 
-    # Збереження інформації про запит
+    # Р—Р±РµСЂРµР¶РµРЅРЅСЏ С–РЅС„РѕСЂРјР°С†С–С— РїСЂРѕ Р·Р°РїРёС‚
     with status_lock:
         request_status[request_id] = {
             'status': 'submitted',
@@ -195,16 +196,16 @@ async def submit_file_inference(
         }
 
     try:
-        # Читання файлу
+        # Р§РёС‚Р°РЅРЅСЏ С„Р°Р№Р»Сѓ
         contents = await file.read()
 
-        # Відправка запиту в чергу
+        # Р’С–РґРїСЂР°РІРєР° Р·Р°РїРёС‚Сѓ РІ С‡РµСЂРіСѓ
         queue_service.submit_inference_request(
             model_name=model_name,
             data={
                 'filename': file.filename,
                 'content_type': file.content_type,
-                'data': contents.hex()  # Конвертація байтів у hex для безпечної серіалізації JSON
+                'data': contents.hex()  # РљРѕРЅРІРµСЂС‚Р°С†С–СЏ Р±Р°Р№С‚С–РІ Сѓ hex РґР»СЏ Р±РµР·РїРµС‡РЅРѕС— СЃРµСЂС–Р°Р»С–Р·Р°С†С–С— JSON
             },
             callback=inference_callback
         )
@@ -214,7 +215,7 @@ async def submit_file_inference(
             status='submitted'
         )
     except Exception as e:
-        logger.error(f"Помилка відправки файлового запиту: {e}")
+        logger.error(f"РџРѕРјРёР»РєР° РІС–РґРїСЂР°РІРєРё С„Р°Р№Р»РѕРІРѕРіРѕ Р·Р°РїРёС‚Сѓ: {e}")
         with status_lock:
             if request_id in request_status:
                 request_status[request_id]['status'] = 'failed'
@@ -223,19 +224,19 @@ async def submit_file_inference(
 
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Помилка відправки файлового запиту: {str(e)}"
+            detail=f"РџРѕРјРёР»РєР° РІС–РґРїСЂР°РІРєРё С„Р°Р№Р»РѕРІРѕРіРѕ Р·Р°РїРёС‚Сѓ: {str(e)}"
         )
 
 @app.get("/status/{request_id}", response_model=RequestStatusResponse)
 async def get_request_status(request_id: str):
     '''
-    Отримання статусу запиту за ідентифікатором
+    РћС‚СЂРёРјР°РЅРЅСЏ СЃС‚Р°С‚СѓСЃСѓ Р·Р°РїРёС‚Сѓ Р·Р° С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂРѕРј
     '''
     with status_lock:
         if request_id not in request_status:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Запит з ідентифікатором {request_id} не знайдено"
+                detail=f"Р—Р°РїРёС‚ Р· С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂРѕРј {request_id} РЅРµ Р·РЅР°Р№РґРµРЅРѕ"
             )
 
         status_info = request_status[request_id].copy()
@@ -251,13 +252,13 @@ async def get_request_status(request_id: str):
 @app.get("/result/{request_id}", response_model=InferenceResponse)
 async def get_result(request_id: str):
     '''
-    Отримання результату запиту за ідентифікатором
+    РћС‚СЂРёРјР°РЅРЅСЏ СЂРµР·СѓР»СЊС‚Р°С‚Сѓ Р·Р°РїРёС‚Сѓ Р·Р° С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂРѕРј
     '''
     with status_lock:
         if request_id not in request_status:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Запит з ідентифікатором {request_id} не знайдено"
+                detail=f"Р—Р°РїРёС‚ Р· С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂРѕРј {request_id} РЅРµ Р·РЅР°Р№РґРµРЅРѕ"
             )
 
         status_info = request_status[request_id]
@@ -283,31 +284,32 @@ async def get_result(request_id: str):
 @app.delete("/status/{request_id}")
 async def delete_request_status(request_id: str):
     '''
-    Видалення інформації про запит
+    Р’РёРґР°Р»РµРЅРЅСЏ С–РЅС„РѕСЂРјР°С†С–С— РїСЂРѕ Р·Р°РїРёС‚
     '''
     with status_lock:
         if request_id not in request_status:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Запит з ідентифікатором {request_id} не знайдено"
+                detail=f"Р—Р°РїРёС‚ Р· С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂРѕРј {request_id} РЅРµ Р·РЅР°Р№РґРµРЅРѕ"
             )
 
         del request_status[request_id]
 
-    return JSONResponse(content={"message": f"Інформацію про запит {request_id} видалено"})
+    return JSONResponse(content={"message": f"Р†РЅС„РѕСЂРјР°С†С–СЋ РїСЂРѕ Р·Р°РїРёС‚ {request_id} РІРёРґР°Р»РµРЅРѕ"})
 
 @app.get("/health")
 async def health_check():
     '''
-    Ендпоінт перевірки стану сервера
+    Р•РЅРґРїРѕС–РЅС‚ РїРµСЂРµРІС–СЂРєРё СЃС‚Р°РЅСѓ СЃРµСЂРІРµСЂР°
     '''
     return {"status": "ok"}
 
 if __name__ == "__main__":
-    # Запуск сервера
+    # Р—Р°РїСѓСЃРє СЃРµСЂРІРµСЂР°
     uvicorn.run(
         "async_fastapi_server:app",
         host="0.0.0.0",
         port=8000,
         reload=False
     )
+
