@@ -1,3 +1,5 @@
+﻿<!-- новлена версія для PR -->
+<!-- новлена версія для PR -->
 # Drift Detection for ML Pipeline
 
 This directory contains the code for detecting data drift in our ML pipeline (Dagster) for both input features and model outputs.
@@ -25,3 +27,5 @@ This directory contains the code for detecting data drift in our ML pipeline (Da
 ## Architecture
 
 Drift detection is implemented as a separate step in the Dagster pipeline, analyzing both input data and model predictions to detect changes that might affect model performance.
+
+

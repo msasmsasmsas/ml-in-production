@@ -1,3 +1,4 @@
+﻿# новлена версія для PR
 receivers:
   otlp:
     protocols:
@@ -11,7 +12,7 @@ processors:
     timeout: 1s
     send_batch_size: 1024
 
-  # Додатковий процесор для фільтрації та збагачення телеметрії
+  # Р”РѕРґР°С‚РєРѕРІРёР№ РїСЂРѕС†РµСЃРѕСЂ РґР»СЏ С„С–Р»СЊС‚СЂР°С†С–С— С‚Р° Р·Р±Р°РіР°С‡РµРЅРЅСЏ С‚РµР»РµРјРµС‚СЂС–С—
   attributes:
     actions:
       - key: "environment"
@@ -34,7 +35,7 @@ exporters:
     username: default
     password: ""
 
-  # Додатковий експортер для логування (для налагодження)
+  # Р”РѕРґР°С‚РєРѕРІРёР№ РµРєСЃРїРѕСЂС‚РµСЂ РґР»СЏ Р»РѕРіСѓРІР°РЅРЅСЏ (РґР»СЏ РЅР°Р»Р°РіРѕРґР¶РµРЅРЅСЏ)
   logging:
     loglevel: debug
 
@@ -61,3 +62,4 @@ service:
       receivers: [otlp]
       processors: [batch, attributes, resource]
       exporters: [clickhouse, logging]
+

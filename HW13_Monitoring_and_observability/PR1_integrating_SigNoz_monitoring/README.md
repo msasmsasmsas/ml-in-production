@@ -1,3 +1,5 @@
+﻿<!-- новлена версія для PR -->
+<!-- новлена версія для PR -->
 # SigNoz Monitoring Integration
 
 This directory contains the code and configuration for integrating SigNoz monitoring into our application.
@@ -22,3 +24,5 @@ SigNoz is an open-source APM (Application Performance Monitoring) tool that help
 ## Architecture
 
 The application is instrumented with OpenTelemetry, which sends telemetry data to SigNoz for visualization and analysis.
+
+

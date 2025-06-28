@@ -1,9 +1,10 @@
+﻿# новлена версія для PR
 global:
   scrape_interval: 15s
   evaluation_interval: 15s
   scrape_timeout: 10s
 
-# Правила та сповіщення завантажуються з окремих файлів
+# РџСЂР°РІРёР»Р° С‚Р° СЃРїРѕРІС–С‰РµРЅРЅСЏ Р·Р°РІР°РЅС‚Р°Р¶СѓСЋС‚СЊСЃСЏ Р· РѕРєСЂРµРјРёС… С„Р°Р№Р»С–РІ
 alerting:
   alertmanagers:
     - static_configs:
@@ -13,17 +14,17 @@ rule_files:
   - "alert_rules.yml"
 
 scrape_configs:
-  # Сам Prometheus
+  # РЎР°Рј Prometheus
   - job_name: 'prometheus'
     static_configs:
       - targets: ['localhost:9090']
 
-  # Node Exporter для системних метрик
+  # Node Exporter РґР»СЏ СЃРёСЃС‚РµРјРЅРёС… РјРµС‚СЂРёРє
   - job_name: 'node-exporter'
     static_configs:
       - targets: ['node-exporter:9100']
 
-  # Наш додаток
+  # РќР°С€ РґРѕРґР°С‚РѕРє
   - job_name: 'threat-detection-api'
     metrics_path: '/metrics'
     scrape_interval: 5s
@@ -32,3 +33,4 @@ scrape_configs:
         labels:
           service: 'threat-detection-api'
           environment: 'development'
+

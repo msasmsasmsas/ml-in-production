@@ -1,3 +1,4 @@
+﻿// новлена версія для PR
 {
   "annotations": {
     "list": [
@@ -24,7 +25,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "Кількість HTTP запитів за статусом відповіді",
+      "description": "РљС–Р»СЊРєС–СЃС‚СЊ HTTP Р·Р°РїРёС‚С–РІ Р·Р° СЃС‚Р°С‚СѓСЃРѕРј РІС–РґРїРѕРІС–РґС–",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -77,7 +78,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "HTTP запити за статусом",
+      "title": "HTTP Р·Р°РїРёС‚Рё Р·Р° СЃС‚Р°С‚СѓСЃРѕРј",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -120,7 +121,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "Час обробки HTTP запитів (квантилі)",
+      "description": "Р§Р°СЃ РѕР±СЂРѕР±РєРё HTTP Р·Р°РїРёС‚С–РІ (РєРІР°РЅС‚РёР»С–)",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -165,19 +166,19 @@
         {
           "expr": "histogram_quantile(0.5, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))",
           "interval": "",
-          "legendFormat": "50-й процентиль",
+          "legendFormat": "50-Р№ РїСЂРѕС†РµРЅС‚РёР»СЊ",
           "refId": "A"
         },
         {
           "expr": "histogram_quantile(0.9, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))",
           "interval": "",
-          "legendFormat": "90-й процентиль",
+          "legendFormat": "90-Р№ РїСЂРѕС†РµРЅС‚РёР»СЊ",
           "refId": "B"
         },
         {
           "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))",
           "interval": "",
-          "legendFormat": "95-й процентиль",
+          "legendFormat": "95-Р№ РїСЂРѕС†РµРЅС‚РёР»СЊ",
           "refId": "C"
         }
       ],
@@ -185,7 +186,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Час обробки запитів",
+      "title": "Р§Р°СЃ РѕР±СЂРѕР±РєРё Р·Р°РїРёС‚С–РІ",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -228,7 +229,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "Кількість передбачень за результатом",
+      "description": "РљС–Р»СЊРєС–СЃС‚СЊ РїРµСЂРµРґР±Р°С‡РµРЅСЊ Р·Р° СЂРµР·СѓР»СЊС‚Р°С‚РѕРј",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -281,7 +282,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Передбачення за результатом",
+      "title": "РџРµСЂРµРґР±Р°С‡РµРЅРЅСЏ Р·Р° СЂРµР·СѓР»СЊС‚Р°С‚РѕРј",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -324,7 +325,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "Час обробки передбачень",
+      "description": "Р§Р°СЃ РѕР±СЂРѕР±РєРё РїРµСЂРµРґР±Р°С‡РµРЅСЊ",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -369,7 +370,7 @@
         {
           "expr": "prediction_processing_time_seconds_sum / prediction_processing_time_seconds_count",
           "interval": "",
-          "legendFormat": "Середній час",
+          "legendFormat": "РЎРµСЂРµРґРЅС–Р№ С‡Р°СЃ",
           "refId": "A"
         }
       ],
@@ -377,7 +378,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Час обробки передбачень",
+      "title": "Р§Р°СЃ РѕР±СЂРѕР±РєРё РїРµСЂРµРґР±Р°С‡РµРЅСЊ",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -420,7 +421,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "Розподіл рівнів впевненості передбачень",
+      "description": "Р РѕР·РїРѕРґС–Р» СЂС–РІРЅС–РІ РІРїРµРІРЅРµРЅРѕСЃС‚С– РїРµСЂРµРґР±Р°С‡РµРЅСЊ",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -474,7 +475,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Розподіл впевненості передбачень",
+      "title": "Р РѕР·РїРѕРґС–Р» РІРїРµРІРЅРµРЅРѕСЃС‚С– РїРµСЂРµРґР±Р°С‡РµРЅСЊ",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -517,7 +518,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "Оцінка дрейфу розподілу передбачень",
+      "description": "РћС†С–РЅРєР° РґСЂРµР№С„Сѓ СЂРѕР·РїРѕРґС–Р»Сѓ РїРµСЂРµРґР±Р°С‡РµРЅСЊ",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -562,7 +563,7 @@
         {
           "expr": "prediction_drift_score",
           "interval": "",
-          "legendFormat": "Оцінка дрейфу",
+          "legendFormat": "РћС†С–РЅРєР° РґСЂРµР№С„Сѓ",
           "refId": "A"
         }
       ],
@@ -587,7 +588,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Дрейф даних",
+      "title": "Р”СЂРµР№С„ РґР°РЅРёС…",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -630,7 +631,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "Використання системних ресурсів",
+      "description": "Р’РёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ СЃРёСЃС‚РµРјРЅРёС… СЂРµСЃСѓСЂСЃС–РІ",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -683,7 +684,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Використання CPU",
+      "title": "Р’РёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ CPU",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -726,7 +727,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "Використання пам'яті",
+      "description": "Р’РёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ РїР°Рј'СЏС‚С–",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -771,7 +772,7 @@
         {
           "expr": "system_memory_usage_bytes",
           "interval": "",
-          "legendFormat": "Пам'ять",
+          "legendFormat": "РџР°Рј'СЏС‚СЊ",
           "refId": "A"
         }
       ],
@@ -779,7 +780,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Використання пам'яті",
+      "title": "Р’РёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ РїР°Рј'СЏС‚С–",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -834,3 +835,4 @@
   "uid": "threat-detection-dashboard",
   "version": 1
 }
+

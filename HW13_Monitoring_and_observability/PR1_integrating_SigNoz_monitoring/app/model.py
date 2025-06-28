@@ -1,8 +1,10 @@
+﻿# новлена версія для PR
+# новлена версія для PR
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
-Модуль для роботи з моделлю виявлення загроз з інтеграцією телеметрії
+РњРѕРґСѓР»СЊ РґР»СЏ СЂРѕР±РѕС‚Рё Р· РјРѕРґРµР»Р»СЋ РІРёСЏРІР»РµРЅРЅСЏ Р·Р°РіСЂРѕР· Р· С–РЅС‚РµРіСЂР°С†С–С”СЋ С‚РµР»РµРјРµС‚СЂС–С—
 """
 
 import os
@@ -20,21 +22,21 @@ logger = logging.getLogger(__name__)
 
 class ThreatDetectionModel:
     """
-    Клас для роботи з моделлю виявлення загроз сільськогосподарським культурам
-    з інтеграцією телеметрії для SigNoz
+    РљР»Р°СЃ РґР»СЏ СЂРѕР±РѕС‚Рё Р· РјРѕРґРµР»Р»СЋ РІРёСЏРІР»РµРЅРЅСЏ Р·Р°РіСЂРѕР· СЃС–Р»СЊСЃСЊРєРѕРіРѕСЃРїРѕРґР°СЂСЃСЊРєРёРј РєСѓР»СЊС‚СѓСЂР°Рј
+    Р· С–РЅС‚РµРіСЂР°С†С–С”СЋ С‚РµР»РµРјРµС‚СЂС–С— РґР»СЏ SigNoz
     """
     def __init__(self, model_path: str = None):
         """
-        Ініціалізація моделі
+        Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ РјРѕРґРµР»С–
 
         Args:
-            model_path (str, optional): Шлях до файлу моделі
+            model_path (str, optional): РЁР»СЏС… РґРѕ С„Р°Р№Р»Сѓ РјРѕРґРµР»С–
         """
         with create_custom_span("model_initialization"):
             self.model_path = model_path or settings.MODEL_PATH
-            logger.info(f"Ініціалізація моделі з {self.model_path}")
+            logger.info(f"Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ РјРѕРґРµР»С– Р· {self.model_path}")
 
-            # У реальній імплементації тут завантажуємо модель
+            # РЈ СЂРµР°Р»СЊРЅС–Р№ С–РјРїР»РµРјРµРЅС‚Р°С†С–С— С‚СѓС‚ Р·Р°РІР°РЅС‚Р°Р¶СѓС”РјРѕ РјРѕРґРµР»СЊ
             # self.model = torch.load(self.model_path) if os.path.exists(self.model_path) else None
             self.model = None
             self.class_names = [
@@ -42,64 +44,64 @@ class ThreatDetectionModel:
                 "septoria", "aphids", "thrips", "whitefly", 
                 "bindweed", "nutsedge", "chickweed"
             ]
-            logger.info("Модель успішно ініціалізована")
+            logger.info("РњРѕРґРµР»СЊ СѓСЃРїС–С€РЅРѕ С–РЅС–С†С–Р°Р»С–Р·РѕРІР°РЅР°")
 
     def preprocess_image(self, image: Image.Image) -> torch.Tensor:
         """
-        Попередня обробка зображення для моделі
+        РџРѕРїРµСЂРµРґРЅСЏ РѕР±СЂРѕР±РєР° Р·РѕР±СЂР°Р¶РµРЅРЅСЏ РґР»СЏ РјРѕРґРµР»С–
 
         Args:
-            image (Image.Image): Вхідне зображення
+            image (Image.Image): Р’С…С–РґРЅРµ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
 
         Returns:
-            torch.Tensor: Підготовлений тензор для моделі
+            torch.Tensor: РџС–РґРіРѕС‚РѕРІР»РµРЅРёР№ С‚РµРЅР·РѕСЂ РґР»СЏ РјРѕРґРµР»С–
         """
         with create_custom_span("image_preprocessing", {"image_width": image.width, "image_height": image.height}):
-            logger.debug("Попередня обробка зображення")
+            logger.debug("РџРѕРїРµСЂРµРґРЅСЏ РѕР±СЂРѕР±РєР° Р·РѕР±СЂР°Р¶РµРЅРЅСЏ")
             img_array = np.array(image.convert("RGB").resize((224, 224)))
-            # Конвертуємо в тензор, нормалізуємо, тощо
+            # РљРѕРЅРІРµСЂС‚СѓС”РјРѕ РІ С‚РµРЅР·РѕСЂ, РЅРѕСЂРјР°Р»С–Р·СѓС”РјРѕ, С‚РѕС‰Рѕ
             tensor = torch.tensor(img_array).float().permute(2, 0, 1) / 255.0
             return tensor.unsqueeze(0)
 
     def predict(self, image: Image.Image, confidence_threshold: float = 0.5) -> Dict[str, Any]:
         """
-        Обробка зображення та повернення передбачень
+        РћР±СЂРѕР±РєР° Р·РѕР±СЂР°Р¶РµРЅРЅСЏ С‚Р° РїРѕРІРµСЂРЅРµРЅРЅСЏ РїРµСЂРµРґР±Р°С‡РµРЅСЊ
 
         Args:
-            image (Image.Image): Вхідне зображення
-            confidence_threshold (float, optional): Поріг впевненості для виявлення загроз
+            image (Image.Image): Р’С…С–РґРЅРµ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
+            confidence_threshold (float, optional): РџРѕСЂС–Рі РІРїРµРІРЅРµРЅРѕСЃС‚С– РґР»СЏ РІРёСЏРІР»РµРЅРЅСЏ Р·Р°РіСЂРѕР·
 
         Returns:
-            Dict[str, Any]: Результати передбачення
+            Dict[str, Any]: Р РµР·СѓР»СЊС‚Р°С‚Рё РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏ
         """
         with create_custom_span("model_prediction", {"confidence_threshold": confidence_threshold}):
-            logger.info(f"Виконуємо передбачення з порогом впевненості: {confidence_threshold}")
+            logger.info(f"Р’РёРєРѕРЅСѓС”РјРѕ РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏ Р· РїРѕСЂРѕРіРѕРј РІРїРµРІРЅРµРЅРѕСЃС‚С–: {confidence_threshold}")
             start_time = time.time()
 
-            # Попередня обробка зображення
+            # РџРѕРїРµСЂРµРґРЅСЏ РѕР±СЂРѕР±РєР° Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
             tensor = self.preprocess_image(image)
 
-            # У реальній імплементації запускаємо модель
+            # РЈ СЂРµР°Р»СЊРЅС–Р№ С–РјРїР»РµРјРµРЅС‚Р°С†С–С— Р·Р°РїСѓСЃРєР°С”РјРѕ РјРѕРґРµР»СЊ
             # predictions = self.model(tensor)
 
-            # Мокові передбачення для тестування
+            # РњРѕРєРѕРІС– РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏ РґР»СЏ С‚РµСЃС‚СѓРІР°РЅРЅСЏ
             with create_custom_span("model_inference", {"tensor_shape": str(tensor.shape)}):
-                # Робимо передбачення детерміністичними на основі вмісту зображення
+                # Р РѕР±РёРјРѕ РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏ РґРµС‚РµСЂРјС–РЅС–СЃС‚РёС‡РЅРёРјРё РЅР° РѕСЃРЅРѕРІС– РІРјС–СЃС‚Сѓ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
                 np.random.seed(int(tensor.sum().item() * 100))
 
                 mock_predictions = []
-                # Генеруємо 0-3 випадкових загроз
+                # Р“РµРЅРµСЂСѓС”РјРѕ 0-3 РІРёРїР°РґРєРѕРІРёС… Р·Р°РіСЂРѕР·
                 num_threats = np.random.randint(0, 4)
 
                 for _ in range(num_threats):
                     threat_type = np.random.choice(["disease", "pest", "weed"])
                     confidence = np.random.uniform(0.3, 0.95)
 
-                    # Пропускаємо, якщо нижче порогу
+                    # РџСЂРѕРїСѓСЃРєР°С”РјРѕ, СЏРєС‰Рѕ РЅРёР¶С‡Рµ РїРѕСЂРѕРіСѓ
                     if confidence < confidence_threshold:
                         continue
 
-                    # Вибираємо назву на основі типу
+                    # Р’РёР±РёСЂР°С”РјРѕ РЅР°Р·РІСѓ РЅР° РѕСЃРЅРѕРІС– С‚РёРїСѓ
                     if threat_type == "disease":
                         name = np.random.choice(["late_blight", "early_blight", "rust", "septoria"])
                     elif threat_type == "pest":
@@ -113,34 +115,34 @@ class ThreatDetectionModel:
                         "confidence": float(confidence)
                     })
 
-            # Генеруємо рекомендації на основі виявлених загроз
+            # Р“РµРЅРµСЂСѓС”РјРѕ СЂРµРєРѕРјРµРЅРґР°С†С–С— РЅР° РѕСЃРЅРѕРІС– РІРёСЏРІР»РµРЅРёС… Р·Р°РіСЂРѕР·
             with create_custom_span("generate_recommendations", {"threat_count": len(mock_predictions)}):
                 recommendations = []
                 details = {}
 
                 if not mock_predictions:
-                    recommendations.append("Загроз не виявлено. Продовжуйте регулярний моніторинг посівів.")
+                    recommendations.append("Р—Р°РіСЂРѕР· РЅРµ РІРёСЏРІР»РµРЅРѕ. РџСЂРѕРґРѕРІР¶СѓР№С‚Рµ СЂРµРіСѓР»СЏСЂРЅРёР№ РјРѕРЅС–С‚РѕСЂРёРЅРі РїРѕСЃС–РІС–РІ.")
                 else:
                     for pred in mock_predictions:
                         if pred["type"] == "disease":
-                            recommendations.append(f"Для {pred['name']}, розгляньте застосування відповідного фунгіциду.")
+                            recommendations.append(f"Р”Р»СЏ {pred['name']}, СЂРѕР·РіР»СЏРЅСЊС‚Рµ Р·Р°СЃС‚РѕСЃСѓРІР°РЅРЅСЏ РІС–РґРїРѕРІС–РґРЅРѕРіРѕ С„СѓРЅРіС–С†РёРґСѓ.")
                         elif pred["type"] == "pest":
-                            recommendations.append(f"Для {pred['name']}, розгляньте використання інсектициду або біологічного контролю.")
+                            recommendations.append(f"Р”Р»СЏ {pred['name']}, СЂРѕР·РіР»СЏРЅСЊС‚Рµ РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ С–РЅСЃРµРєС‚РёС†РёРґСѓ Р°Р±Рѕ Р±С–РѕР»РѕРіС–С‡РЅРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЋ.")
                         else:  # weed
-                            recommendations.append(f"Для {pred['name']}, розгляньте механічне видалення або цільовий гербіцид.")
+                            recommendations.append(f"Р”Р»СЏ {pred['name']}, СЂРѕР·РіР»СЏРЅСЊС‚Рµ РјРµС…Р°РЅС–С‡РЅРµ РІРёРґР°Р»РµРЅРЅСЏ Р°Р±Рѕ С†С–Р»СЊРѕРІРёР№ РіРµСЂР±С–С†РёРґ.")
 
-                    # Додаємо деякі деталі
+                    # Р”РѕРґР°С”РјРѕ РґРµСЏРєС– РґРµС‚Р°Р»С–
                     details = {
-                        "severity": "низька" if len(mock_predictions) == 1 else "середня" if len(mock_predictions) == 2 else "висока",
+                        "severity": "РЅРёР·СЊРєР°" if len(mock_predictions) == 1 else "СЃРµСЂРµРґРЅСЏ" if len(mock_predictions) == 2 else "РІРёСЃРѕРєР°",
                         "processing_time_ms": round((time.time() - start_time) * 1000),
-                        "image_quality": "добра",
+                        "image_quality": "РґРѕР±СЂР°",
                         "model_version": "1.0.0"
                     }
 
             total_time = time.time() - start_time
-            logger.info(f"Передбачення завершено за {total_time:.2f} секунд")
+            logger.info(f"РџРµСЂРµРґР±Р°С‡РµРЅРЅСЏ Р·Р°РІРµСЂС€РµРЅРѕ Р·Р° {total_time:.2f} СЃРµРєСѓРЅРґ")
 
-            # Додаємо метрики в спан
+            # Р”РѕРґР°С”РјРѕ РјРµС‚СЂРёРєРё РІ СЃРїР°РЅ
             span = trace.get_current_span()
             span.set_attribute("prediction.threats.count", len(mock_predictions))
             span.set_attribute("prediction.processing_time_ms", details.get("processing_time_ms", 0))
@@ -150,3 +152,5 @@ class ThreatDetectionModel:
                 "recommendations": recommendations,
                 "details": details
             }
+
+

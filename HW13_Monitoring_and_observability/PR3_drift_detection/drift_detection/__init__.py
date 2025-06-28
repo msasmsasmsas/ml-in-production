@@ -1,3 +1,5 @@
+﻿# новлена версія для PR
+# новлена версія для PR
 from drift_detection.detector import DriftDetector, DriftType, DriftSeverity
 from drift_detection.metrics import (
     calculate_statistical_metrics,
@@ -19,3 +21,5 @@ __all__ = [
     'jensen_shannon_divergence',
     'chi_square_test'
 ]
+
+

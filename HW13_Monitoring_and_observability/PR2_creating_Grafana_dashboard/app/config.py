@@ -1,8 +1,10 @@
+﻿# новлена версія для PR
+# новлена версія для PR
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
-Конфігурація додатку та налаштування для моніторингу
+РљРѕРЅС„С–РіСѓСЂР°С†С–СЏ РґРѕРґР°С‚РєСѓ С‚Р° РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РґР»СЏ РјРѕРЅС–С‚РѕСЂРёРЅРіСѓ
 """
 
 import os
@@ -10,16 +12,16 @@ from pydantic import BaseSettings
 
 class Settings(BaseSettings):
     """
-    Налаштування додатку з сервісом розпізнавання загроз
+    РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РґРѕРґР°С‚РєСѓ Р· СЃРµСЂРІС–СЃРѕРј СЂРѕР·РїС–Р·РЅР°РІР°РЅРЅСЏ Р·Р°РіСЂРѕР·
     """
-    # Основні налаштування API
+    # РћСЃРЅРѕРІРЅС– РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ API
     API_VERSION: str = "1.0.0"
     DEBUG: bool = os.getenv("DEBUG", "False").lower() in ("true", "1", "t")
 
-    # Налаштування для моніторингу
+    # РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РґР»СЏ РјРѕРЅС–С‚РѕСЂРёРЅРіСѓ
     METRICS_PORT: int = int(os.getenv("METRICS_PORT", "8000"))
 
-    # Налаштування для моделі
+    # РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РґР»СЏ РјРѕРґРµР»С–
     MODEL_PATH: str = os.getenv("MODEL_PATH", "models/threat_detection_model.pt")
 
     class Config:
@@ -27,3 +29,5 @@ class Settings(BaseSettings):
         case_sensitive = True
 
 settings = Settings()
+
+

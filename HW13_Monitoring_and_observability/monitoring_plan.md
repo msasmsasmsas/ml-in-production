@@ -1,3 +1,5 @@
+﻿<!-- новлена версія для PR -->
+<!-- новлена версія для PR -->
 # Monitoring Plan for Agricultural Threat Detection System
 
 This document outlines the comprehensive monitoring strategy for our agricultural threat detection system, covering both system performance monitoring and machine learning model monitoring aspects.
@@ -178,3 +180,5 @@ This document outlines the comprehensive monitoring strategy for our agricultura
 ---
 
 This monitoring plan will be reviewed and updated quarterly to ensure it meets the evolving needs of the agricultural threat detection system.
+
+

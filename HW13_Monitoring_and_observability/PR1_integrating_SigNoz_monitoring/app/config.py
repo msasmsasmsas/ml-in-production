@@ -1,8 +1,10 @@
+﻿# новлена версія для PR
+# новлена версія для PR
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
-Конфігурація додатку та налаштування для моніторингу SigNoz
+РљРѕРЅС„С–РіСѓСЂР°С†С–СЏ РґРѕРґР°С‚РєСѓ С‚Р° РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РґР»СЏ РјРѕРЅС–С‚РѕСЂРёРЅРіСѓ SigNoz
 """
 
 import os
@@ -10,13 +12,13 @@ from pydantic import BaseSettings
 
 class Settings(BaseSettings):
     """
-    Налаштування додатку з сервісом розпізнавання загроз
+    РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РґРѕРґР°С‚РєСѓ Р· СЃРµСЂРІС–СЃРѕРј СЂРѕР·РїС–Р·РЅР°РІР°РЅРЅСЏ Р·Р°РіСЂРѕР·
     """
-    # Основні налаштування API
+    # РћСЃРЅРѕРІРЅС– РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ API
     API_VERSION: str = "1.0.0"
     DEBUG: bool = os.getenv("DEBUG", "False").lower() in ("true", "1", "t")
 
-    # Налаштування для OpenTelemetry/SigNoz
+    # РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РґР»СЏ OpenTelemetry/SigNoz
     OTEL_ENABLED: bool = os.getenv("OTEL_ENABLED", "True").lower() in ("true", "1", "t")
     OTEL_SERVICE_NAME: str = os.getenv("OTEL_SERVICE_NAME", "threat-detection-api")
     OTEL_EXPORTER_OTLP_ENDPOINT: str = os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT", "http://signoz:4317")
@@ -25,7 +27,7 @@ class Settings(BaseSettings):
         "deployment.environment=development,service.version=1.0.0"
     )
 
-    # Налаштування для моделі
+    # РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РґР»СЏ РјРѕРґРµР»С–
     MODEL_PATH: str = os.getenv("MODEL_PATH", "models/threat_detection_model.pt")
 
     class Config:
@@ -33,3 +35,5 @@ class Settings(BaseSettings):
         case_sensitive = True
 
 settings = Settings()
+
+

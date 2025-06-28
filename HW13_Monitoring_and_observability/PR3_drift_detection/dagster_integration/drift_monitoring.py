@@ -1,8 +1,10 @@
+﻿# новлена версія для PR
+# новлена версія для PR
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
-Інтеграція детектора дрейфу з Dagster pipeline
+Р†РЅС‚РµРіСЂР°С†С–СЏ РґРµС‚РµРєС‚РѕСЂР° РґСЂРµР№С„Сѓ Р· Dagster pipeline
 """
 
 import os
@@ -35,7 +37,7 @@ from drift_detection import DriftDetector, DriftType, DriftSeverity
 
 logger = logging.getLogger(__name__)
 
-# Конфігурація для детектора дрейфу
+# РљРѕРЅС„С–РіСѓСЂР°С†С–СЏ РґР»СЏ РґРµС‚РµРєС‚РѕСЂР° РґСЂРµР№С„Сѓ
 class DriftDetectorConfig(Config):
     reference_data_path: str
     reference_predictions_path: Optional[str] = None
@@ -49,35 +51,35 @@ class DriftDetectorConfig(Config):
 @asset
 def reference_data(config: DriftDetectorConfig) -> pd.DataFrame:
     """
-    Завантажує еталонні дані для виявлення дрейфу
+    Р—Р°РІР°РЅС‚Р°Р¶СѓС” РµС‚Р°Р»РѕРЅРЅС– РґР°РЅС– РґР»СЏ РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ
     """
-    logger.info(f"Завантаження еталонних даних з {config.reference_data_path}")
+    logger.info(f"Р—Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ РµС‚Р°Р»РѕРЅРЅРёС… РґР°РЅРёС… Р· {config.reference_data_path}")
 
     if not os.path.exists(config.reference_data_path):
-        raise FileNotFoundError(f"Файл еталонних даних не знайдено: {config.reference_data_path}")
+        raise FileNotFoundError(f"Р¤Р°Р№Р» РµС‚Р°Р»РѕРЅРЅРёС… РґР°РЅРёС… РЅРµ Р·РЅР°Р№РґРµРЅРѕ: {config.reference_data_path}")
 
     if config.reference_data_path.endswith('.csv'):
         reference_df = pd.read_csv(config.reference_data_path)
     elif config.reference_data_path.endswith('.parquet'):
         reference_df = pd.read_parquet(config.reference_data_path)
     else:
-        raise ValueError(f"Непідтримуваний формат файлу: {config.reference_data_path}")
+        raise ValueError(f"РќРµРїС–РґС‚СЂРёРјСѓРІР°РЅРёР№ С„РѕСЂРјР°С‚ С„Р°Р№Р»Сѓ: {config.reference_data_path}")
 
     return reference_df
 
 @asset
 def reference_predictions(config: DriftDetectorConfig) -> Optional[np.ndarray]:
     """
-    Завантажує еталонні передбачення для виявлення дрейфу
+    Р—Р°РІР°РЅС‚Р°Р¶СѓС” РµС‚Р°Р»РѕРЅРЅС– РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏ РґР»СЏ РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ
     """
     if not config.reference_predictions_path:
-        logger.info("Шлях до еталонних передбачень не вказано, повертаємо None")
+        logger.info("РЁР»СЏС… РґРѕ РµС‚Р°Р»РѕРЅРЅРёС… РїРµСЂРµРґР±Р°С‡РµРЅСЊ РЅРµ РІРєР°Р·Р°РЅРѕ, РїРѕРІРµСЂС‚Р°С”РјРѕ None")
         return None
 
-    logger.info(f"Завантаження еталонних передбачень з {config.reference_predictions_path}")
+    logger.info(f"Р—Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ РµС‚Р°Р»РѕРЅРЅРёС… РїРµСЂРµРґР±Р°С‡РµРЅСЊ Р· {config.reference_predictions_path}")
 
     if not os.path.exists(config.reference_predictions_path):
-        logger.warning(f"Файл еталонних передбачень не знайдено: {config.reference_predictions_path}")
+        logger.warning(f"Р¤Р°Р№Р» РµС‚Р°Р»РѕРЅРЅРёС… РїРµСЂРµРґР±Р°С‡РµРЅСЊ РЅРµ Р·РЅР°Р№РґРµРЅРѕ: {config.reference_predictions_path}")
         return None
 
     if config.reference_predictions_path.endswith('.npy'):
@@ -88,14 +90,14 @@ def reference_predictions(config: DriftDetectorConfig) -> Optional[np.ndarray]:
         with open(config.reference_predictions_path, 'rb') as f:
             return pickle.load(f)
     else:
-        raise ValueError(f"Непідтримуваний формат файлу: {config.reference_predictions_path}")
+        raise ValueError(f"РќРµРїС–РґС‚СЂРёРјСѓРІР°РЅРёР№ С„РѕСЂРјР°С‚ С„Р°Р№Р»Сѓ: {config.reference_predictions_path}")
 
 @asset(deps=[reference_data, reference_predictions])
 def drift_detector(config: DriftDetectorConfig, reference_data: pd.DataFrame, reference_predictions: Optional[np.ndarray]) -> DriftDetector:
     """
-    Створює та налаштовує детектор дрейфу
+    РЎС‚РІРѕСЂСЋС” С‚Р° РЅР°Р»Р°С€С‚РѕРІСѓС” РґРµС‚РµРєС‚РѕСЂ РґСЂРµР№С„Сѓ
     """
-    logger.info("Створення детектора дрейфу")
+    logger.info("РЎС‚РІРѕСЂРµРЅРЅСЏ РґРµС‚РµРєС‚РѕСЂР° РґСЂРµР№С„Сѓ")
 
     detector = DriftDetector(
         reference_data=reference_data,
@@ -112,89 +114,91 @@ def drift_detector(config: DriftDetectorConfig, reference_data: pd.DataFrame, re
 @op(ins={"detector": In(), "current_data": In(), "current_predictions": In(is_required=False)})
 def detect_drift(detector: DriftDetector, current_data: pd.DataFrame, current_predictions: Optional[np.ndarray] = None) -> Dict[str, Any]:
     """
-    Виявляє дрейф в поточних даних та передбаченнях
+    Р’РёСЏРІР»СЏС” РґСЂРµР№С„ РІ РїРѕС‚РѕС‡РЅРёС… РґР°РЅРёС… С‚Р° РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏС…
 
     Args:
-        detector: Налаштований детектор дрейфу
-        current_data: Поточний набір даних
-        current_predictions: Поточні передбачення (опціонально)
+        detector: РќР°Р»Р°С€С‚РѕРІР°РЅРёР№ РґРµС‚РµРєС‚РѕСЂ РґСЂРµР№С„Сѓ
+        current_data: РџРѕС‚РѕС‡РЅРёР№ РЅР°Р±С–СЂ РґР°РЅРёС…
+        current_predictions: РџРѕС‚РѕС‡РЅС– РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏ (РѕРїС†С–РѕРЅР°Р»СЊРЅРѕ)
 
     Returns:
-        Результати виявлення дрейфу
+        Р РµР·СѓР»СЊС‚Р°С‚Рё РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ
     """
-    logger.info("Виявлення дрейфу в поточних даних")
+    logger.info("Р’РёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ РІ РїРѕС‚РѕС‡РЅРёС… РґР°РЅРёС…")
 
-    # Виконуємо виявлення дрейфу
+    # Р’РёРєРѕРЅСѓС”РјРѕ РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ
     drift_results = detector.detect_drift(current_data, current_predictions)
 
-    # Логування результатів
+    # Р›РѕРіСѓРІР°РЅРЅСЏ СЂРµР·СѓР»СЊС‚Р°С‚С–РІ
     overall_score = drift_results["overall_drift"]["score"]
     overall_severity = drift_results["overall_drift"]["severity"]
-    logger.info(f"Виявлено дрейф з загальною оцінкою {overall_score:.4f} (рівень: {overall_severity})")
+    logger.info(f"Р’РёСЏРІР»РµРЅРѕ РґСЂРµР№С„ Р· Р·Р°РіР°Р»СЊРЅРѕСЋ РѕС†С–РЅРєРѕСЋ {overall_score:.4f} (СЂС–РІРµРЅСЊ: {overall_severity})")
 
-    # Логування деталей для ознак з високим рівнем дрейфу
+    # Р›РѕРіСѓРІР°РЅРЅСЏ РґРµС‚Р°Р»РµР№ РґР»СЏ РѕР·РЅР°Рє Р· РІРёСЃРѕРєРёРј СЂС–РІРЅРµРј РґСЂРµР№С„Сѓ
     for feature, info in drift_results["data_drift"].items():
         if info["severity"] in [DriftSeverity.MEDIUM, DriftSeverity.HIGH]:
-            logger.warning(f"Високий рівень дрейфу для ознаки '{feature}': {info['score']:.4f} (рівень: {info['severity']})")
+            logger.warning(f"Р’РёСЃРѕРєРёР№ СЂС–РІРµРЅСЊ РґСЂРµР№С„Сѓ РґР»СЏ РѕР·РЅР°РєРё '{feature}': {info['score']:.4f} (СЂС–РІРµРЅСЊ: {info['severity']})")
 
-    # Якщо є дрейф у передбаченнях, також логуємо
+    # РЇРєС‰Рѕ С” РґСЂРµР№С„ Сѓ РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏС…, С‚Р°РєРѕР¶ Р»РѕРіСѓС”РјРѕ
     if drift_results["prediction_drift"] is not None:
         pred_score = drift_results["prediction_drift"]["score"]
         pred_severity = drift_results["prediction_drift"]["severity"]
         if pred_severity in [DriftSeverity.MEDIUM, DriftSeverity.HIGH]:
-            logger.warning(f"Високий рівень дрейфу у передбаченнях: {pred_score:.4f} (рівень: {pred_severity})")
+            logger.warning(f"Р’РёСЃРѕРєРёР№ СЂС–РІРµРЅСЊ РґСЂРµР№С„Сѓ Сѓ РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏС…: {pred_score:.4f} (СЂС–РІРµРЅСЊ: {pred_severity})")
 
     return drift_results
 
 @op(out=Out(is_required=False))
 def save_drift_results(config: DriftDetectorConfig, drift_results: Dict[str, Any]) -> Optional[str]:
     """
-    Зберігає результати виявлення дрейфу
+    Р—Р±РµСЂС–РіР°С” СЂРµР·СѓР»СЊС‚Р°С‚Рё РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ
 
     Args:
-        config: Конфігурація детектора дрейфу
-        drift_results: Результати виявлення дрейфу
+        config: РљРѕРЅС„С–РіСѓСЂР°С†С–СЏ РґРµС‚РµРєС‚РѕСЂР° РґСЂРµР№С„Сѓ
+        drift_results: Р РµР·СѓР»СЊС‚Р°С‚Рё РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ
 
     Returns:
-        Шлях до збереженого файлу результатів
+        РЁР»СЏС… РґРѕ Р·Р±РµСЂРµР¶РµРЅРѕРіРѕ С„Р°Р№Р»Сѓ СЂРµР·СѓР»СЊС‚Р°С‚С–РІ
     """
-    # Створюємо директорію для результатів, якщо вона не існує
+    # РЎС‚РІРѕСЂСЋС”РјРѕ РґРёСЂРµРєС‚РѕСЂС–СЋ РґР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚С–РІ, СЏРєС‰Рѕ РІРѕРЅР° РЅРµ С–СЃРЅСѓС”
     os.makedirs(config.output_path, exist_ok=True)
 
-    # Формуємо ім'я файлу з датою та часом
+    # Р¤РѕСЂРјСѓС”РјРѕ С–Рј'СЏ С„Р°Р№Р»Сѓ Р· РґР°С‚РѕСЋ С‚Р° С‡Р°СЃРѕРј
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     output_file = os.path.join(config.output_path, f"drift_results_{timestamp}.json")
 
-    # Зберігаємо результати в JSON
+    # Р—Р±РµСЂС–РіР°С”РјРѕ СЂРµР·СѓР»СЊС‚Р°С‚Рё РІ JSON
     with open(output_file, 'w') as f:
         json.dump(drift_results, f, indent=2, default=str)
 
-    logger.info(f"Результати виявлення дрейфу збережено в {output_file}")
+    logger.info(f"Р РµР·СѓР»СЊС‚Р°С‚Рё РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ Р·Р±РµСЂРµР¶РµРЅРѕ РІ {output_file}")
 
     return output_file
 
 @graph
 def drift_detection_pipeline():
     """
-    Графовий компонент для виявлення дрейфу в даних
+    Р“СЂР°С„РѕРІРёР№ РєРѕРјРїРѕРЅРµРЅС‚ РґР»СЏ РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ РІ РґР°РЅРёС…
     """
     config = DriftDetectorConfig.from_resource()
     ref_data = reference_data(config)
     ref_predictions = reference_predictions(config)
     detector = drift_detector(config, ref_data, ref_predictions)
 
-    # Ці операції будуть з'єднані з вхідними даними з основного пайплайну
-    current_data = None  # Буде передано з пайплайну
-    current_predictions = None  # Буде передано з пайплайну
+    # Р¦С– РѕРїРµСЂР°С†С–С— Р±СѓРґСѓС‚СЊ Р·'С”РґРЅР°РЅС– Р· РІС…С–РґРЅРёРјРё РґР°РЅРёРјРё Р· РѕСЃРЅРѕРІРЅРѕРіРѕ РїР°Р№РїР»Р°Р№РЅСѓ
+    current_data = None  # Р‘СѓРґРµ РїРµСЂРµРґР°РЅРѕ Р· РїР°Р№РїР»Р°Р№РЅСѓ
+    current_predictions = None  # Р‘СѓРґРµ РїРµСЂРµРґР°РЅРѕ Р· РїР°Р№РїР»Р°Р№РЅСѓ
 
     drift_results = detect_drift(detector, current_data, current_predictions)
     save_path = save_drift_results(config, drift_results)
 
     return drift_results, save_path
 
-# Користувачі можуть включити цей графовий компонент у свій основний пайплайн
-# наприклад:
+# РљРѕСЂРёСЃС‚СѓРІР°С‡С– РјРѕР¶СѓС‚СЊ РІРєР»СЋС‡РёС‚Рё С†РµР№ РіСЂР°С„РѕРІРёР№ РєРѕРјРїРѕРЅРµРЅС‚ Сѓ СЃРІС–Р№ РѕСЃРЅРѕРІРЅРёР№ РїР°Р№РїР»Р°Р№РЅ
+# РЅР°РїСЂРёРєР»Р°Рґ:
 # @job
 # def main_pipeline():
 #     data, predictions = process_and_predict()
 #     drift_results, _ = drift_detection_pipeline(data, predictions)
+
+

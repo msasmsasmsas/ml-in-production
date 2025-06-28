@@ -1,3 +1,5 @@
+﻿<!-- новлена версія для PR -->
+<!-- новлена версія для PR -->
 # Grafana Dashboard for Application Monitoring
 
 This directory contains the code and configuration for creating Grafana dashboards to monitor our application.
@@ -25,3 +27,5 @@ This directory contains the code and configuration for creating Grafana dashboar
 ## Architecture
 
 The monitoring stack consists of Prometheus for metrics collection and Grafana for visualization, with exporters to collect metrics from various components of our application.
+
+

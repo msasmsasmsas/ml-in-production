@@ -1,3 +1,4 @@
+﻿# новлена версія для PR
 apiVersion: 1
 
 providers:
@@ -9,3 +10,4 @@ providers:
     editable: true
     options:
       path: /etc/grafana/provisioning/dashboards
+

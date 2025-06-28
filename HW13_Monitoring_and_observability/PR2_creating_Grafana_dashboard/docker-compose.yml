@@ -1,7 +1,8 @@
+﻿# новлена версія для PR
 version: '3.9'
 
 services:
-  # Додаток для моніторингу
+  # Р”РѕРґР°С‚РѕРє РґР»СЏ РјРѕРЅС–С‚РѕСЂРёРЅРіСѓ
   app:
     build:
       context: .
@@ -14,7 +15,7 @@ services:
     volumes:
       - ./app:/app
 
-  # Prometheus для збору метрик
+  # Prometheus РґР»СЏ Р·Р±РѕСЂСѓ РјРµС‚СЂРёРє
   prometheus:
     image: prom/prometheus:v2.44.0
     ports:
@@ -30,7 +31,7 @@ services:
       - '--web.enable-lifecycle'
     restart: unless-stopped
 
-  # Node Exporter для системних метрик
+  # Node Exporter РґР»СЏ СЃРёСЃС‚РµРјРЅРёС… РјРµС‚СЂРёРє
   node-exporter:
     image: prom/node-exporter:v1.5.0
     volumes:
@@ -46,7 +47,7 @@ services:
     expose:
       - 9100
 
-  # Grafana для візуалізації
+  # Grafana РґР»СЏ РІС–Р·СѓР°Р»С–Р·Р°С†С–С—
   grafana:
     image: grafana/grafana:9.5.1
     ports:
@@ -64,3 +65,4 @@ services:
 volumes:
   prometheus-data:
   grafana-data:
+

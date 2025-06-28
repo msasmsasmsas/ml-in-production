@@ -1,7 +1,8 @@
+﻿# новлена версія для PR
 version: '3.9'
 
 services:
-  # Наш додаток
+  # РќР°С€ РґРѕРґР°С‚РѕРє
   app:
     build:
       context: .
@@ -16,8 +17,8 @@ services:
     depends_on:
       - signoz-otel-collector
 
-  # SigNoz - опираємось на офіційний docker-compose.yaml з SigNoz
-  # Документація: https://signoz.io/docs/install/docker/
+  # SigNoz - РѕРїРёСЂР°С”РјРѕСЃСЊ РЅР° РѕС„С–С†С–Р№РЅРёР№ docker-compose.yaml Р· SigNoz
+  # Р”РѕРєСѓРјРµРЅС‚Р°С†С–СЏ: https://signoz.io/docs/install/docker/
   signoz-clickhouse:
     image: clickhouse/clickhouse-server:22.8.8.9-alpine
     volumes:
@@ -63,3 +64,4 @@ services:
       - CLICKHOUSE_PORT=9000
     depends_on:
       - signoz-clickhouse
+

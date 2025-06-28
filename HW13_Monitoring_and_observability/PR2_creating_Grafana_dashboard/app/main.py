@@ -1,8 +1,10 @@
+﻿# новлена версія для PR
+# новлена версія для PR
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
-Головний файл додатку з інтеграцією Prometheus для моніторингу
+Р“РѕР»РѕРІРЅРёР№ С„Р°Р№Р» РґРѕРґР°С‚РєСѓ Р· С–РЅС‚РµРіСЂР°С†С–С”СЋ Prometheus РґР»СЏ РјРѕРЅС–С‚РѕСЂРёРЅРіСѓ
 """
 
 import os
@@ -18,13 +20,13 @@ from fastapi.responses import JSONResponse
 from PIL import Image
 import io
 
-# Імпортуємо модулі для моніторингу
+# Р†РјРїРѕСЂС‚СѓС”РјРѕ РјРѕРґСѓР»С– РґР»СЏ РјРѕРЅС–С‚РѕСЂРёРЅРіСѓ
 from app.monitoring import setup_monitoring, http_request_counter, http_request_duration
 from app.model import ThreatDetectionModel
 from app.schemas import PredictionResponse
 from app.config import settings
 
-# Налаштування логування
+# РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ Р»РѕРіСѓРІР°РЅРЅСЏ
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -34,29 +36,29 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Створюємо контекстний менеджер для запуску та зупинки сервісів
+# РЎС‚РІРѕСЂСЋС”РјРѕ РєРѕРЅС‚РµРєСЃС‚РЅРёР№ РјРµРЅРµРґР¶РµСЂ РґР»СЏ Р·Р°РїСѓСЃРєСѓ С‚Р° Р·СѓРїРёРЅРєРё СЃРµСЂРІС–СЃС–РІ
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Виконується при старті
-    logger.info("Ініціалізація додатку...")
-    # Ініціалізуємо модель при старті
+    # Р’РёРєРѕРЅСѓС”С‚СЊСЃСЏ РїСЂРё СЃС‚Р°СЂС‚С–
+    logger.info("Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ РґРѕРґР°С‚РєСѓ...")
+    # Р†РЅС–С†С–Р°Р»С–Р·СѓС”РјРѕ РјРѕРґРµР»СЊ РїСЂРё СЃС‚Р°СЂС‚С–
     app.state.model = ThreatDetectionModel()
     yield
-    # Виконується при зупинці
-    logger.info("Завершення роботи додатку...")
+    # Р’РёРєРѕРЅСѓС”С‚СЊСЃСЏ РїСЂРё Р·СѓРїРёРЅС†С–
+    logger.info("Р—Р°РІРµСЂС€РµРЅРЅСЏ СЂРѕР±РѕС‚Рё РґРѕРґР°С‚РєСѓ...")
 
-# Створюємо FastAPI додаток
+# РЎС‚РІРѕСЂСЋС”РјРѕ FastAPI РґРѕРґР°С‚РѕРє
 app = FastAPI(
     title="Threat Detection API",
-    description="API для виявлення загроз сільськогосподарським культурам",
+    description="API РґР»СЏ РІРёСЏРІР»РµРЅРЅСЏ Р·Р°РіСЂРѕР· СЃС–Р»СЊСЃСЊРєРѕРіРѕСЃРїРѕРґР°СЂСЃСЊРєРёРј РєСѓР»СЊС‚СѓСЂР°Рј",
     version="1.0.0",
     lifespan=lifespan
 )
 
-# Налаштовуємо моніторинг
+# РќР°Р»Р°С€С‚РѕРІСѓС”РјРѕ РјРѕРЅС–С‚РѕСЂРёРЅРі
 setup_monitoring(app)
 
-# Додаємо CORS middleware
+# Р”РѕРґР°С”РјРѕ CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -65,7 +67,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Додаємо middleware для відстеження часу запитів
+# Р”РѕРґР°С”РјРѕ middleware РґР»СЏ РІС–РґСЃС‚РµР¶РµРЅРЅСЏ С‡Р°СЃСѓ Р·Р°РїРёС‚С–РІ
 @app.middleware("http")
 async def add_process_time_header(request: Request, call_next):
     start_time = time.time()
@@ -77,15 +79,15 @@ async def add_process_time_header(request: Request, call_next):
 @app.get("/")
 async def root():
     """
-    Кореневий ендпоінт для перевірки працездатності API
+    РљРѕСЂРµРЅРµРІРёР№ РµРЅРґРїРѕС–РЅС‚ РґР»СЏ РїРµСЂРµРІС–СЂРєРё РїСЂР°С†РµР·РґР°С‚РЅРѕСЃС‚С– API
     """
     http_request_counter.labels(method="GET", endpoint="/", status="200").inc()
-    return {"status": "ok", "message": "Threat Detection API працює"}
+    return {"status": "ok", "message": "Threat Detection API РїСЂР°С†СЋС”"}
 
 @app.get("/health")
 async def health_check():
     """
-    Ендпоінт для перевірки здоров'я сервісу
+    Р•РЅРґРїРѕС–РЅС‚ РґР»СЏ РїРµСЂРµРІС–СЂРєРё Р·РґРѕСЂРѕРІ'СЏ СЃРµСЂРІС–СЃСѓ
     """
     http_request_counter.labels(method="GET", endpoint="/health", status="200").inc()
     return {
@@ -98,35 +100,35 @@ async def health_check():
 @app.post("/predict", response_model=PredictionResponse)
 async def predict(background_tasks: BackgroundTasks, file: UploadFile = File(...), threshold: float = 0.5):
     """
-    Ендпоінт для передбачення загроз на зображенні
+    Р•РЅРґРїРѕС–РЅС‚ РґР»СЏ РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏ Р·Р°РіСЂРѕР· РЅР° Р·РѕР±СЂР°Р¶РµРЅРЅС–
 
-    - **file**: зображення для аналізу
-    - **threshold**: поріг впевненості (0.0-1.0)
+    - **file**: Р·РѕР±СЂР°Р¶РµРЅРЅСЏ РґР»СЏ Р°РЅР°Р»С–Р·Сѓ
+    - **threshold**: РїРѕСЂС–Рі РІРїРµРІРЅРµРЅРѕСЃС‚С– (0.0-1.0)
     """
     request_id = str(uuid.uuid4())
-    logger.info(f"Отримано запит на передбачення [ID: {request_id}]")
+    logger.info(f"РћС‚СЂРёРјР°РЅРѕ Р·Р°РїРёС‚ РЅР° РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏ [ID: {request_id}]")
 
-    # Перевіряємо, чи це зображення
+    # РџРµСЂРµРІС–СЂСЏС”РјРѕ, С‡Рё С†Рµ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
     if not file.content_type.startswith("image/"):
         http_request_counter.labels(method="POST", endpoint="/predict", status="400").inc()
-        raise HTTPException(status_code=400, detail="Файл повинен бути зображенням")
+        raise HTTPException(status_code=400, detail="Р¤Р°Р№Р» РїРѕРІРёРЅРµРЅ Р±СѓС‚Рё Р·РѕР±СЂР°Р¶РµРЅРЅСЏРј")
 
     try:
         start_time = time.time()
 
-        # Читаємо зображення
+        # Р§РёС‚Р°С”РјРѕ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ
         image_data = await file.read()
         image = Image.open(io.BytesIO(image_data))
 
-        # Робимо передбачення
+        # Р РѕР±РёРјРѕ РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏ
         model = app.state.model
         result = model.predict(image, confidence_threshold=threshold)
 
-        # Вимірюємо час передбачення
+        # Р’РёРјС–СЂСЋС”РјРѕ С‡Р°СЃ РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏ
         prediction_time = time.time() - start_time
         http_request_duration.observe(prediction_time)
 
-        # Формуємо відповідь
+        # Р¤РѕСЂРјСѓС”РјРѕ РІС–РґРїРѕРІС–РґСЊ
         response = PredictionResponse(
             request_id=request_id,
             threats=result["threats"],
@@ -134,39 +136,41 @@ async def predict(background_tasks: BackgroundTasks, file: UploadFile = File(...
             details=result["details"]
         )
 
-        # Додаємо асинхронне завдання для логування результатів
+        # Р”РѕРґР°С”РјРѕ Р°СЃРёРЅС…СЂРѕРЅРЅРµ Р·Р°РІРґР°РЅРЅСЏ РґР»СЏ Р»РѕРіСѓРІР°РЅРЅСЏ СЂРµР·СѓР»СЊС‚Р°С‚С–РІ
         background_tasks.add_task(log_prediction_result, request_id, len(result["threats"]))
 
-        # Оновлюємо лічильник запитів
+        # РћРЅРѕРІР»СЋС”РјРѕ Р»С–С‡РёР»СЊРЅРёРє Р·Р°РїРёС‚С–РІ
         http_request_counter.labels(method="POST", endpoint="/predict", status="200").inc()
 
         return response
 
     except Exception as e:
-        logger.error(f"Помилка при обробці зображення: {str(e)}")
+        logger.error(f"РџРѕРјРёР»РєР° РїСЂРё РѕР±СЂРѕР±С†С– Р·РѕР±СЂР°Р¶РµРЅРЅСЏ: {str(e)}")
         logger.error(traceback.format_exc())
         http_request_counter.labels(method="POST", endpoint="/predict", status="500").inc()
-        raise HTTPException(status_code=500, detail=f"Помилка обробки: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"РџРѕРјРёР»РєР° РѕР±СЂРѕР±РєРё: {str(e)}")
 
 def log_prediction_result(request_id: str, threat_count: int):
     """
-    Функція для асинхронного логування результатів передбачення
+    Р¤СѓРЅРєС†С–СЏ РґР»СЏ Р°СЃРёРЅС…СЂРѕРЅРЅРѕРіРѕ Р»РѕРіСѓРІР°РЅРЅСЏ СЂРµР·СѓР»СЊС‚Р°С‚С–РІ РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏ
     """
-    logger.info(f"Завершено передбачення [ID: {request_id}], виявлено загроз: {threat_count}")
+    logger.info(f"Р—Р°РІРµСЂС€РµРЅРѕ РїРµСЂРµРґР±Р°С‡РµРЅРЅСЏ [ID: {request_id}], РІРёСЏРІР»РµРЅРѕ Р·Р°РіСЂРѕР·: {threat_count}")
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request, exc):
     """
-    Глобальний обробник винятків
+    Р“Р»РѕР±Р°Р»СЊРЅРёР№ РѕР±СЂРѕР±РЅРёРє РІРёРЅСЏС‚РєС–РІ
     """
-    logger.error(f"Непередбачена помилка: {str(exc)}")
+    logger.error(f"РќРµРїРµСЂРµРґР±Р°С‡РµРЅР° РїРѕРјРёР»РєР°: {str(exc)}")
     logger.error(traceback.format_exc())
     http_request_counter.labels(method=request.method, endpoint=request.url.path, status="500").inc()
     return JSONResponse(
         status_code=500,
-        content={"detail": "Виникла внутрішня помилка сервера"}
+        content={"detail": "Р’РёРЅРёРєР»Р° РІРЅСѓС‚СЂС–С€РЅСЏ РїРѕРјРёР»РєР° СЃРµСЂРІРµСЂР°"}
     )
 
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
+
+

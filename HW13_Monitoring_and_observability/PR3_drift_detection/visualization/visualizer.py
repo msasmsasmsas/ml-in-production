@@ -1,8 +1,10 @@
+﻿# новлена версія для PR
+# новлена версія для PR
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
-Модуль для візуалізації результатів виявлення дрейфу даних
+РњРѕРґСѓР»СЊ РґР»СЏ РІС–Р·СѓР°Р»С–Р·Р°С†С–С— СЂРµР·СѓР»СЊС‚Р°С‚С–РІ РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ РґР°РЅРёС…
 """
 
 import numpy as np
@@ -18,41 +20,41 @@ from drift_detection import DriftSeverity
 
 class DriftVisualizer:
     """
-    Клас для візуалізації результатів виявлення дрейфу даних
+    РљР»Р°СЃ РґР»СЏ РІС–Р·СѓР°Р»С–Р·Р°С†С–С— СЂРµР·СѓР»СЊС‚Р°С‚С–РІ РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ РґР°РЅРёС…
     """
     def __init__(self, output_dir: str = "drift_visualizations"):
         """
-        Ініціалізація візуалізатора
+        Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ РІС–Р·СѓР°Р»С–Р·Р°С‚РѕСЂР°
 
         Args:
-            output_dir: Директорія для збереження візуалізацій
+            output_dir: Р”РёСЂРµРєС‚РѕСЂС–СЏ РґР»СЏ Р·Р±РµСЂРµР¶РµРЅРЅСЏ РІС–Р·СѓР°Р»С–Р·Р°С†С–Р№
         """
         self.output_dir = output_dir
         os.makedirs(output_dir, exist_ok=True)
 
-        # Налаштування стилю графіків
+        # РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ СЃС‚РёР»СЋ РіСЂР°С„С–РєС–РІ
         plt.style.use('seaborn-v0_8-whitegrid')
         sns.set_context("talk")
 
     def visualize_drift_results(self, drift_results: Dict[str, Any], reference_data: Optional[pd.DataFrame] = None, current_data: Optional[pd.DataFrame] = None):
         """
-        Створення візуалізацій на основі результатів виявлення дрейфу
+        РЎС‚РІРѕСЂРµРЅРЅСЏ РІС–Р·СѓР°Р»С–Р·Р°С†С–Р№ РЅР° РѕСЃРЅРѕРІС– СЂРµР·СѓР»СЊС‚Р°С‚С–РІ РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ
 
         Args:
-            drift_results: Результати виявлення дрейфу
-            reference_data: Еталонний набір даних (опціонально)
-            current_data: Поточний набір даних (опціонально)
+            drift_results: Р РµР·СѓР»СЊС‚Р°С‚Рё РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ
+            reference_data: Р•С‚Р°Р»РѕРЅРЅРёР№ РЅР°Р±С–СЂ РґР°РЅРёС… (РѕРїС†С–РѕРЅР°Р»СЊРЅРѕ)
+            current_data: РџРѕС‚РѕС‡РЅРёР№ РЅР°Р±С–СЂ РґР°РЅРёС… (РѕРїС†С–РѕРЅР°Р»СЊРЅРѕ)
         """
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-        # Візуалізація загального рівня дрейфу
+        # Р’С–Р·СѓР°Р»С–Р·Р°С†С–СЏ Р·Р°РіР°Р»СЊРЅРѕРіРѕ СЂС–РІРЅСЏ РґСЂРµР№С„Сѓ
         self._plot_overall_drift(drift_results, timestamp)
 
-        # Візуалізація дрейфу для окремих ознак
+        # Р’С–Р·СѓР°Р»С–Р·Р°С†С–СЏ РґСЂРµР№С„Сѓ РґР»СЏ РѕРєСЂРµРјРёС… РѕР·РЅР°Рє
         if "data_drift" in drift_results and drift_results["data_drift"]:
             self._plot_feature_drift(drift_results["data_drift"], timestamp)
 
-            # Якщо доступні дані, створюємо детальні візуалізації для ознак
+            # РЇРєС‰Рѕ РґРѕСЃС‚СѓРїРЅС– РґР°РЅС–, СЃС‚РІРѕСЂСЋС”РјРѕ РґРµС‚Р°Р»СЊРЅС– РІС–Р·СѓР°Р»С–Р·Р°С†С–С— РґР»СЏ РѕР·РЅР°Рє
             if reference_data is not None and current_data is not None:
                 self._plot_detailed_distributions(
                     drift_results["data_drift"],
@@ -61,17 +63,17 @@ class DriftVisualizer:
                     timestamp
                 )
 
-        # Візуалізація дрейфу передбачень, якщо він є
+        # Р’С–Р·СѓР°Р»С–Р·Р°С†С–СЏ РґСЂРµР№С„Сѓ РїРµСЂРµРґР±Р°С‡РµРЅСЊ, СЏРєС‰Рѕ РІС–РЅ С”
         if "prediction_drift" in drift_results and drift_results["prediction_drift"] is not None:
             self._plot_prediction_drift(drift_results["prediction_drift"], timestamp)
 
     def _plot_overall_drift(self, drift_results: Dict[str, Any], timestamp: str):
         """
-        Візуалізація загального рівня дрейфу
+        Р’С–Р·СѓР°Р»С–Р·Р°С†С–СЏ Р·Р°РіР°Р»СЊРЅРѕРіРѕ СЂС–РІРЅСЏ РґСЂРµР№С„Сѓ
 
         Args:
-            drift_results: Результати виявлення дрейфу
-            timestamp: Часова мітка для назви файлу
+            drift_results: Р РµР·СѓР»СЊС‚Р°С‚Рё РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ
+            timestamp: Р§Р°СЃРѕРІР° РјС–С‚РєР° РґР»СЏ РЅР°Р·РІРё С„Р°Р№Р»Сѓ
         """
         overall_drift = drift_results.get("overall_drift", {})
         if not overall_drift:
@@ -80,10 +82,10 @@ class DriftVisualizer:
         score = overall_drift.get("score", 0)
         severity = overall_drift.get("severity", DriftSeverity.NO_DRIFT)
 
-        # Створюємо діаграму з рівнем дрейфу
+        # РЎС‚РІРѕСЂСЋС”РјРѕ РґС–Р°РіСЂР°РјСѓ Р· СЂС–РІРЅРµРј РґСЂРµР№С„Сѓ
         fig, ax = plt.subplots(figsize=(10, 6))
 
-        # Визначаємо колір на основі рівня серйозності
+        # Р’РёР·РЅР°С‡Р°С”РјРѕ РєРѕР»С–СЂ РЅР° РѕСЃРЅРѕРІС– СЂС–РІРЅСЏ СЃРµСЂР№РѕР·РЅРѕСЃС‚С–
         if severity == DriftSeverity.HIGH:
             color = "red"
         elif severity == DriftSeverity.MEDIUM:
@@ -93,19 +95,19 @@ class DriftVisualizer:
         else:
             color = "green"
 
-        # Горизонтальна шкала від 0 до 1
-        ax.barh(["Загальний дрейф"], [score], color=color)
+        # Р“РѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅР° С€РєР°Р»Р° РІС–Рґ 0 РґРѕ 1
+        ax.barh(["Р—Р°РіР°Р»СЊРЅРёР№ РґСЂРµР№С„"], [score], color=color)
         ax.set_xlim(0, 1)
-        ax.set_xlabel("Рівень дрейфу")
-        ax.set_title(f"Загальний рівень дрейфу: {score:.4f} ({severity})")
+        ax.set_xlabel("Р С–РІРµРЅСЊ РґСЂРµР№С„Сѓ")
+        ax.set_title(f"Р—Р°РіР°Р»СЊРЅРёР№ СЂС–РІРµРЅСЊ РґСЂРµР№С„Сѓ: {score:.4f} ({severity})")
 
-        # Додаємо вертикальні лінії для порогів серйозності
-        ax.axvline(x=0.05, color='green', linestyle='--', alpha=0.7, label="Низький")
-        ax.axvline(x=0.1, color='yellow', linestyle='--', alpha=0.7, label="Середній")
-        ax.axvline(x=0.2, color='red', linestyle='--', alpha=0.7, label="Високий")
+        # Р”РѕРґР°С”РјРѕ РІРµСЂС‚РёРєР°Р»СЊРЅС– Р»С–РЅС–С— РґР»СЏ РїРѕСЂРѕРіС–РІ СЃРµСЂР№РѕР·РЅРѕСЃС‚С–
+        ax.axvline(x=0.05, color='green', linestyle='--', alpha=0.7, label="РќРёР·СЊРєРёР№")
+        ax.axvline(x=0.1, color='yellow', linestyle='--', alpha=0.7, label="РЎРµСЂРµРґРЅС–Р№")
+        ax.axvline(x=0.2, color='red', linestyle='--', alpha=0.7, label="Р’РёСЃРѕРєРёР№")
         ax.legend()
 
-        # Зберігаємо діаграму
+        # Р—Р±РµСЂС–РіР°С”РјРѕ РґС–Р°РіСЂР°РјСѓ
         output_file = os.path.join(self.output_dir, f"overall_drift_{timestamp}.png")
         plt.tight_layout()
         plt.savefig(output_file)
@@ -113,16 +115,16 @@ class DriftVisualizer:
 
     def _plot_feature_drift(self, data_drift: Dict[str, Any], timestamp: str):
         """
-        Візуалізація дрейфу для окремих ознак
+        Р’С–Р·СѓР°Р»С–Р·Р°С†С–СЏ РґСЂРµР№С„Сѓ РґР»СЏ РѕРєСЂРµРјРёС… РѕР·РЅР°Рє
 
         Args:
-            data_drift: Результати виявлення дрейфу для ознак
-            timestamp: Часова мітка для назви файлу
+            data_drift: Р РµР·СѓР»СЊС‚Р°С‚Рё РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ РґР»СЏ РѕР·РЅР°Рє
+            timestamp: Р§Р°СЃРѕРІР° РјС–С‚РєР° РґР»СЏ РЅР°Р·РІРё С„Р°Р№Р»Сѓ
         """
         if not data_drift:
             return
 
-        # Створюємо DataFrame з результатами для кожної ознаки
+        # РЎС‚РІРѕСЂСЋС”РјРѕ DataFrame Р· СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё РґР»СЏ РєРѕР¶РЅРѕС— РѕР·РЅР°РєРё
         features = []
         scores = []
         severities = []
@@ -134,7 +136,7 @@ class DriftVisualizer:
             severity = info.get("severity", DriftSeverity.NO_DRIFT)
             severities.append(severity)
 
-            # Визначаємо колір на основі рівня серйозності
+            # Р’РёР·РЅР°С‡Р°С”РјРѕ РєРѕР»С–СЂ РЅР° РѕСЃРЅРѕРІС– СЂС–РІРЅСЏ СЃРµСЂР№РѕР·РЅРѕСЃС‚С–
             if severity == DriftSeverity.HIGH:
                 colors.append("red")
             elif severity == DriftSeverity.MEDIUM:
@@ -144,14 +146,14 @@ class DriftVisualizer:
             else:
                 colors.append("green")
 
-        # Сортуємо дані за рівнем дрейфу
+        # РЎРѕСЂС‚СѓС”РјРѕ РґР°РЅС– Р·Р° СЂС–РІРЅРµРј РґСЂРµР№С„Сѓ
         sorted_indices = np.argsort(scores)
         features = [features[i] for i in sorted_indices]
         scores = [scores[i] for i in sorted_indices]
         severities = [severities[i] for i in sorted_indices]
         colors = [colors[i] for i in sorted_indices]
 
-        # Створюємо горизонтальну гістограму
+        # РЎС‚РІРѕСЂСЋС”РјРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅСѓ РіС–СЃС‚РѕРіСЂР°РјСѓ
         fig, ax = plt.subplots(figsize=(10, max(6, len(features) * 0.5)))
 
         y_pos = np.arange(len(features))
@@ -159,16 +161,16 @@ class DriftVisualizer:
         ax.set_yticks(y_pos)
         ax.set_yticklabels(features)
         ax.set_xlim(0, 1)
-        ax.set_xlabel("Рівень дрейфу")
-        ax.set_title("Дрейф для окремих ознак")
+        ax.set_xlabel("Р С–РІРµРЅСЊ РґСЂРµР№С„Сѓ")
+        ax.set_title("Р”СЂРµР№С„ РґР»СЏ РѕРєСЂРµРјРёС… РѕР·РЅР°Рє")
 
-        # Додаємо вертикальні лінії для порогів серйозності
-        ax.axvline(x=0.05, color='green', linestyle='--', alpha=0.7, label="Низький")
-        ax.axvline(x=0.1, color='yellow', linestyle='--', alpha=0.7, label="Середній")
-        ax.axvline(x=0.2, color='red', linestyle='--', alpha=0.7, label="Високий")
+        # Р”РѕРґР°С”РјРѕ РІРµСЂС‚РёРєР°Р»СЊРЅС– Р»С–РЅС–С— РґР»СЏ РїРѕСЂРѕРіС–РІ СЃРµСЂР№РѕР·РЅРѕСЃС‚С–
+        ax.axvline(x=0.05, color='green', linestyle='--', alpha=0.7, label="РќРёР·СЊРєРёР№")
+        ax.axvline(x=0.1, color='yellow', linestyle='--', alpha=0.7, label="РЎРµСЂРµРґРЅС–Р№")
+        ax.axvline(x=0.2, color='red', linestyle='--', alpha=0.7, label="Р’РёСЃРѕРєРёР№")
         ax.legend()
 
-        # Зберігаємо діаграму
+        # Р—Р±РµСЂС–РіР°С”РјРѕ РґС–Р°РіСЂР°РјСѓ
         output_file = os.path.join(self.output_dir, f"feature_drift_{timestamp}.png")
         plt.tight_layout()
         plt.savefig(output_file)
@@ -182,15 +184,15 @@ class DriftVisualizer:
         timestamp: str
     ):
         """
-        Візуалізація детальних розподілів для ознак з високим дрейфом
+        Р’С–Р·СѓР°Р»С–Р·Р°С†С–СЏ РґРµС‚Р°Р»СЊРЅРёС… СЂРѕР·РїРѕРґС–Р»С–РІ РґР»СЏ РѕР·РЅР°Рє Р· РІРёСЃРѕРєРёРј РґСЂРµР№С„РѕРј
 
         Args:
-            data_drift: Результати виявлення дрейфу для ознак
-            reference_data: Еталонний набір даних
-            current_data: Поточний набір даних
-            timestamp: Часова мітка для назви файлу
+            data_drift: Р РµР·СѓР»СЊС‚Р°С‚Рё РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ РґР»СЏ РѕР·РЅР°Рє
+            reference_data: Р•С‚Р°Р»РѕРЅРЅРёР№ РЅР°Р±С–СЂ РґР°РЅРёС…
+            current_data: РџРѕС‚РѕС‡РЅРёР№ РЅР°Р±С–СЂ РґР°РЅРёС…
+            timestamp: Р§Р°СЃРѕРІР° РјС–С‚РєР° РґР»СЏ РЅР°Р·РІРё С„Р°Р№Р»Сѓ
         """
-        # Вибираємо ознаки з високим або середнім рівнем дрейфу
+        # Р’РёР±РёСЂР°С”РјРѕ РѕР·РЅР°РєРё Р· РІРёСЃРѕРєРёРј Р°Р±Рѕ СЃРµСЂРµРґРЅС–Рј СЂС–РІРЅРµРј РґСЂРµР№С„Сѓ
         drift_features = []
         for feature, info in data_drift.items():
             severity = info.get("severity", DriftSeverity.NO_DRIFT)
@@ -200,60 +202,60 @@ class DriftVisualizer:
         if not drift_features:
             return
 
-        # Обмежуємо кількість ознак для візуалізації
+        # РћР±РјРµР¶СѓС”РјРѕ РєС–Р»СЊРєС–СЃС‚СЊ РѕР·РЅР°Рє РґР»СЏ РІС–Р·СѓР°Р»С–Р·Р°С†С–С—
         max_features = 10
         if len(drift_features) > max_features:
             drift_features = drift_features[:max_features]
 
-        # Для кожної ознаки створюємо окрему візуалізацію
+        # Р”Р»СЏ РєРѕР¶РЅРѕС— РѕР·РЅР°РєРё СЃС‚РІРѕСЂСЋС”РјРѕ РѕРєСЂРµРјСѓ РІС–Р·СѓР°Р»С–Р·Р°С†С–СЋ
         for feature in drift_features:
             if feature in reference_data.columns and feature in current_data.columns:
-                # Перевіряємо тип даних
+                # РџРµСЂРµРІС–СЂСЏС”РјРѕ С‚РёРї РґР°РЅРёС…
                 is_numeric = np.issubdtype(reference_data[feature].dtype, np.number)
 
                 fig, ax = plt.subplots(figsize=(12, 6))
 
                 if is_numeric:
-                    # Для числових ознак використовуємо KDE або гістограму
+                    # Р”Р»СЏ С‡РёСЃР»РѕРІРёС… РѕР·РЅР°Рє РІРёРєРѕСЂРёСЃС‚РѕРІСѓС”РјРѕ KDE Р°Р±Рѕ РіС–СЃС‚РѕРіСЂР°РјСѓ
                     try:
-                        sns.kdeplot(reference_data[feature], label="Еталонні дані", ax=ax)
-                        sns.kdeplot(current_data[feature], label="Поточні дані", ax=ax)
+                        sns.kdeplot(reference_data[feature], label="Р•С‚Р°Р»РѕРЅРЅС– РґР°РЅС–", ax=ax)
+                        sns.kdeplot(current_data[feature], label="РџРѕС‚РѕС‡РЅС– РґР°РЅС–", ax=ax)
                     except Exception:
-                        # Якщо KDE не працює, використовуємо гістограму
-                        sns.histplot(reference_data[feature], label="Еталонні дані", 
+                        # РЇРєС‰Рѕ KDE РЅРµ РїСЂР°С†СЋС”, РІРёРєРѕСЂРёСЃС‚РѕРІСѓС”РјРѕ РіС–СЃС‚РѕРіСЂР°РјСѓ
+                        sns.histplot(reference_data[feature], label="Р•С‚Р°Р»РѕРЅРЅС– РґР°РЅС–", 
                                    alpha=0.5, ax=ax, stat="density", common_norm=True)
-                        sns.histplot(current_data[feature], label="Поточні дані", 
+                        sns.histplot(current_data[feature], label="РџРѕС‚РѕС‡РЅС– РґР°РЅС–", 
                                    alpha=0.5, ax=ax, stat="density", common_norm=True)
                 else:
-                    # Для категоріальних ознак використовуємо гістограму
+                    # Р”Р»СЏ РєР°С‚РµРіРѕСЂС–Р°Р»СЊРЅРёС… РѕР·РЅР°Рє РІРёРєРѕСЂРёСЃС‚РѕРІСѓС”РјРѕ РіС–СЃС‚РѕРіСЂР°РјСѓ
                     ref_counts = reference_data[feature].value_counts(normalize=True)
                     curr_counts = current_data[feature].value_counts(normalize=True)
 
-                    # Об'єднуємо всі категорії
+                    # РћР±'С”РґРЅСѓС”РјРѕ РІСЃС– РєР°С‚РµРіРѕСЂС–С—
                     all_categories = list(set(ref_counts.index) | set(curr_counts.index))
 
-                    # Обмежуємо кількість категорій, якщо їх забагато
+                    # РћР±РјРµР¶СѓС”РјРѕ РєС–Р»СЊРєС–СЃС‚СЊ РєР°С‚РµРіРѕСЂС–Р№, СЏРєС‰Рѕ С—С… Р·Р°Р±Р°РіР°С‚Рѕ
                     max_categories = 15
                     if len(all_categories) > max_categories:
-                        # Вибираємо найбільш часті категорії
+                        # Р’РёР±РёСЂР°С”РјРѕ РЅР°Р№Р±С–Р»СЊС€ С‡Р°СЃС‚С– РєР°С‚РµРіРѕСЂС–С—
                         top_ref = set(ref_counts.nlargest(max_categories // 2).index)
                         top_curr = set(curr_counts.nlargest(max_categories // 2).index)
                         all_categories = list(top_ref | top_curr)
 
-                    # Створюємо DataFrame для візуалізації
+                    # РЎС‚РІРѕСЂСЋС”РјРѕ DataFrame РґР»СЏ РІС–Р·СѓР°Р»С–Р·Р°С†С–С—
                     plot_data = pd.DataFrame(index=all_categories)
-                    plot_data["Еталонні дані"] = [ref_counts.get(cat, 0) for cat in all_categories]
-                    plot_data["Поточні дані"] = [curr_counts.get(cat, 0) for cat in all_categories]
+                    plot_data["Р•С‚Р°Р»РѕРЅРЅС– РґР°РЅС–"] = [ref_counts.get(cat, 0) for cat in all_categories]
+                    plot_data["РџРѕС‚РѕС‡РЅС– РґР°РЅС–"] = [curr_counts.get(cat, 0) for cat in all_categories]
 
-                    # Створюємо групований барплот
+                    # РЎС‚РІРѕСЂСЋС”РјРѕ РіСЂСѓРїРѕРІР°РЅРёР№ Р±Р°СЂРїР»РѕС‚
                     plot_data.plot(kind='bar', ax=ax)
 
-                ax.set_title(f"Розподіл для ознаки '{feature}' (дрейф: {data_drift[feature]['score']:.4f})")
+                ax.set_title(f"Р РѕР·РїРѕРґС–Р» РґР»СЏ РѕР·РЅР°РєРё '{feature}' (РґСЂРµР№С„: {data_drift[feature]['score']:.4f})")
                 ax.set_xlabel(feature)
-                ax.set_ylabel("Щільність" if is_numeric else "Частота")
+                ax.set_ylabel("Р©С–Р»СЊРЅС–СЃС‚СЊ" if is_numeric else "Р§Р°СЃС‚РѕС‚Р°")
                 ax.legend()
 
-                # Зберігаємо діаграму
+                # Р—Р±РµСЂС–РіР°С”РјРѕ РґС–Р°РіСЂР°РјСѓ
                 output_file = os.path.join(self.output_dir, f"distribution_{feature}_{timestamp}.png")
                 plt.tight_layout()
                 plt.savefig(output_file)
@@ -261,11 +263,11 @@ class DriftVisualizer:
 
     def _plot_prediction_drift(self, prediction_drift: Dict[str, Any], timestamp: str):
         """
-        Візуалізація дрейфу передбачень
+        Р’С–Р·СѓР°Р»С–Р·Р°С†С–СЏ РґСЂРµР№С„Сѓ РїРµСЂРµРґР±Р°С‡РµРЅСЊ
 
         Args:
-            prediction_drift: Результати виявлення дрейфу для передбачень
-            timestamp: Часова мітка для назви файлу
+            prediction_drift: Р РµР·СѓР»СЊС‚Р°С‚Рё РІРёСЏРІР»РµРЅРЅСЏ РґСЂРµР№С„Сѓ РґР»СЏ РїРµСЂРµРґР±Р°С‡РµРЅСЊ
+            timestamp: Р§Р°СЃРѕРІР° РјС–С‚РєР° РґР»СЏ РЅР°Р·РІРё С„Р°Р№Р»Сѓ
         """
         if not prediction_drift:
             return
@@ -274,10 +276,10 @@ class DriftVisualizer:
         severity = prediction_drift.get("severity", DriftSeverity.NO_DRIFT)
         details = prediction_drift.get("details", {})
 
-        # Створюємо діаграму з рівнем дрейфу передбачень
+        # РЎС‚РІРѕСЂСЋС”РјРѕ РґС–Р°РіСЂР°РјСѓ Р· СЂС–РІРЅРµРј РґСЂРµР№С„Сѓ РїРµСЂРµРґР±Р°С‡РµРЅСЊ
         fig, ax = plt.subplots(figsize=(10, 6))
 
-        # Визначаємо колір на основі рівня серйозності
+        # Р’РёР·РЅР°С‡Р°С”РјРѕ РєРѕР»С–СЂ РЅР° РѕСЃРЅРѕРІС– СЂС–РІРЅСЏ СЃРµСЂР№РѕР·РЅРѕСЃС‚С–
         if severity == DriftSeverity.HIGH:
             color = "red"
         elif severity == DriftSeverity.MEDIUM:
@@ -287,25 +289,25 @@ class DriftVisualizer:
         else:
             color = "green"
 
-        # Горизонтальна шкала від 0 до 1
-        ax.barh(["Дрейф передбачень"], [score], color=color)
+        # Р“РѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅР° С€РєР°Р»Р° РІС–Рґ 0 РґРѕ 1
+        ax.barh(["Р”СЂРµР№С„ РїРµСЂРµРґР±Р°С‡РµРЅСЊ"], [score], color=color)
         ax.set_xlim(0, 1)
-        ax.set_xlabel("Рівень дрейфу")
-        ax.set_title(f"Дрейф передбачень: {score:.4f} ({severity})")
+        ax.set_xlabel("Р С–РІРµРЅСЊ РґСЂРµР№С„Сѓ")
+        ax.set_title(f"Р”СЂРµР№С„ РїРµСЂРµРґР±Р°С‡РµРЅСЊ: {score:.4f} ({severity})")
 
-        # Додаємо вертикальні лінії для порогів серйозності
-        ax.axvline(x=0.05, color='green', linestyle='--', alpha=0.7, label="Низький")
-        ax.axvline(x=0.1, color='yellow', linestyle='--', alpha=0.7, label="Середній")
-        ax.axvline(x=0.2, color='red', linestyle='--', alpha=0.7, label="Високий")
+        # Р”РѕРґР°С”РјРѕ РІРµСЂС‚РёРєР°Р»СЊРЅС– Р»С–РЅС–С— РґР»СЏ РїРѕСЂРѕРіС–РІ СЃРµСЂР№РѕР·РЅРѕСЃС‚С–
+        ax.axvline(x=0.05, color='green', linestyle='--', alpha=0.7, label="РќРёР·СЊРєРёР№")
+        ax.axvline(x=0.1, color='yellow', linestyle='--', alpha=0.7, label="РЎРµСЂРµРґРЅС–Р№")
+        ax.axvline(x=0.2, color='red', linestyle='--', alpha=0.7, label="Р’РёСЃРѕРєРёР№")
         ax.legend()
 
-        # Зберігаємо діаграму
+        # Р—Р±РµСЂС–РіР°С”РјРѕ РґС–Р°РіСЂР°РјСѓ
         output_file = os.path.join(self.output_dir, f"prediction_drift_{timestamp}.png")
         plt.tight_layout()
         plt.savefig(output_file)
         plt.close()
 
-        # Якщо є деталі зі статистичними змінами, створюємо додаткову візуалізацію
+        # РЇРєС‰Рѕ С” РґРµС‚Р°Р»С– Р·С– СЃС‚Р°С‚РёСЃС‚РёС‡РЅРёРјРё Р·РјС–РЅР°РјРё, СЃС‚РІРѕСЂСЋС”РјРѕ РґРѕРґР°С‚РєРѕРІСѓ РІС–Р·СѓР°Р»С–Р·Р°С†С–СЋ
         stat_changes = details.get("statistic_changes", {})
         if stat_changes:
             fig, ax = plt.subplots(figsize=(10, 6))
@@ -318,7 +320,7 @@ class DriftVisualizer:
                 metrics.append(metric)
                 changes.append(change)
 
-                # Визначаємо колір на основі величини зміни
+                # Р’РёР·РЅР°С‡Р°С”РјРѕ РєРѕР»С–СЂ РЅР° РѕСЃРЅРѕРІС– РІРµР»РёС‡РёРЅРё Р·РјС–РЅРё
                 if change > 0.2:
                     colors.append("red")
                 elif change > 0.1:
@@ -328,22 +330,24 @@ class DriftVisualizer:
                 else:
                     colors.append("green")
 
-            # Сортуємо дані за величиною зміни
+            # РЎРѕСЂС‚СѓС”РјРѕ РґР°РЅС– Р·Р° РІРµР»РёС‡РёРЅРѕСЋ Р·РјС–РЅРё
             sorted_indices = np.argsort(changes)
             metrics = [metrics[i] for i in sorted_indices]
             changes = [changes[i] for i in sorted_indices]
             colors = [colors[i] for i in sorted_indices]
 
-            # Створюємо горизонтальну гістограму
+            # РЎС‚РІРѕСЂСЋС”РјРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅСѓ РіС–СЃС‚РѕРіСЂР°РјСѓ
             y_pos = np.arange(len(metrics))
             ax.barh(y_pos, changes, color=colors)
             ax.set_yticks(y_pos)
             ax.set_yticklabels(metrics)
-            ax.set_xlabel("Відносна зміна")
-            ax.set_title("Зміни в статистиках передбачень")
+            ax.set_xlabel("Р’С–РґРЅРѕСЃРЅР° Р·РјС–РЅР°")
+            ax.set_title("Р—РјС–РЅРё РІ СЃС‚Р°С‚РёСЃС‚РёРєР°С… РїРµСЂРµРґР±Р°С‡РµРЅСЊ")
 
-            # Зберігаємо діаграму
+            # Р—Р±РµСЂС–РіР°С”РјРѕ РґС–Р°РіСЂР°РјСѓ
             output_file = os.path.join(self.output_dir, f"prediction_stats_changes_{timestamp}.png")
             plt.tight_layout()
             plt.savefig(output_file)
             plt.close()
+
+

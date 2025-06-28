@@ -1,8 +1,10 @@
+﻿# новлена версія для PR
+# новлена версія для PR
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
-Модуль для налаштування телеметрії OpenTelemetry для SigNoz
+РњРѕРґСѓР»СЊ РґР»СЏ РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ С‚РµР»РµРјРµС‚СЂС–С— OpenTelemetry РґР»СЏ SigNoz
 """
 
 import logging
@@ -23,20 +25,20 @@ logger = logging.getLogger(__name__)
 
 def setup_telemetry(service_name=None):
     """
-    Налаштування телеметрії OpenTelemetry для SigNoz
+    РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ С‚РµР»РµРјРµС‚СЂС–С— OpenTelemetry РґР»СЏ SigNoz
 
     Args:
-        service_name (str, optional): Назва сервісу. За замовчуванням використовує налаштування з конфігурації.
+        service_name (str, optional): РќР°Р·РІР° СЃРµСЂРІС–СЃСѓ. Р—Р° Р·Р°РјРѕРІС‡СѓРІР°РЅРЅСЏРј РІРёРєРѕСЂРёСЃС‚РѕРІСѓС” РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ Р· РєРѕРЅС„С–РіСѓСЂР°С†С–С—.
     """
     if not settings.OTEL_ENABLED:
-        logger.info("Телеметрія OpenTelemetry вимкнена")
+        logger.info("РўРµР»РµРјРµС‚СЂС–СЏ OpenTelemetry РІРёРјРєРЅРµРЅР°")
         return
 
     service_name = service_name or settings.OTEL_SERVICE_NAME
 
-    logger.info(f"Налаштування телеметрії OpenTelemetry для сервісу '{service_name}'")
+    logger.info(f"РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ С‚РµР»РµРјРµС‚СЂС–С— OpenTelemetry РґР»СЏ СЃРµСЂРІС–СЃСѓ '{service_name}'")
 
-    # Створюємо ресурс з атрибутами сервісу
+    # РЎС‚РІРѕСЂСЋС”РјРѕ СЂРµСЃСѓСЂСЃ Р· Р°С‚СЂРёР±СѓС‚Р°РјРё СЃРµСЂРІС–СЃСѓ
     resource_attributes = {}
     for attr_pair in settings.OTEL_RESOURCE_ATTRIBUTES.split(","):
         if "=" in attr_pair:
@@ -48,55 +50,57 @@ def setup_telemetry(service_name=None):
         **resource_attributes
     })
 
-    # Створюємо TracerProvider з нашим ресурсом
+    # РЎС‚РІРѕСЂСЋС”РјРѕ TracerProvider Р· РЅР°С€РёРј СЂРµСЃСѓСЂСЃРѕРј
     tracer_provider = TracerProvider(resource=resource)
 
-    # Створюємо експортер для SigNoz
+    # РЎС‚РІРѕСЂСЋС”РјРѕ РµРєСЃРїРѕСЂС‚РµСЂ РґР»СЏ SigNoz
     otlp_exporter = OTLPSpanExporter(
         endpoint=settings.OTEL_EXPORTER_OTLP_ENDPOINT,
         insecure=True
     )
 
-    # Додаємо експортер до TracerProvider
+    # Р”РѕРґР°С”РјРѕ РµРєСЃРїРѕСЂС‚РµСЂ РґРѕ TracerProvider
     span_processor = BatchSpanProcessor(otlp_exporter)
     tracer_provider.add_span_processor(span_processor)
 
-    # Встановлюємо TracerProvider глобально
+    # Р’СЃС‚Р°РЅРѕРІР»СЋС”РјРѕ TracerProvider РіР»РѕР±Р°Р»СЊРЅРѕ
     trace.set_tracer_provider(tracer_provider)
 
-    # Ініціалізуємо автоматичну інструментацію
+    # Р†РЅС–С†С–Р°Р»С–Р·СѓС”РјРѕ Р°РІС‚РѕРјР°С‚РёС‡РЅСѓ С–РЅСЃС‚СЂСѓРјРµРЅС‚Р°С†С–СЋ
     RequestsInstrumentor().instrument()
     LoggingInstrumentor().instrument()
 
-    logger.info("Телеметрія OpenTelemetry успішно налаштована")
+    logger.info("РўРµР»РµРјРµС‚СЂС–СЏ OpenTelemetry СѓСЃРїС–С€РЅРѕ РЅР°Р»Р°С€С‚РѕРІР°РЅР°")
 
     return tracer_provider
 
 def instrument_fastapi(app):
     """
-    Інструментує FastAPI додаток для збору телеметрії
+    Р†РЅСЃС‚СЂСѓРјРµРЅС‚СѓС” FastAPI РґРѕРґР°С‚РѕРє РґР»СЏ Р·Р±РѕСЂСѓ С‚РµР»РµРјРµС‚СЂС–С—
 
     Args:
-        app: Екземпляр FastAPI додатку
+        app: Р•РєР·РµРјРїР»СЏСЂ FastAPI РґРѕРґР°С‚РєСѓ
     """
     if not settings.OTEL_ENABLED:
-        logger.info("Інструментація FastAPI вимкнена, оскільки телеметрія вимкнена")
+        logger.info("Р†РЅСЃС‚СЂСѓРјРµРЅС‚Р°С†С–СЏ FastAPI РІРёРјРєРЅРµРЅР°, РѕСЃРєС–Р»СЊРєРё С‚РµР»РµРјРµС‚СЂС–СЏ РІРёРјРєРЅРµРЅР°")
         return
 
-    logger.info("Інструментація FastAPI додатку для телеметрії")
+    logger.info("Р†РЅСЃС‚СЂСѓРјРµРЅС‚Р°С†С–СЏ FastAPI РґРѕРґР°С‚РєСѓ РґР»СЏ С‚РµР»РµРјРµС‚СЂС–С—")
     FastAPIInstrumentor.instrument_app(app, tracer_provider=trace.get_tracer_provider())
 
 def create_custom_span(name, attributes=None):
     """
-    Створює кастомний спан для ручного трекінгу
+    РЎС‚РІРѕСЂСЋС” РєР°СЃС‚РѕРјРЅРёР№ СЃРїР°РЅ РґР»СЏ СЂСѓС‡РЅРѕРіРѕ С‚СЂРµРєС–РЅРіСѓ
 
     Args:
-        name (str): Назва спану
-        attributes (dict, optional): Додаткові атрибути для спану
+        name (str): РќР°Р·РІР° СЃРїР°РЅСѓ
+        attributes (dict, optional): Р”РѕРґР°С‚РєРѕРІС– Р°С‚СЂРёР±СѓС‚Рё РґР»СЏ СЃРїР°РЅСѓ
 
     Returns:
-        Span: Об'єкт спану OpenTelemetry
+        Span: РћР±'С”РєС‚ СЃРїР°РЅСѓ OpenTelemetry
     """
     tracer = trace.get_tracer(__name__)
     attributes = attributes or {}
     return tracer.start_as_current_span(name, attributes=attributes)
+
+

@@ -1,3 +1,4 @@
+﻿# новлена версія для PR
 apiVersion: 1
 
 datasources:
@@ -7,3 +8,4 @@ datasources:
     url: http://prometheus:9090
     isDefault: true
     editable: true
+
