@@ -1,0 +1,684 @@
+[2025-06-02T17:04:18.135+0000] {processor.py:157} INFO - Started process (PID=160) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:04:18.139+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:04:18.147+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:04:18.140+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:04:22.601+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:04:22.596+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:04:22.603+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:04:22.691+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 4.559 seconds
+[2025-06-02T17:04:53.020+0000] {processor.py:157} INFO - Started process (PID=173) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:04:53.021+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:04:53.024+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:04:53.024+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:04:54.954+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:04:54.937+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:04:54.956+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:04:54.996+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 1.981 seconds
+[2025-06-02T17:05:25.795+0000] {processor.py:157} INFO - Started process (PID=185) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:05:25.796+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:05:25.799+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:05:25.798+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:05:26.280+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:05:26.276+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:05:26.280+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:05:26.294+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.502 seconds
+[2025-06-02T17:05:56.741+0000] {processor.py:157} INFO - Started process (PID=197) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:05:56.744+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:05:56.746+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:05:56.745+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:05:57.221+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:05:57.217+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:05:57.222+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:05:57.237+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.499 seconds
+[2025-06-02T17:06:27.585+0000] {processor.py:157} INFO - Started process (PID=209) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:06:27.585+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:06:27.586+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:06:27.586+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:06:27.971+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:06:27.966+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:06:27.972+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:06:27.986+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.404 seconds
+[2025-06-02T17:06:58.201+0000] {processor.py:157} INFO - Started process (PID=221) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:06:58.202+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:06:58.203+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:06:58.202+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:06:58.525+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:06:58.520+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:06:58.526+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:06:58.544+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.346 seconds
+[2025-06-02T17:07:29.192+0000] {processor.py:157} INFO - Started process (PID=233) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:07:29.192+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:07:29.193+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:07:29.193+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:07:29.542+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:07:29.535+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:07:29.543+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:07:29.579+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.391 seconds
+[2025-06-02T17:07:59.790+0000] {processor.py:157} INFO - Started process (PID=245) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:07:59.791+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:07:59.792+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:07:59.792+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:08:00.514+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:08:00.510+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:08:00.515+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:08:00.529+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.746 seconds
+[2025-06-02T17:08:30.678+0000] {processor.py:157} INFO - Started process (PID=257) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:08:30.679+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:08:30.681+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:08:30.680+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:08:31.073+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:08:31.067+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:08:31.074+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:08:31.090+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.415 seconds
+[2025-06-02T17:09:01.341+0000] {processor.py:157} INFO - Started process (PID=269) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:09:01.341+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:09:01.342+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:09:01.342+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:09:01.701+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:09:01.695+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:09:01.709+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:09:01.738+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.400 seconds
+[2025-06-02T17:09:32.451+0000] {processor.py:157} INFO - Started process (PID=281) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:09:32.452+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:09:32.460+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:09:32.460+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:09:33.098+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:09:33.090+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:09:33.099+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:09:33.130+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.682 seconds
+[2025-06-02T17:10:03.395+0000] {processor.py:157} INFO - Started process (PID=293) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:10:03.396+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:10:03.397+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:10:03.397+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:10:03.844+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:10:03.837+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:10:03.849+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:10:03.882+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.492 seconds
+[2025-06-02T17:10:34.831+0000] {processor.py:157} INFO - Started process (PID=305) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:10:34.831+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:10:34.832+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:10:34.832+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:10:36.063+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:10:36.047+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:10:36.066+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:10:36.123+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 1.296 seconds
+[2025-06-02T17:11:06.577+0000] {processor.py:157} INFO - Started process (PID=317) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:11:06.578+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:11:06.579+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:11:06.579+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:11:06.933+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:11:06.925+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:11:06.934+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:11:06.952+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.378 seconds
+[2025-06-02T17:11:37.722+0000] {processor.py:157} INFO - Started process (PID=335) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:11:37.722+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:11:37.723+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:11:37.723+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:11:38.085+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:11:38.081+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:11:38.087+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:11:38.174+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.456 seconds
+[2025-06-02T17:12:08.296+0000] {processor.py:157} INFO - Started process (PID=347) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:12:08.297+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:12:08.298+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:12:08.298+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:12:08.562+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:12:08.556+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:12:08.563+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:12:08.578+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.285 seconds
+[2025-06-02T17:12:38.791+0000] {processor.py:157} INFO - Started process (PID=359) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:12:38.792+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:12:38.793+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:12:38.793+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:12:39.103+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:12:39.099+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:12:39.104+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:12:39.131+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.342 seconds
+[2025-06-02T17:13:10.039+0000] {processor.py:157} INFO - Started process (PID=371) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:13:10.042+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:13:10.045+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:13:10.044+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:13:11.223+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:13:11.212+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:13:11.224+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:13:11.331+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 1.305 seconds
+[2025-06-02T17:13:41.602+0000] {processor.py:157} INFO - Started process (PID=383) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:13:41.603+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:13:41.605+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:13:41.604+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:13:42.035+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:13:42.026+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:13:42.037+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:13:42.076+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.480 seconds
+[2025-06-02T17:14:12.326+0000] {processor.py:157} INFO - Started process (PID=395) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:14:12.327+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:14:12.329+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:14:12.328+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:14:12.852+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:14:12.842+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:14:12.854+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:14:12.879+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.559 seconds
+[2025-06-02T17:14:43.208+0000] {processor.py:157} INFO - Started process (PID=407) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:14:43.210+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:14:43.215+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:14:43.211+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:14:46.048+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:14:46.044+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:14:46.049+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:14:46.075+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 2.874 seconds
+[2025-06-02T17:15:16.311+0000] {processor.py:157} INFO - Started process (PID=419) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:15:16.311+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:15:16.312+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:15:16.312+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:15:16.685+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:15:16.680+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:15:16.689+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:15:16.711+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.403 seconds
+[2025-06-02T17:15:46.972+0000] {processor.py:157} INFO - Started process (PID=431) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:15:46.972+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:15:46.973+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:15:46.973+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:15:47.305+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:15:47.300+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:15:47.306+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:15:47.330+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.361 seconds
+[2025-06-02T17:16:17.541+0000] {processor.py:157} INFO - Started process (PID=443) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:16:17.543+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:16:17.544+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:16:17.543+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:16:17.861+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:16:17.856+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:16:17.863+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:16:17.889+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.351 seconds
+[2025-06-02T17:17:04.778+0000] {processor.py:157} INFO - Started process (PID=161) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:17:04.778+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:17:04.779+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:17:04.779+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:17:06.367+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:17:06.354+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:17:06.368+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:17:06.413+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 1.638 seconds
+[2025-06-02T17:17:36.663+0000] {processor.py:157} INFO - Started process (PID=173) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:17:36.664+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:17:36.666+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:17:36.665+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:17:37.459+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:17:37.453+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:17:37.460+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:17:37.500+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.841 seconds
+[2025-06-02T17:18:07.749+0000] {processor.py:157} INFO - Started process (PID=185) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:18:07.750+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:18:07.751+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:18:07.750+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:18:08.331+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:18:08.325+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:18:08.333+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:18:08.446+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.700 seconds
+[2025-06-02T17:18:39.720+0000] {processor.py:157} INFO - Started process (PID=197) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:18:39.722+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:18:39.724+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:18:39.723+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:18:41.576+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:18:41.572+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:18:41.577+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:18:41.619+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 1.920 seconds
+[2025-06-02T17:19:12.194+0000] {processor.py:157} INFO - Started process (PID=209) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:19:12.194+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:19:12.195+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:19:12.195+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:19:12.693+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:19:12.688+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:19:12.694+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:19:12.710+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.519 seconds
+[2025-06-02T17:19:42.993+0000] {processor.py:157} INFO - Started process (PID=221) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:19:42.994+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:19:43.000+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:19:42.999+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:19:43.500+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:19:43.495+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:19:43.501+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:19:43.532+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.545 seconds
+[2025-06-02T17:20:13.917+0000] {processor.py:157} INFO - Started process (PID=233) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:20:13.918+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:20:13.919+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:20:13.918+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:20:14.217+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:20:14.211+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:20:14.218+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:20:14.235+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.322 seconds
+[2025-06-02T17:20:44.477+0000] {processor.py:157} INFO - Started process (PID=245) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:20:44.478+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:20:44.480+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:20:44.479+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:20:44.932+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:20:44.921+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/training_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/training_dag.py", line 8, in <module>
+    from sklearn.ensemble import RandomForestClassifier
+ModuleNotFoundError: No module named 'sklearn'
+[2025-06-02T17:20:44.934+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:20:44.966+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.492 seconds
+[2025-06-02T17:44:54.610+0000] {processor.py:157} INFO - Started process (PID=159) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:44:54.611+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:44:54.614+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:44:54.613+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:45:01.785+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:45:01.892+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:45:01.892+0000] {manager.py:499} INFO - Created Permission View: %s
+[2025-06-02T17:45:01.905+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:45:01.905+0000] {manager.py:499} INFO - Created Permission View: %s
+[2025-06-02T17:45:01.916+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:45:01.916+0000] {manager.py:499} INFO - Created Permission View: %s
+[2025-06-02T17:45:01.917+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:45:01.917+0000] {security.py:708} INFO - Not syncing DAG-level permissions for DAG 'DAG:training_pipeline' as access control is unset.
+[2025-06-02T17:45:01.919+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:45:01.917+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:45:01.935+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:45:01.935+0000] {dag.py:2937} INFO - Creating ORM DAG for training_pipeline
+[2025-06-02T17:45:01.954+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:45:01.954+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-01T17:45:01.954407+00:00, run_after=2025-06-02T17:45:01.954407+00:00
+[2025-06-02T17:45:01.981+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 7.375 seconds
+[2025-06-02T17:45:32.682+0000] {processor.py:157} INFO - Started process (PID=176) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:45:32.683+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:45:32.684+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:45:32.684+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:45:38.494+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:45:38.529+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:45:38.528+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:45:38.549+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:45:38.549+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-01T17:45:38.549225+00:00, run_after=2025-06-02T17:45:38.549225+00:00
+[2025-06-02T17:45:38.573+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 5.894 seconds
+[2025-06-02T17:46:08.888+0000] {processor.py:157} INFO - Started process (PID=222) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:46:08.889+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:46:08.891+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:46:08.890+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:46:11.069+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:46:11.099+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:46:11.098+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:46:11.120+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:46:11.120+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:46:11.153+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 2.270 seconds
+[2025-06-02T17:46:41.484+0000] {processor.py:157} INFO - Started process (PID=235) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:46:41.484+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:46:41.485+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:46:41.485+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:46:42.369+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:46:42.392+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:46:42.392+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:46:42.411+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:46:42.411+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:46:42.431+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.952 seconds
+[2025-06-02T17:47:13.045+0000] {processor.py:157} INFO - Started process (PID=248) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:47:13.046+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:47:13.046+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:47:13.046+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:47:13.907+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:47:13.930+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:47:13.929+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:47:13.949+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:47:13.949+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:47:13.967+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.925 seconds
+[2025-06-02T17:47:44.063+0000] {processor.py:157} INFO - Started process (PID=261) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:47:44.064+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:47:44.066+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:47:44.065+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:47:44.910+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:47:44.934+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:47:44.933+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:47:44.952+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:47:44.952+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:47:44.982+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.922 seconds
+[2025-06-02T17:48:15.226+0000] {processor.py:157} INFO - Started process (PID=274) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:48:15.227+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:48:15.228+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:48:15.228+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:48:16.243+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:48:16.265+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:48:16.264+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:48:16.285+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:48:16.284+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:48:16.302+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 1.079 seconds
+[2025-06-02T17:48:46.610+0000] {processor.py:157} INFO - Started process (PID=287) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:48:46.611+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:48:46.612+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:48:46.611+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:48:47.419+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:48:47.441+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:48:47.440+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:48:47.460+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:48:47.460+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:48:47.476+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.869 seconds
+[2025-06-02T17:49:17.895+0000] {processor.py:157} INFO - Started process (PID=300) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:49:17.896+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:49:17.897+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:49:17.897+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:49:18.806+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:49:18.829+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:49:18.828+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:49:18.849+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:49:18.849+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:49:18.868+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.976 seconds
+[2025-06-02T17:49:49.077+0000] {processor.py:157} INFO - Started process (PID=313) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:49:49.077+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:49:49.078+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:49:49.078+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:49:49.941+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:49:49.966+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:49:49.965+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:49:49.984+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:49:49.983+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:49:50.010+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.937 seconds
+[2025-06-02T17:50:20.157+0000] {processor.py:157} INFO - Started process (PID=326) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:50:20.158+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:50:20.159+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:50:20.159+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:50:20.944+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:50:20.966+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:50:20.966+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:50:20.985+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:50:20.984+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:50:21.007+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.852 seconds
+[2025-06-02T17:50:51.246+0000] {processor.py:157} INFO - Started process (PID=339) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:50:51.247+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:50:51.248+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:50:51.248+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:50:53.777+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:50:53.808+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:50:53.807+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:50:53.834+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:50:53.834+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:50:53.868+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 2.626 seconds
+[2025-06-02T17:51:24.248+0000] {processor.py:157} INFO - Started process (PID=352) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:51:24.249+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:51:24.249+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:51:24.249+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:51:25.024+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:51:25.048+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:51:25.047+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:51:25.072+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:51:25.072+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:51:25.089+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.844 seconds
+[2025-06-02T17:51:55.310+0000] {processor.py:157} INFO - Started process (PID=365) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:51:55.310+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:51:55.311+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:51:55.311+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:51:56.463+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:51:56.490+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:51:56.490+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:51:56.511+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:51:56.510+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:51:56.534+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 1.227 seconds
+[2025-06-02T17:52:26.837+0000] {processor.py:157} INFO - Started process (PID=378) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:52:26.838+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:52:26.839+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:52:26.838+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:52:27.697+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:52:27.719+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:52:27.719+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:52:27.740+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:52:27.740+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:52:27.756+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.925 seconds
+[2025-06-02T17:52:57.932+0000] {processor.py:157} INFO - Started process (PID=391) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:52:57.933+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:52:57.934+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:52:57.934+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:52:58.814+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:52:58.838+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:52:58.837+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:52:58.856+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:52:58.855+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:52:58.872+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.950 seconds
+[2025-06-02T17:53:29.429+0000] {processor.py:157} INFO - Started process (PID=404) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:53:29.430+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:53:29.431+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:53:29.430+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:53:30.275+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:53:30.302+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:53:30.301+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:53:30.322+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:53:30.322+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:53:30.340+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.913 seconds
+[2025-06-02T17:54:00.523+0000] {processor.py:157} INFO - Started process (PID=417) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:54:00.523+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:54:00.524+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:54:00.524+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:54:01.349+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:54:01.369+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:54:01.369+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:54:01.388+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:54:01.388+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:54:01.420+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.901 seconds
+[2025-06-02T17:54:31.636+0000] {processor.py:157} INFO - Started process (PID=430) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:54:31.636+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:54:31.637+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:54:31.637+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:54:32.501+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:54:32.525+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:54:32.523+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:54:32.543+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:54:32.543+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:54:32.573+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.941 seconds
+[2025-06-02T17:55:02.748+0000] {processor.py:157} INFO - Started process (PID=443) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:55:02.749+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:55:02.750+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:55:02.750+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:55:03.627+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:55:03.648+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:55:03.648+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:55:03.668+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:55:03.667+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:55:03.686+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.941 seconds
+[2025-06-02T17:55:34.148+0000] {processor.py:157} INFO - Started process (PID=456) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:55:34.148+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:55:34.149+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:55:34.149+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:55:35.039+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:55:35.065+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:55:35.064+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:55:35.092+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:55:35.092+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:55:35.110+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.968 seconds
+[2025-06-02T17:56:05.311+0000] {processor.py:157} INFO - Started process (PID=469) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:56:05.312+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:56:05.312+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:56:05.312+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:56:06.945+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:56:06.973+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:56:06.972+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:56:06.996+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:56:06.995+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:56:07.027+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 1.720 seconds
+[2025-06-02T17:56:37.239+0000] {processor.py:157} INFO - Started process (PID=482) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:56:37.239+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:56:37.240+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:56:37.240+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:56:38.097+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:56:38.119+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:56:38.118+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:56:38.137+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:56:38.137+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:56:38.164+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.929 seconds
+[2025-06-02T17:57:08.638+0000] {processor.py:157} INFO - Started process (PID=495) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:57:08.639+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:57:08.640+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:57:08.639+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:57:09.610+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:57:09.637+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:57:09.636+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:57:09.662+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:57:09.662+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:57:09.686+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 1.051 seconds
+[2025-06-02T17:57:39.984+0000] {processor.py:157} INFO - Started process (PID=508) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:57:39.985+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:57:39.986+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:57:39.986+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:57:40.861+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:57:40.888+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:57:40.886+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:57:40.907+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:57:40.907+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:57:40.924+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.943 seconds
+[2025-06-02T17:58:11.136+0000] {processor.py:157} INFO - Started process (PID=521) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:58:11.136+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:58:11.137+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:58:11.137+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:58:12.106+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:58:12.130+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:58:12.129+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:58:12.152+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:58:12.151+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:58:12.170+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 1.039 seconds
+[2025-06-02T17:58:42.523+0000] {processor.py:157} INFO - Started process (PID=534) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:58:42.523+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:58:42.524+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:58:42.524+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:58:43.427+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:58:43.456+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:58:43.456+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:58:43.478+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:58:43.478+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:58:43.511+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.991 seconds
+[2025-06-02T17:59:13.722+0000] {processor.py:157} INFO - Started process (PID=547) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:59:13.722+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:59:13.723+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:59:13.723+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:59:14.587+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:59:14.615+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:59:14.613+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:59:14.635+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:59:14.635+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:59:14.654+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.935 seconds
+[2025-06-02T17:59:44.722+0000] {processor.py:157} INFO - Started process (PID=560) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T17:59:44.723+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T17:59:44.723+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:59:44.723+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:59:45.546+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T17:59:45.569+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:59:45.568+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T17:59:45.589+0000] {logging_mixin.py:151} INFO - [2025-06-02T17:59:45.589+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T17:59:45.608+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.890 seconds
+[2025-06-02T18:00:15.832+0000] {processor.py:157} INFO - Started process (PID=573) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T18:00:15.832+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T18:00:15.833+0000] {logging_mixin.py:151} INFO - [2025-06-02T18:00:15.833+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T18:00:16.808+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T18:00:16.831+0000] {logging_mixin.py:151} INFO - [2025-06-02T18:00:16.830+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T18:00:16.877+0000] {logging_mixin.py:151} INFO - [2025-06-02T18:00:16.877+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T18:00:16.896+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 1.068 seconds
+[2025-06-02T18:00:47.093+0000] {processor.py:157} INFO - Started process (PID=586) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T18:00:47.094+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T18:00:47.095+0000] {logging_mixin.py:151} INFO - [2025-06-02T18:00:47.094+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T18:00:47.956+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T18:00:47.978+0000] {logging_mixin.py:151} INFO - [2025-06-02T18:00:47.977+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T18:00:47.997+0000] {logging_mixin.py:151} INFO - [2025-06-02T18:00:47.997+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T18:00:48.013+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.923 seconds
+[2025-06-02T18:01:18.601+0000] {processor.py:157} INFO - Started process (PID=599) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T18:01:18.601+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T18:01:18.602+0000] {logging_mixin.py:151} INFO - [2025-06-02T18:01:18.602+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T18:01:19.488+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T18:01:19.528+0000] {logging_mixin.py:151} INFO - [2025-06-02T18:01:19.528+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T18:01:19.554+0000] {logging_mixin.py:151} INFO - [2025-06-02T18:01:19.554+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T18:01:19.574+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.977 seconds
+[2025-06-02T18:01:49.821+0000] {processor.py:157} INFO - Started process (PID=612) to work on /opt/airflow/dags/training_dag.py
+[2025-06-02T18:01:49.822+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/training_dag.py for tasks to queue
+[2025-06-02T18:01:49.822+0000] {logging_mixin.py:151} INFO - [2025-06-02T18:01:49.822+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/training_dag.py
+[2025-06-02T18:01:50.587+0000] {processor.py:839} INFO - DAG(s) dict_keys(['training_pipeline']) retrieved from /opt/airflow/dags/training_dag.py
+[2025-06-02T18:01:50.625+0000] {logging_mixin.py:151} INFO - [2025-06-02T18:01:50.624+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-06-02T18:01:50.652+0000] {logging_mixin.py:151} INFO - [2025-06-02T18:01:50.652+0000] {dag.py:3696} INFO - Setting next_dagrun for training_pipeline to 2025-06-02T17:45:38.549225+00:00, run_after=2025-06-03T17:45:38.549225+00:00
+[2025-06-02T18:01:50.675+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/training_dag.py took 0.857 seconds
