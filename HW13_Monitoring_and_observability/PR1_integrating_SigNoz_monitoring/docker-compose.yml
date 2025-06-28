@@ -1,0 +1,65 @@
+version: '3.9'
+
+services:
+  # Наш додаток
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - OTEL_ENABLED=true
+      - OTEL_SERVICE_NAME=threat-detection-api
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://signoz-otel-collector:4317
+      - OTEL_RESOURCE_ATTRIBUTES=deployment.environment=development,service.version=1.0.0
+    depends_on:
+      - signoz-otel-collector
+
+  # SigNoz - опираємось на офіційний docker-compose.yaml з SigNoz
+  # Документація: https://signoz.io/docs/install/docker/
+  signoz-clickhouse:
+    image: clickhouse/clickhouse-server:22.8.8.9-alpine
+    volumes:
+      - ./clickhouse-data:/var/lib/clickhouse
+      - ./clickhouse-config:/etc/clickhouse-server/config.d
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "localhost:8123/ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  signoz-query-service:
+    image: signoz/query-service:0.25.0
+    ports:
+      - "8080:8080"
+    environment:
+      - STORAGE=clickhouse
+      - CLICKHOUSE_HOST=signoz-clickhouse
+      - CLICKHOUSE_PORT=9000
+      - SIGNOZ_ENVIRONMENT=dev
+    depends_on:
+      - signoz-clickhouse
+
+  signoz-frontend:
+    image: signoz/frontend:0.25.0
+    ports:
+      - "3301:3301"
+    environment:
+      - QUERY_SERVICE_URL=http://signoz-query-service:8080
+    depends_on:
+      - signoz-query-service
+
+  signoz-otel-collector:
+    image: signoz/signoz-otel-collector:0.88.0
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+    environment:
+      - CLICKHOUSE_HOST=signoz-clickhouse
+      - CLICKHOUSE_PORT=9000
+    depends_on:
+      - signoz-clickhouse

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: resnet50-classifier
+spec:
+  selector:
+    app: resnet50-classifier
+  ports:
+  - port: 9000
+    targetPort: 9000
+  type: ClusterIP

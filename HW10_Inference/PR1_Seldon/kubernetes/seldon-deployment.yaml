@@ -1,0 +1,20 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+  name: resnet50-classifier
+spec:
+  name: resnet50-classifier
+  predictors:
+  - componentSpecs:
+    - spec:
+        containers:
+        - name: classifier
+          image: your-registry/resnet50-classifier:latest
+          imagePullPolicy: IfNotPresent
+    graph:
+      name: classifier
+      type: MODEL
+      endpoint:
+        type: REST
+    name: default
+    replicas: 1

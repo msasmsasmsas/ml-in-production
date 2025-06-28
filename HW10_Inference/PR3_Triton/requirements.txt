@@ -1,0 +1,14 @@
+# Client dependencies
+tritonclient>=2.34.0
+numpy>=1.26.0
+pillow>=10.0.0
+requests>=2.31.0
+
+# Model dependencies
+torch>=2.2.0
+torchvision>=0.17.0
+onnx>=1.14.0
+onnxruntime>=1.16.0
+
+# Testing dependencies
+pytest>=7.4.0
